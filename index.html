@@ -684,16 +684,16 @@
 
   var SYMPTOM_CARDS = [
     {
-      icon:"熱", title:"発熱・痛み(頭痛・筋肉痛・咽頭痛など)",
+      icon:"熱", title:"発熱・痛み(頭痛・筋肉痛など)",
       complaint:"「熱がつらい」「痛みで日常生活に支障がある」",
-      choice:"<mark>アセトアミノフェン</mark>1回300〜500mgを頓用(4〜6時間以上あけて1日最大4,000mg)が第一選択。解熱・鎮痛効果は比較的しっかりしたエビデンスがある。NSAIDs(ロキソプロフェン60mgなど)も有効だが、脱水・腎機能低下・消化管潰瘍のリスクがある患者では慎重に検討する。",
-      harm:"アセトアミノフェンは過量投与で肝障害を来しうる。<mark>市販の総合感冒薬にも含まれることが多く、重複投与に注意</mark>。NSAIDsは妊娠後期で禁忌、腎機能・胃粘膜への影響がある。",
+      choice:"<mark>アセトアミノフェン</mark>を第一選択とする。用量は<mark>体重換算で1回10〜15mg/kgが目安</mark>で、成人ではそこから1回300〜1,000mgの範囲に収まることが多く、4〜6時間以上あけて1日最大4,000mgとする。<mark>処方例:カロナール錠300mgを1回2錠(600mg)</mark>は多くの成人体重でこの目安に収まる、調整しやすい無難な選択になる(体格が小さい患者・高齢者は1回300mgにとどめ、鎮痛効果が不十分なら1回500〜1,000mgまで増量を検討する)。NSAIDs(ロキソプロフェン60mgなど)も解熱・鎮痛効果はあるが、脱水や腎機能低下、消化管潰瘍のリスクがある患者では慎重に検討する。",
+      harm:"アセトアミノフェンは過量投与や常用飲酒・肝機能障害がある患者で肝障害のリスクが高まる。<mark>市販の総合感冒薬にも含まれることが多く、重複投与に注意</mark>。NSAIDsは妊娠後期で禁忌、腎機能・胃粘膜への影響があるほか、<mark>ジクロフェナクナトリウムやメフェナム酸はインフルエンザ罹患(疑いを含む)時にインフルエンザ脳症の重症化との関連が指摘され、添付文書上も投与しないこととされている</mark>——かぜ様症状の患者への解熱薬としてアセトアミノフェンが広く優先される理由の一つである。",
       duration:"発熱・痛みが続く間の頓用が基本。3日以上発熱が遷延する、または悪化する場合は再評価する。"
     },
     {
       icon:"喉", title:"咽頭痛",
       complaint:"「痛くて食事や水分がとれない」",
-      choice:"アセトアミノフェン・NSAIDsの全身投与に加え、含嗽やトローチなど局所的な対症療法を併用する。国内では<mark>トラネキサム酸</mark>が咽頭炎症状に処方されることも多いが、対症療法としての効果のエビデンスは限定的である点を理解した上で使う。",
+      choice:"<mark>咽頭痛では特にアセトアミノフェンを中心にすえる</mark>のが無難である(処方例は上記の発熱・痛みの項と同様、カロナール錠300mg 2錠など)。理由は、①経口摂取が減って脱水傾向になりやすくNSAIDsの腎への負担が乗りやすいこと、②<mark>NSAIDsの使用と侵襲性A群溶血性連鎖球菌感染症(壊死性軟部組織感染症など)との関連を示唆する観察研究がある</mark>ことの2点による——ただし②は<mark>因果関係が証明された知見ではなく、症状で受診が遅れた重症例で後付け的にNSAIDs使用歴が多く見つかった可能性(交絡)も否定できず、議論が続いている</mark>点は理解しておく。含嗽やトローチなど局所的な対症療法も併用する。国内では<mark>トラネキサム酸</mark>が咽頭炎症状に処方されることも多いが、対症療法としての効果のエビデンスは限定的である。",
       harm:"局所処置自体の副作用は少ないが、鎮痛薬の効果に頼って経過観察を怠ると、扁桃周囲膿瘍などの見逃したくない病態を見落としうる。",
       duration:"経口摂取が可能になる程度まで。症状が悪化する、嚥下困難が強くなる場合は再受診とする。"
     },
@@ -707,8 +707,8 @@
     {
       icon:"咳", title:"咳(乾性・湿性)",
       complaint:"「咳で眠れない」「咳が続いてつらい」",
-      choice:"市販・処方の鎮咳薬(デキストロメトルファンなど)は感冒の咳への効果を支持する質の高い根拠に乏しい。<mark>はちみつ(1歳以上)</mark>は夜間の咳や睡眠の質を改善したとする複数のランダム化比較試験があり、副作用の少なさから選択肢になりうる。去痰薬(カルボシステインなど)や麦門冬湯などの漢方薬が用いられることもある。",
-      harm:"<mark>はちみつは1歳未満の乳児には乳児ボツリヌス症のリスクがあるため禁忌</mark>。鎮咳薬には中枢抑制作用があり、眠気や便秘などに注意する。",
+      choice:"咳止めは<mark>成分ごとに強さと副作用プロファイルが異なる</mark>ことを踏まえて選ぶ。<mark>中枢性非麻薬性鎮咳薬</mark>(デキストロメトルファン、チペピジン(アスベリン)など)は作用が比較的マイルドで安全性が高く、まず検討する選択肢になるが、感冒の咳そのものへの効果を支持する質の高い根拠は乏しい。<mark>中枢性麻薬性鎮咳薬</mark>(コデインリン酸塩、ジヒドロコデインリン酸塩)はより強い鎮咳作用が期待されるが、副作用リスクも高く安易な第一選択にはしない。去痰薬(カルボシステイン、アンブロキソールなど)は喀痰の性状改善が主目的で鎮咳作用そのものは強くない。麦門冬湯などの漢方薬が乾性咳嗽に用いられることもある。<mark>はちみつ(1歳以上)</mark>は夜間の咳や睡眠の質を改善したとする複数のランダム化比較試験があり、副作用の少なさから選択肢になりうる。",
+      harm:"中枢性麻薬性鎮咳薬(コデイン類)は<mark>呼吸抑制・便秘・依存性のリスク</mark>があり、<mark>国内では2019年の添付文書改訂により12歳未満の小児への使用が原則禁忌</mark>となっている。成人でも眠気・便秘に注意し、乱用歴のある患者では依存性にも留意する。<mark>はちみつは1歳未満の乳児には乳児ボツリヌス症のリスクがあるため禁忌</mark>。",
       duration:"咳は感冒の自然経過でも2〜3週間続きうることを踏まえて調整する。4週間以上続く、血痰を伴う、体重減少があるといった場合は他の鑑別を考える。"
     },
     {
@@ -723,6 +723,8 @@
   var SYMPTOM_REFS = [
     {author:"Centers for Disease Control and Prevention", title:"Adult Outpatient Treatment Recommendations", source:"CDC Antibiotic Use", year:"2024", url:"https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html"},
     {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+    {author:"Morishima T, et al.", title:"Encephalitis and Encephalopathy Associated with an Influenza Epidemic in Japan", source:"Clinical Infectious Diseases", year:"2002"},
+    {author:"Aronoff DM, Bloch KC.", title:"Assessing the Relationship Between the Use of Nonsteroidal Antiinflammatory Drugs and Necrotizing Fasciitis Caused by Group A Streptococcus", source:"Medicine (Baltimore)", year:"2003"},
     {author:"Smith SM, Schroeder K, Fahey T.", title:"Over-the-counter (OTC) medications for acute cough in children and adults in ambulatory settings", source:"Cochrane Database of Systematic Reviews", year:"2014"},
     {author:"De Sutter AI, van Driel ML, Kumar AA, Lesslar O, Skrt A.", title:"Oral antihistamine-decongestant-analgesic combinations for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2012"},
     {author:"Deckx L, De Sutter AI, Guo L, Mir NA, van Driel ML.", title:"Nasal decongestants in monotherapy for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2016"},
