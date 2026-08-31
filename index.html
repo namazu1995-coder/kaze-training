@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none';">
+<title>かぜ診療トレーニング</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=BIZ+UDPGothic:wght@400;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+  :root{
+    --bg:#F5F6FA;
+    --surface:#FFFFFF;
+    --surface-2:#EAECF6;
+    --ink:#171B34;
+    --ink-soft:#565E82;
+    --ink-faint:#8891B0;
+    --line:#DCE0EF;
+    --primary:#3C4B8C;
+    --primary-strong:#262F5E;
+    --primary-tint:#E6E9F7;
+    --accent:#BC7A2E;
+    --accent-tint:#FAEDDC;
+    --good:#2E7D53;
+    --good-tint:#E3F3EA;
+    --warn:#BC7A2E;
+    --warn-tint:#FAEDDC;
+    --bad:#B23A3A;
+    --bad-tint:#FBE7E5;
+    --mono-bg:#171B34;
+    --mono-ink:#D9DEF7;
+    --mono-accent:#8FE3C7;
+    --shadow: 0 1px 2px rgba(16,20,45,.06), 0 6px 20px rgba(16,20,45,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0D0F1F;
+      --surface:#161B33;
+      --surface-2:#1E2340;
+      --ink:#E9EBFA;
+      --ink-soft:#A6ACD6;
+      --ink-faint:#767CA8;
+      --line:#2B3159;
+      --primary:#8B98E8;
+      --primary-strong:#B3BDF2;
+      --primary-tint:#232A54;
+      --accent:#E3A45D;
+      --accent-tint:#392A14;
+      --good:#6FC796;
+      --good-tint:#16301F;
+      --warn:#E3A45D;
+      --warn-tint:#392A14;
+      --bad:#E27C7C;
+      --bad-tint:#3A1B1B;
+      --mono-bg:#080A18;
+      --mono-ink:#C9D0F5;
+      --mono-accent:#7FF2D4;
+      --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0D0F1F;
+    --surface:#161B33;
+    --surface-2:#1E2340;
+    --ink:#E9EBFA;
+    --ink-soft:#A6ACD6;
+    --ink-faint:#767CA8;
+    --line:#2B3159;
+    --primary:#8B98E8;
+    --primary-strong:#B3BDF2;
+    --primary-tint:#232A54;
+    --accent:#E3A45D;
+    --accent-tint:#392A14;
+    --good:#6FC796;
+    --good-tint:#16301F;
+    --warn:#E3A45D;
+    --warn-tint:#392A14;
+    --bad:#E27C7C;
+    --bad-tint:#3A1B1B;
+    --mono-bg:#080A18;
+    --mono-ink:#C9D0F5;
+    --mono-accent:#7FF2D4;
+    --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.65;
+  }
+  h1,h2,h3,.disp{
+    font-family:"Zen Kaku Gothic New","BIZ UDPGothic",system-ui,sans-serif;
+    text-wrap:balance;
+    margin:0;
+  }
+  #app{
+    max-width:520px;
+    margin:0 auto;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:14px 18px 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .topbar .back{
+    appearance:none; border:none; background:transparent; color:var(--primary);
+    font-size:15px; font-weight:700; cursor:pointer; padding:6px 8px 6px 0;
+    display:flex; align-items:center; gap:2px; min-height:44px;
+    font-family:inherit;
+  }
+  .topbar .title{
+    font-size:15px; font-weight:700; color:var(--ink-soft);
+    letter-spacing:.02em;
+    flex:1;
+    text-align:center;
+    margin-right:34px;
+  }
+  main{flex:1; padding:0 18px 48px;}
+
+  /* ---------- HOME ---------- */
+  .hero{ padding:28px 4px 18px; }
+  .hero .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--primary);
+    text-transform:uppercase;
+  }
+  .hero h1{ font-size:25px; font-weight:900; color:var(--ink); margin-top:8px; line-height:1.4; }
+  .hero p{ color:var(--ink-soft); font-size:14px; margin-top:10px; max-width:44ch; }
+
+  .progress-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin:14px 0 8px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:16px;
+  }
+  .progress-ring{ position:relative; width:56px; height:56px; flex:none;}
+  .progress-ring svg{ transform:rotate(-90deg); }
+  .progress-ring .pct{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--primary-strong);
+  }
+  .progress-text{flex:1;}
+  .progress-text .num{font-size:13px; font-weight:700; color:var(--ink);}
+  .progress-text .sub{font-size:12.5px; color:var(--ink-faint); margin-top:2px;}
+  .review-pill-btn{
+    appearance:none; border:1px solid var(--warn); background:var(--warn-tint); color:var(--warn);
+    font-weight:700; font-size:12.5px; padding:8px 12px; border-radius:999px; cursor:pointer;
+    white-space:nowrap; font-family:inherit;
+  }
+  .axis-cta{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    background:var(--primary-tint); border:1px solid var(--primary); border-radius:16px;
+    padding:14px 18px; margin:10px 0 24px; cursor:pointer;
+    width:100%; text-align:left; font-family:inherit; appearance:none;
+  }
+  .axis-cta .t{display:block; font-size:14px; font-weight:700; color:var(--primary-strong);}
+  .axis-cta .s{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .axis-cta .arrow{color:var(--primary-strong); font-size:18px; flex:none;}
+
+  .section-head{ display:flex; align-items:baseline; gap:8px; margin:26px 0 12px; }
+  .section-head .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .section-head.redflag .dot{background:var(--bad);}
+  .section-head.antibiotic .dot{background:var(--warn);}
+  .section-head h2{font-size:15px; font-weight:700; color:var(--ink);}
+  .section-head .count{font-size:12px; color:var(--ink-faint); font-weight:400;}
+
+  .case-grid{ display:flex; flex-direction:column; gap:10px; }
+  .case-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding:14px 14px; cursor:pointer; text-align:left; width:100%;
+    box-shadow:var(--shadow); font-family:inherit;
+    appearance:none;
+  }
+  .case-card:active{ transform:scale(.99); }
+  .case-num{
+    font-family:"Zen Kaku Gothic New",sans-serif; font-weight:900; font-size:13px;
+    color:var(--ink-faint); width:26px; flex:none; font-variant-numeric:tabular-nums;
+  }
+  .case-body{flex:1; min-width:0; display:flex; flex-direction:column; gap:3px;}
+  .case-body .hint{
+    font-size:14px; font-weight:600; color:var(--ink); line-height:1.4;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+  }
+  .status-chip{
+    flex:none; align-self:flex-start; font-size:11.5px; font-weight:700; padding:5px 10px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .status-chip.none{ background:var(--surface-2); color:var(--ink-faint); }
+  .status-chip.good{ background:var(--good-tint); color:var(--good); }
+  .status-chip.partial{ background:var(--warn-tint); color:var(--warn); }
+  .status-chip.poor{ background:var(--bad-tint); color:var(--bad); }
+
+  .empty-review{ text-align:center; padding:40px 20px; color:var(--ink-faint); font-size:14px; }
+
+  /* ---------- CASE VIEW ---------- */
+  .case-hero{ padding:22px 0 4px; }
+  .case-hero .tag{ font-size:12px; font-weight:700; color:var(--primary); letter-spacing:.08em; text-transform:uppercase;}
+  .case-hero h1{ font-size:22px; font-weight:900; margin-top:8px; }
+
+  .call-bubble{
+    margin-top:16px; background:var(--primary-tint); border:1px solid var(--primary);
+    border-radius:18px 18px 18px 4px; padding:16px 18px; box-shadow:var(--shadow);
+    position:relative;
+  }
+  .call-bubble .cb-label{
+    display:flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--primary-strong); margin-bottom:8px;
+  }
+  .call-bubble p{ margin:0; font-size:15px; color:var(--ink); line-height:1.7; }
+  .call-bubble p::before{ content:"\201C"; }
+  .call-bubble p::after{ content:"\201D"; }
+
+  .vignette{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin-top:12px; box-shadow:var(--shadow); font-size:14px; color:var(--ink-soft);
+  }
+  .vitals-mono{
+    margin-top:10px; background:var(--mono-bg); border-radius:12px; padding:12px 14px;
+    font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--mono-ink);
+    font-variant-numeric:tabular-nums; letter-spacing:.01em; line-height:1.7;
+  }
+  .vitals-mono .lbl{ color:var(--mono-accent); margin-right:8px; font-weight:700; }
+
+  .prompt-block{ margin-top:22px; }
+  .prompt-block label{ display:block; font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+  .prompt-block label .n{ color:var(--primary); margin-right:6px; }
+  .prompt-block textarea{
+    width:100%; min-height:88px; resize:vertical; border-radius:12px;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink);
+    padding:12px 14px; font-family:inherit; font-size:14px; line-height:1.6;
+  }
+  .prompt-block textarea:focus{ outline:2px solid var(--primary); outline-offset:1px; }
+  .prompt-block textarea::placeholder{ color:var(--ink-faint); }
+
+  .reveal-btn{
+    width:100%; margin-top:24px; appearance:none; border:none; cursor:pointer;
+    background:var(--primary); color:#fff; font-weight:700; font-size:15px;
+    padding:15px; border-radius:14px; font-family:inherit;
+    box-shadow:0 4px 14px rgba(60,75,140,.32);
+  }
+  .reveal-btn:active{ transform:scale(.99); }
+
+  .answer-wrap{ margin-top:28px; }
+  .diagnosis-reveal{
+    background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:16px;
+    padding:18px 20px; margin-bottom:20px; text-align:center;
+  }
+  .diagnosis-reveal .dr-eyebrow{
+    font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--primary-strong);
+  }
+  .diagnosis-reveal .dr-title{
+    font-family:"Zen Kaku Gothic New","BIZ UDPGothic",sans-serif; font-size:20px; font-weight:900;
+    margin-top:6px; color:var(--ink);
+  }
+  .diagnosis-reveal .dr-sub{ font-size:12.5px; margin-top:6px; color:var(--ink-soft); }
+  .verdict-badge{
+    display:inline-flex; align-items:center; gap:6px; margin-top:12px;
+    font-size:12.5px; font-weight:700; padding:7px 14px; border-radius:999px;
+  }
+  .verdict-badge.reassure{ background:var(--good-tint); color:var(--good); }
+  .verdict-badge.abx{ background:var(--warn-tint); color:var(--warn); }
+  .verdict-badge.escalate{ background:var(--bad-tint); color:var(--bad); }
+
+  .answer-wrap .divider{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .answer-wrap .divider .line{ flex:1; height:1px; background:var(--line); }
+  .answer-wrap .divider span{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.08em;}
+
+  .answer-card{
+    background:var(--surface); border:1px solid var(--line); border-radius:16px;
+    padding:18px 20px; margin-bottom:12px; box-shadow:var(--shadow);
+  }
+  .answer-card h3{ font-size:13.5px; font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  .answer-card h3 .ico{
+    width:22px;height:22px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
+    font-size:12px; font-weight:900; color:#fff;
+  }
+  .ico.redflag{background:var(--bad);}
+  .ico.abx{background:var(--accent);}
+  .ico.explain{background:var(--primary);}
+  .answer-card ul{ margin:0; padding-left:20px; font-size:14px; color:var(--ink); }
+  .answer-card li{ margin-bottom:6px; }
+  .answer-card li:last-child{ margin-bottom:0; }
+  mark{
+    background:var(--accent-tint); color:var(--accent); padding:1px 5px; border-radius:5px;
+    font-weight:700; box-decoration-break:clone; -webkit-box-decoration-break:clone;
+  }
+
+  .pearl-block{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
+    padding:16px 18px; margin-bottom:20px;
+  }
+  .pearl-block .pb-label{
+    font-size:11.5px; font-weight:700; letter-spacing:.06em; color:var(--ink-faint);
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .pearl-block ul{ margin:0; padding-left:18px; font-size:13.5px; color:var(--ink-soft); line-height:1.6; }
+  .pearl-block li{ margin-bottom:6px; }
+  .pearl-block li:last-child{ margin-bottom:0; }
+
+  .refs-block{ margin-top:16px; padding-top:14px; border-top:1px dashed var(--line); }
+  .refs-block h4{ font-size:12px; font-weight:700; color:var(--ink-faint); letter-spacing:.06em; margin-bottom:8px; }
+  .refs-block ol{ margin:0; padding-left:19px; font-size:12.5px; color:var(--ink-soft); line-height:1.6; }
+  .refs-block li{ margin-bottom:7px; }
+  .refs-block li:last-child{ margin-bottom:0; }
+  .refs-block a{ color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px; word-break:break-all; }
+  .refs-block a:hover{ color:var(--primary); }
+
+  .assess-block{ margin-top:26px; }
+  .assess-block .q{ font-size:14px; font-weight:700; margin-bottom:12px; text-align:center; }
+  .assess-row{ display:flex; gap:8px; }
+  .assess-btn{
+    flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
+    font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
+    border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
+  }
+  .assess-btn.good{ border-color:var(--good); }
+  .assess-btn.partial{ border-color:var(--warn); }
+  .assess-btn.poor{ border-color:var(--bad); }
+  .assess-btn.good.active{ background:var(--good); color:#fff; }
+  .assess-btn.partial.active{ background:var(--warn); color:#fff; }
+  .assess-btn.poor.active{ background:var(--bad); color:#fff; }
+  .save-warning{
+    margin-top:12px; padding:10px 14px; border-radius:10px;
+    background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
+  }
+
+  .after-assess{ margin-top:22px; display:flex; flex-direction:column; gap:10px; animation:fadein .3s ease; }
+  @keyframes fadein{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+  .nav-btn{
+    appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px;
+    font-family:inherit; font-size:14.5px; font-weight:700; text-align:center;
+  }
+  .nav-btn.primary{ background:var(--primary); color:#fff; }
+  .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
+
+  /* ---------- AXIS (FRAMEWORK) VIEW ---------- */
+  .axis-hero{ padding:24px 0 6px; }
+  .axis-hero .eyebrow{ font-size:12px; font-weight:700; color:var(--primary); letter-spacing:.1em; text-transform:uppercase;}
+  .axis-hero h1{ font-size:21px; font-weight:900; margin-top:8px; }
+  .axis-hero p{ font-size:13.5px; color:var(--ink-soft); margin-top:8px; }
+
+  .escalation-note{
+    margin-top:18px; padding:16px 18px; border-radius:14px;
+    background:var(--accent-tint); border:1.5px solid var(--accent);
+  }
+  .escalation-note .en-label{
+    font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--accent); text-transform:uppercase;
+  }
+  .escalation-note .en-body{ font-size:13.5px; color:var(--ink); margin-top:6px; line-height:1.6; }
+
+  .flow{ margin-top:22px; position:relative; }
+  .flow-step{ display:flex; gap:14px; position:relative; padding-bottom:22px; }
+  .flow-step:last-child{ padding-bottom:0; }
+  .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
+  .flow-step .node{
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
+    font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
+  }
+  .flow-step .stem{ width:2px; flex:1; background:var(--line); margin-top:2px; }
+  .flow-step .content{ flex:1; background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:14px 16px; box-shadow:var(--shadow); margin-top:1px;}
+  .flow-step .content h3{ font-size:14.5px; font-weight:700; }
+  .flow-step .content p{ font-size:13px; color:var(--ink-soft); margin-top:5px; }
+
+  .axis-foot{
+    margin-top:26px; padding:16px 18px; background:var(--primary-tint); border-radius:14px;
+    font-size:13px; color:var(--primary-strong); text-align:center; font-weight:700;
+  }
+
+  a{color:var(--primary);}
+  button:focus-visible, textarea:focus-visible, .case-card:focus-visible{
+    outline:2px solid var(--primary); outline-offset:2px;
+  }
+
+  @media (hover:hover){
+    .case-card:hover{ border-color:var(--primary); }
+    .axis-cta:hover{ background:var(--primary-tint); filter:brightness(0.97); }
+    .review-pill-btn:hover{ filter:brightness(0.95); }
+    .reveal-btn:hover{ filter:brightness(1.08); }
+    .assess-btn:hover{ border-color:var(--primary); }
+    .nav-btn.primary:hover{ filter:brightness(1.08); }
+    .nav-btn.ghost:hover{ border-color:var(--primary); }
+    .topbar .back:hover{ text-decoration:underline; }
+  }
+</style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var CASES = [
+    {
+      id:"pneumonia_redflag", num:1, cat:"redflag", tag:"見逃し注意・呼吸器",
+      title:"市中肺炎(かぜと思われていた高齢者)",
+      hint:"78歳男性・「ただの風邪」と様子見していたが労作時呼吸困難が出現",
+      call:"5日前から咳と少し熱っぽいのが続いていて、風邪だろうと様子を見ていたんですが、今日は歩くと息が切れるようになってしまって……。",
+      background:"78歳男性。高血圧の既往のみ、腎機能は正常。5日前からの咳嗽・微熱があり、市販薬で経過を見ていたが、本日から労作時の息切れが出現し受診。喫煙歴あり(20本/日×40年、現在も継続)。",
+      vitals:"体温 38.1℃　BP 132/78　HR 104　RR 26　SpO2 91%(room air)　右下肺野でcoarse cracklesを聴取、意識清明だがやや倦怠感あり",
+      verdict:"escalate", verdictLabel:"精査・入院を要検討",
+      answer:{
+        redflag:[
+          "<mark>呼吸数26回/分、SpO2 91%という明らかなバイタルサイン異常</mark>があり、「かぜ」の範囲を超えていることをまず認識する",
+          "<mark>高齢・喫煙歴という背景因子</mark>は肺炎の重症化リスクを高めるため、若年者と同じ基準で「様子を見る」と判断してはならない",
+          "聴診所見(片側性のcrackles)は<mark>肺の限局した病変を示唆</mark>し、上気道症状のみのウイルス性感染とは異なる所見であることを確認する",
+          "<mark>これらの所見がある時点で「帰宅して様子を見る」という選択肢は妥当ではなく、追加の評価(胸部画像・酸素化の評価)が必要と判断する</mark>——バイタルサイン異常を「疲れているだけ」で片付けない"
+        ],
+        antibiotics:[
+          "<mark>市中肺炎を疑う臨床像(発熱・頻呼吸・低酸素・局所の肺雑音)</mark>があり、これは「かぜ」ではなく抗菌薬治療の適応がある病態と判断する",
+          "重症度評価には、日本国内では<mark>A-DROP</mark>(Age:年齢、Dehydration:脱水、Respiratory failure:呼吸不全、Orientation:意識障害、blood Pressure:血圧の5項目)が広く用いられる(国際的にはCURB-65やPSIも同じ目的で使われる)。本症例は<mark>70歳以上の男性でA-DROPの年齢項目が1点</mark>に加え、SpO2 91%への低下と頻呼吸を認めるが、<mark>A-DROPは呼吸数を評価項目に含まないため、頻呼吸のようなバイタルサイン異常はスコアとは別に臨床的に重視する必要がある</mark>",
+          "脱水の評価(BUN等)も追加したうえで、<mark>A-DROPのスコアが軽症〜中等症相当であっても、低酸素血症の悪化傾向・喫煙による肺機能低下・独居等の社会的背景があれば入院治療を積極的に検討する</mark>——スコアだけで機械的に外来対応と決めない",
+          "胸部X線(可能ならCT)で浸潤影の有無を確認し、<mark>可能な範囲で血液培養・喀痰培養を治療開始前に採取</mark>したうえで、経験的抗菌薬治療を<mark>診断確定を待たずに速やかに開始</mark>する(治療開始の遅れは予後を悪化させる)",
+          "<mark>非定型肺炎(マイコプラズマ等)を疑う6項目(年齢60歳未満・基礎疾患なし・頑固な咳嗽・聴診所見に乏しい・喀痰がない/迅速検査で原因菌不明・末梢血白血球10,000/μL未満)</mark>のうち本症例は多くを満たさない(高齢・喫煙歴・crackles聴取)ため、<mark>肺炎球菌などを想定した細菌性肺炎としてβラクタム系を主軸に治療する</mark>。<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを8時間ごとに点滴静注、またはセフトリアキソン1〜2gを24時間ごとに点滴静注</mark>が代表的な選択肢になる(非定型病原体を強く疑う所見があればマクロライド系やレスピラトリーキノロン系の併用・変更を検討する)",
+          "「かぜだと思っていた」という経過であっても<mark>所見が揃えば速やかに治療対象と判断を切り替える</mark>ことが、この症例の核心"
+        ],
+        explain:[
+          "<mark>「風邪だと思って様子を見ていた」という患者の判断を責めず、今回の症状が単純な風邪ではなく肺炎の可能性が高いことを分かりやすく伝える</mark>",
+          "<mark>入院または慎重な外来治療が必要な理由(呼吸数・酸素飽和度の異常、聴診所見)を具体的に共有</mark>し、なぜ「様子見」ではなく積極的な治療が必要かを説明する",
+          "検査(胸部X線・血液検査)と抗菌薬治療の流れ、<mark>入院となる場合はその理由</mark>を家族も含めて共有する",
+          "<mark>今後同様の症状(高齢での咳・微熱の遷延)があれば早めに受診するよう伝える</mark>——高齢者では典型的な症状が乏しいまま重症化することがある点も併せて説明する"
+        ]
+      },
+      pearl:[
+        "<mark>高齢者の肺炎は発熱や頻呼吸が目立たないことがあり、「なんとなく元気がない」「食欲がない」だけで発見されることもある</mark>——バイタルサインの実測を省略しない",
+        "<mark>呼吸数は最も見落とされやすいが最も重要なバイタルサインの一つ</mark>。「かぜ」を疑う診察でも必ず数える",
+        "<mark>日本国内の肺炎重症度評価にはA-DROP(年齢・脱水・呼吸不全・意識障害・血圧)が広く用いられるが、呼吸数の項目を含まないため、頻呼吸などのバイタルサイン異常は別途臨床的に評価する必要がある</mark>",
+        "「経過が長い咳・微熱」を漫然と経過観察にせず、<mark>バイタルサインと聴診所見の再評価</mark>を都度行うことが、かぜ診療でのpneumonia見逃し予防になる"
+      ],
+      refs:[
+        {author:"日本呼吸器学会 成人肺炎診療ガイドライン作成委員会", title:"成人肺炎診療ガイドライン2017", source:"日本呼吸器学会", year:"2017"},
+        {author:"Metlay JP, et al.(ATS/IDSA)", title:"Diagnosis and Treatment of Adults with Community-Acquired Pneumonia. An Official Clinical Practice Guideline", source:"American Journal of Respiratory and Critical Care Medicine", year:"2019", url:"https://doi.org/10.1164/rccm.201908-1581ST"}
+      ]
+    },
+    {
+      id:"peritonsillar_abscess", num:2, cat:"redflag", tag:"見逃し注意・気道",
+      title:"扁桃周囲膿瘍",
+      hint:"26歳男性・急速に悪化する咽頭痛と嚥下困難",
+      call:"3日前からの喉の痛みがどんどんひどくなって、今日は口を大きく開けるのもつらいです。声も変な感じになってきました。",
+      background:"26歳男性。既往なし。3日前からの咽頭痛が徐々に増悪し、本日は開口障害と嚥下困難が出現。水分もうまく飲み込めていない。",
+      vitals:"体温 38.7℃　BP 128/82　HR 108　RR 18　SpO2 97%　咽頭の視診では右扁桃周囲にわずかな腫脹を指摘できるが、開口が浅く十分な観察ができていない",
+      verdict:"escalate", verdictLabel:"耳鼻科への緊急紹介",
+      answer:{
+        redflag:[
+          "<mark>開口障害(トリズムス)の程度・含み声(muffled voice)の有無・口蓋垂の偏位・流涎</mark>を自分から意図的に確認する——「開口が浅く観察しづらい」という所見自体がトリズムスを示唆するサインであり、見た目の情報だけで済ませず、実際に開口させ発声させて評価する",
+          "実際に評価すると<mark>開口障害(トリズムス)・含み声・口蓋垂の左方偏位・流涎</mark>を認め、単なる咽頭炎(かぜ)の範囲を超える、扁桃周囲膿瘍に典型的な所見がそろう",
+          "気道の状態(呼吸音・呼吸様式)、水分摂取と唾液を飲み込めているかを確認し、<mark>気道閉塞のリスクを評価</mark>する",
+          "頸部の腫脹の広がり(深頸部感染症への進展)がないかを確認する",
+          "これらの所見があるため<mark>「帰宅して様子を見る」対応は不適切であり、緊急性の高い専門科紹介が必要</mark>と判断する"
+        ],
+        antibiotics:[
+          "本症例は<mark>単純な咽頭炎ではなく扁桃周囲膿瘍(peritonsillar abscess)</mark>を強く疑う所見であり、抗菌薬単独ではなく<mark>穿刺・切開排膿と抗菌薬治療の組み合わせ</mark>が必要になる病態であることを認識する",
+          "<mark>外来での迅速抗原検査や画像検査に時間をかけて治療開始を遅らせるべきではない</mark>——臨床所見から緊急性を判断し、専門科(耳鼻咽喉科)へ速やかにつなぐことを優先する",
+          "<mark>典型的な臨床所見がそろい気道症状が切迫していれば、画像検査を待たずに耳鼻咽喉科へつなぐ</mark>が、開口制限が強く十分な診察ができない場合や、<mark>深頸部間隙(咽後間隙・傍咽頭間隙)への進展が疑われる場合には造影CTが膿瘍と蜂窩織炎の鑑別・進展範囲の評価に有用</mark>である",
+          "抗菌薬は<mark>口腔内嫌気性菌もカバーする広域な選択</mark>が一般的で、<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを6〜8時間ごとに点滴静注</mark>が代表的な例になる(<mark>ペニシリンアレルギーがあればクリンダマイシン600mgを8時間ごとに点滴静注</mark>を代替として検討する)が、最終的な薬剤選択と排膿の要否は耳鼻咽喉科医と相談して決定する",
+          "「かぜの延長」という思い込みで<mark>対症療法のみで帰宅させることが最大の危険</mark>であるとこの症例から学ぶ"
+        ],
+        explain:[
+          "<mark>今の状態が単なる喉の痛みではなく、膿がたまっている可能性が高いこと</mark>を分かりやすく伝え、専門科での処置が必要な理由を説明する",
+          "<mark>これから耳鼻咽喉科へ緊急で紹介すること、場合によっては処置(排膿)や入院が必要になりうること</mark>を伝え、患者の不安に配慮しながら流れを共有する",
+          "<mark>症状が悪化した場合(呼吸が苦しい、唾液を飲み込めない、声が出しにくいなど)はすぐに救急要請するよう伝える</mark>",
+          "自己判断で市販薬のみに頼らず、<mark>今回のように症状が急速に悪化する咽頭痛は早めの受診が重要であることも伝える</mark>"
+        ]
+      },
+      pearl:[
+        "扁桃周囲膿瘍の3徴(<mark>トリズムス・含み声・口蓋垂偏位</mark>)は、申し送りや問診票に書かれているとは限らない——「開口が浅い」「声がこもっている」といった所見に気づいたら、自分から意図的に確認しにいく姿勢が診断の分かれ目になる",
+        "<mark>「喉が痛い」の背景には気道緊急に発展しうる病態が隠れていることがあり、経過(急速な増悪)と随伴症状(開口障害・流涎)に注意を払う</mark>",
+        "扁桃周囲膿瘍は<mark>抗菌薬だけでなく排膿処置が治療の中心</mark>であり、これを見逃して対症療法のみで帰すことが最大のリスクとなる"
+      ],
+      refs:[
+        {author:"Galioto NJ.", title:"Peritonsillar Abscess", source:"American Family Physician", year:"2017", url:"https://www.aafp.org/pubs/afp/issues/2017/0415/p501.html"}
+      ]
+    },
+    {
+      id:"typical_uri", num:3, cat:"antibiotic", tag:"典型例・基本形",
+      title:"ウイルス性上気道炎(基本形)",
+      hint:"24歳女性・2日前からの鼻汁・咽頭痛・微熱37.2℃",
+      call:"3日前から鼻水と喉の痛みが続いていて、今日は熱っぽい感じがします。会社を休むべきか迷って来ました。",
+      background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、経過は日ごとに軽快傾向。強い倦怠感や食欲低下はない。",
+      vitals:"体温 37.2℃　BP 118/72　HR 78　RR 14　SpO2 98%(room air)　全身状態良好、咽頭発赤軽度・扁桃腫大なし、頸部リンパ節腫脹なし、呼吸音清",
+      verdict:"reassure", verdictLabel:"支持療法で帰宅",
+      answer:{
+        redflag:[
+          "重症感の有無(会話可能、歩行可能、経口摂取可能)を確認する",
+          "バイタルサイン全項目に異常がないか(発熱の程度・頻呼吸・低酸素の有無)を確認する",
+          "基礎疾患(免疫不全・慢性呼吸器疾患・心疾患など)や年齢によるリスクの上乗せがないかを確認する",
+          "これらに異常がなければ、<mark>入院や精査を要する所見がないという陰性所見を積極的に確認したうえで帰宅可能と判断する</mark>——「なんとなく大丈夫そう」ではなく、確認した項目を言語化できるようにする"
+        ],
+        antibiotics:[
+          "<mark>鼻症状(鼻汁・鼻閉)・のど症状(咽頭痛)・咳(下気道症状)という3系統の症状が、同時に、同程度そろって</mark>おり、感冒(いわゆる「かぜ」)に典型的なパターンといえる。<mark>どれか1系統の症状だけが際立って強い場合や、経過中に新たな系統の症状が加わる場合は、感冒以外の疾患(咽頭炎・副鼻腔炎・肺炎・気管支炎など)を積極的に鑑別に入れる</mark>",
+          "咽頭発赤はあるが<mark>扁桃滲出液・膿性分泌物・圧痛のある前頸部リンパ節腫脹はなく、咳を伴う</mark>ため、細菌性咽頭炎を積極的に疑う所見に乏しい",
+          "<mark>ウイルス性上気道炎に抗菌薬を投与しても症状日数の短縮や合併症予防の効果は乏しく、副作用や耐性菌のリスクが上回る</mark>",
+          "「かぜだから出さない」で終わらせず、<mark>抗菌薬を検討すべき所見(高熱の遷延、膿性痰の増加、局所の腫脹・圧痛、症状の二峰性増悪)が今回はないことを確認した上で不要と判断する</mark>",
+          "検査(迅速抗原検査や血液検査)をしても<mark>この時点では治療方針が変わらないため、ルーチンには行わない</mark>——検査をしない判断にも根拠を持つ"
+        ],
+        explain:[
+          "受診理由(仕事を休むべきか迷っている)を確認し、<mark>心配していることに具体的に答える</mark>(例:今の症状は感染性の強い時期か、休むべき期間の目安)",
+          "現在の見立て(ウイルス性の急性上気道炎、いわゆる「かぜ」であること)と、<mark>抗菌薬は必要ないこと・その理由</mark>を分かりやすく伝える",
+          "対症療法(解熱鎮痛薬、去痰薬、うがい、水分・休養)を具体的に提案する",
+          "予想される経過(通常3〜7日でピークを越えて軽快、咳のみ2〜3週間残ることがある)を伝え、<mark>再受診の目安を具体的に示す</mark>(38.5℃以上の発熱が続く、息苦しさが出る、一旦良くなった後に再び悪化する、5日以上経っても改善しない場合など)"
+        ]
+      },
+      pearl:[
+        "<mark>鼻・のど・咳の3系統の症状が同時に同程度そろっている</mark>ことは感冒を積極的に疑う根拠になる。逆にいずれか1系統だけが突出して強い場合は、感冒以外の鑑別を優先する",
+        "かぜ診療の基本形は「レッドフラッグ陰性→抗菌薬不要の根拠→具体的な説明」の3点セットを毎回言語化する練習でもある",
+        "<mark>「様子を見ましょう」だけで終わらせず、何を見て何を根拠に経過観察としたかをカルテと患者説明の両方に残す</mark>",
+        "再受診の目安を具体的な数値・症状で伝えることが、不要な再受診の予防にも、見逃しの予防にもつながる"
+      ],
+      refs:[
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第二版", source:"厚生労働省", year:"2019"},
+        {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"}
+      ]
+    },
+    {
+      id:"strep_throat", num:4, cat:"antibiotic", tag:"咽頭炎",
+      title:"A群溶血性連鎖球菌咽頭炎の疑い",
+      hint:"20歳男性・発熱38.5℃・咳を伴わない強い咽頭痛",
+      call:"2日前から喉がすごく痛くて、唾を飲み込むのもつらいです。熱も38度台まで上がりました。",
+      background:"20歳男性。既往なし。2日前からの咽頭痛・嚥下痛・発熱で受診。咳や鼻汁は伴っていない。周囲に同様の症状の人はいない。",
+      vitals:"体温 38.6℃　BP 122/76　HR 92　RR 16　SpO2 98%　両側扁桃に白苔状の滲出液あり、前頸部リンパ節の腫脹・圧痛あり、咳嗽・鼻汁なし",
+      verdict:"abx", verdictLabel:"迅速検査の結果で方針決定",
+      answer:{
+        redflag:[
+          "開口障害(トリズムス)・含み声・流涎・頸部の激しい腫脹など<mark>扁桃周囲膿瘍や気道緊急を示唆する所見がないか</mark>を確認する",
+          "呼吸状態・水分摂取が保てているか(脱水・気道浮腫の評価)を確認する",
+          "皮疹・関節痛・著明な倦怠感がなく、<mark>単純な咽頭炎の範囲を超える所見がない</mark>ことを確認し、これらが陰性であれば外来対応可能と判断する",
+          "<mark>伝染性単核球症(EBウイルス)</mark>の可能性(著明な倦怠感、頸部リンパ節腫脹の広がり、脾腫)も念頭に置き、疑えば脾腫の有無を診察で確認する(未診断の脾腫がある場合、運動制限の指導が必要になるため)"
+        ],
+        antibiotics:[
+          "Centor基準は<mark>①38℃以上の発熱の病歴、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④扁桃の腫脹・滲出液</mark>の4項目(各1点)で評価し、McIsaacの年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加える。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となり、GAS(A群溶血性連鎖球菌)咽頭炎の推定確率が高い(目安として約50%前後)と評価できる",
+          "McIsaacスコアの解釈は目安として<mark>0〜1点:検査・抗菌薬とも不要、2〜3点:迅速抗原検査を考慮、4点以上:迅速抗原検査を推奨(確定後に治療)</mark>とされる——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない",
+          "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とし、<mark>国内では腎機能正常を前提にアモキシシリン(AMPC)1回250mgを1日3〜4回、10日間内服</mark>という用法が広く用いられる(<mark>米国CDC/IDSAの推奨用量(アモキシシリン500mgを1日2回など)より少なく、承認用量が国によって異なる典型例</mark>である)。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
+          "検査の結果によって<mark>方針(投与する/しない)がはっきり変わる</mark>症例であり、「検査をする根拠」を持てるかどうかが判断の分かれ目になる",
+          "<mark>もし本症例が実は伝染性単核球症(EBウイルス)だった場合、アモキシシリンなどのアミノペニシリン系を投与すると高頻度に非アレルギー性の薬疹(紅斑丘疹)を生じることが知られている</mark>(頻度は文献により幅があり、近年の小児コホートではおよそ30%程度と報告されている)。<mark>これは真のペニシリンアレルギーではないが、誤ってアレルギー歴として記録されてしまうことがあるため、倦怠感の強さやリンパ節腫脹の広がりから伝染性単核球症を疑う場合はこの点も念頭に置く</mark>"
+        ],
+        explain:[
+          "強い痛みで来院した不安に共感しつつ、<mark>「検査をしてから抗菌薬が必要かを決める」という流れを先に説明</mark>し、結果を待つ間の対症療法(鎮痛薬、うがい)を提示する",
+          "検査が陽性だった場合を想定し、<mark>抗菌薬は症状を早く楽にするためというより、まれな合併症(リウマチ熱・腎炎など)予防と感染性の短縮が主目的であること</mark>を伝える",
+          "陰性だった場合は<mark>ウイルス性である可能性が高く、抗菌薬は効果がなく不要であること</mark>を明確に伝える",
+          "予想される経過(適切な対症療法で数日以内にピークを越える)と、<mark>再受診の目安</mark>(開口障害・声がこもる・呼吸苦・症状の急激な悪化)を共有する"
+        ]
+      },
+      pearl:[
+        "咳の有無は溶連菌性咽頭炎とウイルス性咽頭炎を分ける重要な手がかりで、<mark>咳を伴う咽頭炎はウイルス性である可能性が高い</mark>",
+        "Centor/McIsaacスコアは<mark>「検査をすべきか」を決めるためのツールであり、スコアが高いからといって検査を飛ばして即抗菌薬、とはならない</mark>",
+        "<mark>若年成人の強い倦怠感・リンパ節腫脹・咽頭炎では伝染性単核球症を鑑別に入れ、疑えば接触競技の制限を含めた説明をする</mark>",
+        "<mark>アモキシシリン投与後に広範な発疹が出た場合、真のペニシリンアレルギーとは限らず、背景に伝染性単核球症が隠れている可能性を考える</mark>",
+        "抗菌薬投与の主目的は「症状を早く治す」ことよりも<mark>合併症予防と感染性の短縮</mark>にあることを患者に伝えると、必要性の説明として納得を得やすい"
+      ],
+      refs:[
+        {author:"日本感染症学会・日本化学療法学会", title:"JAID/JSC感染症治療ガイドライン・ガイド 呼吸器感染症", source:"日本化学療法学会雑誌", year:"2014"},
+        {author:"Shulman ST, et al.(IDSA)", title:"Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis629"},
+        {author:"McIsaac WJ, et al.", title:"A clinical score to reduce unnecessary antibiotic use in patients with sore throat", source:"CMAJ", year:"1998", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1229033/"},
+        {author:"Chovel-Sella A, et al.", title:"Incidence of Rash After Amoxicillin Treatment in Children With Infectious Mononucleosis", source:"Pediatrics", year:"2013", url:"https://doi.org/10.1542/peds.2012-1575"}
+      ]
+    },
+    {
+      id:"sinusitis", num:5, cat:"antibiotic", tag:"副鼻腔炎",
+      title:"急性細菌性副鼻腔炎の疑い",
+      hint:"45歳男性・10日以上続く鼻汁と片側性の頬部痛",
+      call:"風邪だと思って様子を見ていたのですが、一度良くなりかけたのに、ここ2、3日でまた鼻水が増えて、右の頬が痛むようになりました。",
+      background:"45歳男性。既往なし。10日前に鼻閉・鼻汁・咽頭痛で発症し、いったん5日目頃に軽快傾向だったが、7日目から再び症状が悪化(いわゆる二峰性の経過)。現在は膿性鼻汁、右頬部の圧痛、前屈で増悪する頭痛を伴う。",
+      vitals:"体温 37.8℃　BP 128/80　HR 84　RR 16　SpO2 98%　右上顎洞部の圧痛あり、鼻腔内に膿性分泌物あり、眼窩周囲の腫脹・視力障害なし",
+      verdict:"abx", verdictLabel:"抗菌薬の適応あり",
+      answer:{
+        redflag:[
+          "<mark>眼窩周囲の腫脹・複視・視力障害、前頭部の激しい腫脹、意識障害や項部硬直</mark>など、眼窩内・頭蓋内合併症を示唆する所見がないかを確認する",
+          "発熱の程度と全身状態(敗血症様所見の有無)を確認する",
+          "これらの合併症所見がなければ<mark>外来での抗菌薬治療と経過観察で対応可能</mark>と判断できる——逆にいずれかがあれば画像検査・専門科紹介が必須になる",
+          "免疫不全・糖尿病など<mark>侵襲性真菌性副鼻腔炎のリスク因子</mark>がないかも念のため確認する"
+        ],
+        antibiotics:[
+          "急性細菌性副鼻腔炎を疑う臨床基準(IDSA)に照らすと、<mark>①症状が10日以上持続、②高熱と膿性鼻汁が3〜4日以上重症、③一度軽快した後に再増悪する「二峰性の経過」のいずれか</mark>を満たせば細菌性を疑う。本症例は<mark>症状の持続日数と二峰性の増悪の両方</mark>を満たしている",
+          "<mark>単なる鼻汁の色(黄色・緑色)だけでは細菌性の根拠にはならない</mark>——色調変化はウイルス性でも自然経過で起こりうるため、経過のパターンで判断する",
+          "上記基準を満たすため抗菌薬投与が推奨される場面と判断できる。<mark>国内では腎機能正常を前提に、オーグメンチン配合錠(AMPC/CVA)250RS 1回1錠+アモキシシリン(サワシリン)250mg 1回1カプセルを1日3回内服する、いわゆる「オグサワ」処方</mark>が広く行われる——<mark>オーグメンチン単剤ではクラブラン酸の比率が相対的に高く下痢などの消化器症状を来しやすいため、アモキシシリンを追加してAMPC/CVA比を調整する国内独自の工夫</mark>である",
+          "画像検査(CTなど)は<mark>合併症を疑う場合以外はルーチンには不要</mark>で、臨床基準のみで治療方針を決定してよい"
+        ],
+        explain:[
+          "「一度良くなったのにまた悪化した」という経過そのものが<mark>細菌性副鼻腔炎を疑う重要なサインであること</mark>を分かりやすく伝える",
+          "今回は<mark>抗菌薬による治療が有効と考えられる状況であること</mark>とその理由(症状の期間と経過パターン)を説明する",
+          "鼻閉に対する対症療法(生理食塩水洗浄、必要に応じた点鼻薬の短期使用)も併用することを伝える",
+          "<mark>再受診の目安</mark>(治療開始後3〜5日で改善がない、目の周りの腫れ・見え方の変化、強い頭痛や意識の変化が出た場合はすぐに受診)を具体的に共有する"
+        ]
+      },
+      pearl:[
+        "急性副鼻腔炎の多くはウイルス性で自然軽快するが、<mark>「10日以上の遷延」「重症の初期経過」「二峰性の増悪」</mark>のいずれかがあれば細菌性を疑う",
+        "鼻汁の色だけで抗菌薬の要否を決めない。<mark>症状の期間とパターンを聞き出すことが、この判断の核心</mark>",
+        "眼窩・頭蓋内合併症のred flagを一度は確認する習慣が、副鼻腔炎診療での見逃し防止になる"
+      ],
+      refs:[
+        {author:"日本鼻科学会", title:"急性鼻副鼻腔炎診療の手引き 2010年版", source:"日本鼻科学会", year:"2010"},
+        {author:"Chow AW, et al.(IDSA)", title:"IDSA Clinical Practice Guideline for Acute Bacterial Rhinosinusitis in Children and Adults", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis370"}
+      ]
+    },
+    {
+      id:"eager_antibiotics", num:6, cat:"antibiotic", tag:"患者対応・説明",
+      title:"抗菌薬を強く希望する軽症例",
+      hint:"32歳女性・軽症のウイルス性上気道炎だが抗菌薬を強く希望",
+      call:"3日前から鼻水と喉の痛みがあります。前に風邪をひいたとき、抗生剤をもらったらすぐ治った気がするので、今回も出してもらえませんか? 来週大事な出張があって、絶対に治しておきたいんです。",
+      background:"32歳女性。既往なし。3日前からの水様性鼻汁・軽い咽頭痛・微熱。市販の総合感冒薬を内服し経過観察していたが改善が乏しく受診。全身状態は良好。",
+      vitals:"体温 37.4℃　BP 116/70　HR 76　RR 14　SpO2 99%　咽頭軽度発赤、扁桃腫大・滲出液なし、リンパ節腫脹なし、呼吸音清",
+      verdict:"reassure", verdictLabel:"抗菌薬不要・説明が鍵",
+      answer:{
+        redflag:[
+          "全身状態・バイタルサインに異常がないことを確認する(重症感なし、頻呼吸・低酸素なし)",
+          "基礎疾患や免疫抑制状態がなく、<mark>年齢・背景からもリスクの上乗せがない</mark>ことを確認する",
+          "症状の経過(3日目で軽度)が典型的なウイルス性上気道炎の自然経過の範囲内であることを確認し、<mark>これらを根拠に帰宅・経過観察で問題ないと判断する</mark>"
+        ],
+        antibiotics:[
+          "所見上、<mark>細菌性感染症を疑う所見(高熱の持続、膿性分泌物、局所の強い腫脹・圧痛、二峰性の増悪)はなく</mark>、抗菌薬を要する医学的根拠に乏しい",
+          "<mark>「以前抗生剤で治った」という体験は、自然経過による軽快と時間的に一致しただけである可能性が高い</mark>ことを踏まえ、患者の体験を否定せずに医学的な説明を組み立てる",
+          "<mark>不要な抗菌薬投与は副作用(下痢、アレルギー反応)や耐性菌のリスクを高めるだけで、症状の改善を早めるという恩恵は乏しい</mark>",
+          "検査(血液検査・迅速抗原検査)をしても、<mark>現在の所見からは治療方針が変わる可能性が低く、ルーチンには不要</mark>と判断する"
+        ],
+        explain:[
+          "まず<mark>「出張までに治したい」という患者の本当の心配・事情を言葉にして受け止める</mark>——単に抗菌薬を拒否するだけでは信頼関係を損ないやすい",
+          "現在の見立て(ウイルス性の上気道炎であること)と、<mark>抗菌薬が効かない理由・むしろ不利益がありうること</mark>を、対立ではなく情報共有として伝える(shared decision making)",
+          "出張に間に合わせたいという目的に沿って、<mark>症状を早く軽減するための具体的な対症療法</mark>(十分な休養、解熱鎮痛薬、去痰薬、水分摂取)を提案する",
+          "予想される経過(数日でピークを越えて軽快していく見込み)を伝え、<mark>もし発熱が悪化する・症状が長引く・新たな症状が出た場合の再受診の目安</mark>を具体的に共有し、「その時は必要な治療を一緒に考える」という姿勢を示す"
+        ]
+      },
+      pearl:[
+        "抗菌薬を求める患者への説明で最も重要なのは<mark>「なぜ要らないか」の理屈より先に、患者が何を心配しているかを理解すること</mark>",
+        "<mark>共同意思決定(shared decision making)のアプローチは、抗菌薬の不要な処方を減らしつつ患者満足度を保つことが報告されている</mark>",
+        "「様子を見ましょう」で終わらせず、<mark>再受診の具体的な目安を渡すこと自体が、抗菌薬を出さない判断への患者の安心材料になる</mark>"
+      ],
+      refs:[
+        {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"},
+        {author:"Coxeter P, et al.", title:"Interventions to facilitate shared decision making to address antibiotic use for acute respiratory infections in primary care", source:"Cochrane Database of Systematic Reviews", year:"2015", url:"https://doi.org/10.1002/14651858.CD010907.pub2"}
+      ]
+    }
+  ];
+
+  var PROMPTS = [
+    {key:"redflag", label:"レッドフラッグの確認と、帰宅可否の根拠", ph:"重症感・呼吸状態・バイタル・患者背景、見逃したくない疾患、帰宅してよいと判断する根拠…"},
+    {key:"antibiotics", label:"抗菌薬は必要か、その根拠", ph:"疑うべき細菌感染の所見、検査で方針が変わるか、処方する/しない根拠…"},
+    {key:"explain", label:"患者にどう説明するか", ph:"受診理由・不安の確認、見立て、抗菌薬の要否、対症療法、予想される経過、再受診の目安…"}
+  ];
+
+  var FLOW = [
+    {t:"病歴と診察でレッドフラッグを探す", d:"重症感、呼吸状態、バイタルサイン全項目、年齢や基礎疾患などの患者背景を確認する。「なんとなく元気がなさそう」ではなく、具体的な所見で判断する。"},
+    {t:"帰宅可能かを判断し、根拠を言葉にする", d:"見逃したくない疾患(肺炎、扁桃周囲膿瘍、髄膜炎など)を一度は鑑別に挙げ、それらを否定できる所見を確認したうえで「帰宅してよい」理由を説明できるようにする。"},
+    {t:"抗菌薬が必要な所見・状況かを考える", d:"「かぜだから不要」で終わらせず、細菌感染を疑う所見(症状の期間・パターン、局所所見)があるかを検討する。必要な症例では堂々と処方し、不要な症例では不要と言い切る根拠を持つ。"},
+    {t:"検査で方針が変わるかを考える", d:"検査は「念のため」ではなく、結果によって治療方針が変わる場合に行う。方針が変わらない検査はしない、という判断にも根拠を持つ。"},
+    {t:"患者の不安に応え、見通しと再受診の目安を共有する", d:"受診理由や心配ごとを確認したうえで、現在の見立て・抗菌薬の要否・症状への対処・予想される経過・具体的な再受診の目安を共有する。"}
+  ];
+
+  var STORE_KEY = "kaze_progress_v1";
+  var DRAFT_KEY = "kaze_drafts_v1";
+
+  function loadProgress(){
+    try{
+      var p = JSON.parse(localStorage.getItem(STORE_KEY));
+      return (p && typeof p === "object" && !Array.isArray(p)) ? p : {};
+    }catch(e){ return {}; }
+  }
+  function saveProgress(p){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(p)); return true; }catch(e){ return false; }
+  }
+  function loadDrafts(){
+    try{
+      var d = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      return (d && typeof d === "object" && !Array.isArray(d)) ? d : {};
+    }catch(e){ return {}; }
+  }
+  function saveDrafts(d){
+    try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+  }
+
+  // Soft data-integrity check: warns in the console (never blocks rendering) if a future
+  // edit breaks the id/num invariants that case-card status lookup and case-to-case
+  // navigation both rely on.
+  (function validateCasesData(){
+    var seenIds = {}, seenNums = {}, ok = true;
+    CASES.forEach(function(c, i){
+      if(seenIds[c.id]) ok = false;
+      seenIds[c.id] = true;
+      if(seenNums[c.num]) ok = false;
+      seenNums[c.num] = true;
+      if(c.num !== i+1) ok = false;
+    });
+    if(!ok && typeof console !== "undefined" && console.warn){
+      console.warn("[kaze] CASES data integrity check failed: ids/nums are not unique and sequential. Case navigation and status tracking may misbehave.");
+    }
+  })();
+
+  var state = {
+    view:"home",          // home | case | axis
+    caseId:null,
+    reviewOnly:false,
+    progress: loadProgress()
+  };
+
+  var lastSaveFailed = false;
+
+  var app = document.getElementById("app");
+
+  function escapeHtml(s){
+    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+  }
+
+  var VALID_STATUSES = ["good","partial","poor"];
+  // Whitelists a status value before it is ever concatenated into HTML. state.progress is
+  // loaded from localStorage, which a user (or another script sharing the origin) can edit
+  // directly — never trust its values enough to treat them as safe HTML/attribute text.
+  function safeStatus(s){
+    return VALID_STATUSES.indexOf(s) !== -1 ? s : "none";
+  }
+
+  function statusLabel(s){
+    if(s==="good") return "自力で言えた";
+    if(s==="partial") return "一部抜けた";
+    if(s==="poor") return "ほぼ言えなかった";
+    return "未挑戦";
+  }
+
+  function caseById(id){
+    for(var i=0;i<CASES.length;i++){ if(CASES[i].id===id) return CASES[i]; }
+    return null;
+  }
+
+  function completedCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]) n++; }
+    return n;
+  }
+  function masteredCount(){
+    var n=0;
+    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]==="good") n++; }
+    return n;
+  }
+  function reviewCases(){
+    return CASES.filter(function(c){
+      var s = state.progress[c.id];
+      return s === "partial" || s === "poor";
+    });
+  }
+
+  function go(view, caseId){
+    state.view = view;
+    state.caseId = caseId || null;
+    render();
+    window.scrollTo(0,0);
+  }
+
+  /* ---------------- RENDER: HOME ---------------- */
+  function renderHome(){
+    var done = completedCount();
+    var mastered = masteredCount();
+    var total = CASES.length;
+    var pct = Math.round(mastered/total*100);
+    var rev = reviewCases();
+
+    var circumference = 2*Math.PI*24;
+    var offset = circumference * (1 - pct/100);
+
+    var subLine;
+    if(done < total){
+      subLine = (total-done)+"症例が未挑戦";
+    } else if(rev.length){
+      subLine = "復習対象が "+rev.length+" 症例あります";
+    } else {
+      subLine = "全症例クリアです";
+    }
+
+    var html = "";
+    html += '<div class="hero">';
+    html += '  <div class="eyebrow">初期研修医のための</div>';
+    html += '  <h1>かぜ診療<br>トレーニング</h1>';
+    html += '  <p>外来でよくある「かぜ」症状の患者さんを疑似体験します。答えを見る前に、①レッドフラッグの有無、②抗菌薬の要否、③患者への説明、を自分の言葉で書き出してみましょう。</p>';
+    html += '</div>';
+
+    html += '<div class="progress-card">';
+    html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
+    html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
+    if(rev.length){
+      html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
+    }
+    html += '</div>';
+
+    html += '<button class="axis-cta" data-action="goto-axis"><span><span class="t">かぜ診療の「3つの軸」を見る</span><span class="s">レッドフラッグ→抗菌薬の要否→患者への説明</span></span><span class="arrow">›</span></button>';
+
+    if(state.reviewOnly){
+      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
+      if(rev.length===0){
+        html += '<div class="empty-review">復習対象の症例はありません。<br>「一覧」から症例を確認できます。</div>';
+      } else {
+        html += '<div class="case-grid">'+rev.map(caseCardHtml).join("")+'</div>';
+      }
+    } else {
+      var redflag = CASES.filter(function(c){return c.cat==="redflag";});
+      var antibiotic = CASES.filter(function(c){return c.cat==="antibiotic";});
+      html += '<div class="section-head redflag"><span class="dot"></span><h2>レッドフラッグを見抜く症例</h2><span class="count">'+redflag.length+'症例</span></div>';
+      html += '<div class="case-grid">'+redflag.map(caseCardHtml).join("")+'</div>';
+      html += '<div class="section-head antibiotic"><span class="dot"></span><h2>抗菌薬の要否を判断する症例</h2><span class="count">'+antibiotic.length+'症例</span></div>';
+      html += '<div class="case-grid">'+antibiotic.map(caseCardHtml).join("")+'</div>';
+    }
+
+    return html;
+  }
+
+  function caseCardHtml(c){
+    var status = safeStatus(state.progress[c.id]);
+    var numStr = (c.num<10?"0":"")+c.num;
+    return '<button class="case-card" data-action="open-case" data-id="'+c.id+'">'+
+      '<span class="case-num">'+numStr+'</span>'+
+      '<span class="case-body"><span class="hint">'+c.hint+'</span></span>'+
+      '<span class="status-chip '+status+'">'+statusLabel(status)+'</span>'+
+    '</button>';
+  }
+
+  /* ---------------- RENDER: CASE ---------------- */
+  var revealCache = {}; // caseId -> bool (revealed) — intentionally session-only (resets each visit)
+  var draftCache = loadDrafts(); // caseId -> {redflag,antibiotics,explain} — persisted to localStorage, debounced
+  var pendingStatus = {}; // caseId -> chosen status this session (before/while confirming)
+
+  function renderCase(c){
+    var html = "";
+    html += '<div class="case-hero"><div class="tag">症例 '+(c.num<10?"0":"")+c.num+'</div><h1>'+c.hint+'</h1></div>';
+    html += '<div class="call-bubble"><div class="cb-label">🗣️ 患者さんの訴え</div><p>'+c.call+'</p></div>';
+    html += '<div class="vignette">'+c.background+'<div class="vitals-mono"><span class="lbl">VITALS</span>'+c.vitals+'</div></div>';
+
+    var revealed = !!revealCache[c.id];
+    var drafts = draftCache[c.id] || {};
+
+    html += '<div id="prompts">';
+    PROMPTS.forEach(function(p, i){
+      html += '<div class="prompt-block">';
+      html += '<label><span class="n">'+(i+1)+'.</span>'+p.label+'</label>';
+      html += '<textarea data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    if(!revealed){
+      html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
+    } else {
+      html += renderAnswer(c);
+    }
+
+    return html;
+  }
+
+  function renderAnswer(c){
+    var catLabel = c.cat==="redflag" ? "レッドフラッグを見抜く症例" : "抗菌薬の要否を判断する症例";
+    var verdictIcon = c.verdict==="escalate" ? "🚨 " : (c.verdict==="abx" ? "℞ " : "🟢 ");
+    var html = '<div class="answer-wrap">';
+    html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">正解</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'・'+c.tag+'</div>';
+    html += '<div class="verdict-badge '+c.verdict+'">'+verdictIcon+c.verdictLabel+'</div>';
+    html += '</div>';
+    html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
+
+    html += answerCard("redflag","レッドフラッグの確認と、帰宅可否の根拠", c.answer.redflag);
+    html += answerCard("abx","抗菌薬は必要か、その根拠", c.answer.antibiotics);
+    html += answerCard("explain","患者にどう説明するか", c.answer.explain);
+
+    html += renderPearl(c);
+    html += renderRefs(c);
+
+    html += '</div>';
+
+    html += '<div class="assess-block">';
+    html += '<div class="q">自分の答えと照らし合わせて、自己評価しましょう</div>';
+    var cur = pendingStatus[c.id] || state.progress[c.id] || "";
+    html += '<div class="assess-row">';
+    html += assessBtn("good","自力で言えた", cur);
+    html += assessBtn("partial","一部抜けた", cur);
+    html += assessBtn("poor","ほぼ言えなかった", cur);
+    html += '</div>';
+    if(cur && lastSaveFailed){
+      html += '<div class="save-warning">⚠ この端末には保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この記録はこの画面を離れると失われます。</div>';
+    }
+    html += '</div>';
+
+    if(cur){
+      html += '<div class="after-assess">';
+      html += '<button class="nav-btn primary" data-action="next-case">次の症例へ</button>';
+      html += '<button class="nav-btn ghost" data-action="goto-home">一覧に戻る</button>';
+      html += '</div>';
+    }
+
+    return html;
+  }
+
+  function answerCard(kind, label, items){
+    var iconChar = kind==="redflag" ? "!" : kind==="abx" ? "℞" : "説";
+    return '<div class="answer-card"><h3><span class="ico '+kind+'">'+iconChar+'</span>'+label+'</h3>'+
+      '<ul>'+items.map(function(t){return '<li>'+t+'</li>';}).join("")+'</ul></div>';
+  }
+
+  // Optional summary bullets (c.pearl, array of strings) giving background/mechanism beyond
+  // the three self-test cards. Omitted entirely if a case has no pearl content.
+  function renderPearl(c){
+    if(!c.pearl || !c.pearl.length) return "";
+    var items = c.pearl.map(function(t){ return '<li>'+t+'</li>'; }).join("");
+    return '<div class="pearl-block"><div class="pb-label">症例のまとめ</div><ul>'+items+'</ul></div>';
+  }
+
+  // Per-case reference list is optional data (c.refs). Cases without reliable/relevant
+  // citations simply omit the field — this renders nothing rather than forcing a section.
+  function renderRefs(c){
+    if(!c.refs || !c.refs.length) return "";
+    var items = c.refs.map(refEntryHtml).join("");
+    return '<div class="refs-block"><h4>参考</h4><ol>'+items+'</ol></div>';
+  }
+
+  function refEntryHtml(r){
+    var citationParts = [];
+    if(r.author) citationParts.push(escapeHtml(r.author));
+    if(r.title) citationParts.push(escapeHtml(r.title));
+    var pub = [];
+    if(r.source) pub.push(escapeHtml(r.source));
+    if(r.year) pub.push(escapeHtml(String(r.year)));
+    if(pub.length) citationParts.push(pub.join(" "));
+    var text = citationParts.join("．");
+    var linkHtml = "";
+    if(r.url){
+      linkHtml = '<br><a href="'+escapeHtml(r.url)+'" target="_blank" rel="noopener noreferrer">'+escapeHtml(r.url)+'</a>';
+    }
+    return '<li>'+text+linkHtml+'</li>';
+  }
+
+  function assessBtn(kind, label, cur){
+    return '<button class="assess-btn '+kind+(cur===kind?' active':'')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
+  }
+
+  /* ---------------- RENDER: AXIS (FRAMEWORK) ---------------- */
+  function renderAxis(){
+    var html = "";
+    html += '<div class="axis-hero"><div class="eyebrow">かぜ診療の3つの軸</div><h1>不確実さが残る中で、必要十分な診療をするために</h1><p>症例の内容が何であれ、かぜ診療の初動はこの5ステップが基本の型になります。3つの軸(レッドフラッグ・抗菌薬・説明)を毎回言語化する練習を積み重ねましょう。</p></div>';
+    html += '<div class="escalation-note"><div class="en-label">⚡ 大切なのは「言語化」</div><div class="en-body">かぜ診療のゴールは診断名を当てることではありません。<mark>不確実さが残る中でも、レッドフラッグの有無・抗菌薬の要否・患者への説明という3つを、自分の言葉で説明できる状態</mark>を目指してください。「なんとなく大丈夫そう」「かぜだから念のため」を卒業することが、このトレーニングの目的です。</div></div>';
+    html += '<div class="flow">';
+    FLOW.forEach(function(f,i){
+      html += '<div class="flow-step">';
+      html += '<div class="rail"><div class="node">'+(i+1)+'</div>'+(i<FLOW.length-1?'<div class="stem"></div>':'')+'</div>';
+      html += '<div class="content"><h3>'+f.t+'</h3><p>'+f.d+'</p></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+    html += '<div class="axis-foot">迷ったら、この3つの軸に立ち返る。</div>';
+    return html;
+  }
+
+  /* ---------------- MASTER RENDER ---------------- */
+  function render(){
+    var topbarHtml, mainHtml;
+
+    if(state.view==="home"){
+      topbarHtml = state.reviewOnly
+        ? '<button class="back" data-action="goto-home-full">‹ 一覧</button><div class="title">復習リスト</div>'
+        : '<div class="title">かぜ診療トレーニング</div>';
+      mainHtml = renderHome();
+    } else if(state.view==="case"){
+      var c = caseById(state.caseId);
+      if(!c){
+        // Unknown/stale case id (should not happen via normal UI navigation, but never
+        // let a bad id crash the whole render — fall back to the home screen instead).
+        state.view = "home";
+        state.caseId = null;
+        return render();
+      }
+      var numStr = (c.num<10?"0":"")+c.num;
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">症例 '+numStr+'</div>';
+      mainHtml = renderCase(c);
+    } else if(state.view==="axis"){
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">かぜ診療の3つの軸</div>';
+      mainHtml = renderAxis();
+    }
+
+    app.innerHTML = '<div class="topbar">'+topbarHtml+'</div><main>'+mainHtml+'</main>';
+    bindEvents();
+  }
+
+  /* ---------------- EVENTS ---------------- */
+  // When in review mode, "次の症例へ" should walk the review queue, not the full case list —
+  // otherwise the whole point of filtering down to just the cases that need another pass is
+  // lost the moment you finish the first one. Falls back to the full list if the review
+  // queue is empty (e.g. the case just answered was the last one still needing review).
+  function nextCaseAfter(current){
+    var pool = state.reviewOnly ? reviewCases() : CASES;
+    if(pool.length === 0){ pool = CASES; }
+    var idx = -1;
+    for(var i=0;i<pool.length;i++){ if(pool[i].id===current.id){ idx = i; break; } }
+    return idx === -1 ? pool[0] : pool[(idx+1) % pool.length];
+  }
+
+  function bindEvents(){
+    app.querySelectorAll("[data-action]").forEach(function(el){
+      el.addEventListener("click", function(){
+        var action = el.getAttribute("data-action");
+        if(action==="open-case"){
+          revealCache[el.getAttribute("data-id")] = false;
+          delete pendingStatus[el.getAttribute("data-id")];
+          lastSaveFailed = false;
+          go("case", el.getAttribute("data-id"));
+        } else if(action==="goto-home"){
+          // Keep whatever reviewOnly state we already had — a user backing out of a case
+          // they opened from the review list should land back in the review list, not be
+          // silently dropped into the full case list.
+          go("home");
+        } else if(action==="goto-home-full"){
+          state.reviewOnly = false;
+          render();
+        } else if(action==="toggle-review"){
+          state.reviewOnly = true;
+          render();
+        } else if(action==="goto-axis"){
+          go("axis");
+        } else if(action==="reveal"){
+          collectDraft(state.caseId, true);
+          revealCache[state.caseId] = true;
+          render();
+          var wrap = app.querySelector(".answer-wrap");
+          if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
+        } else if(action==="assess"){
+          var kind = el.getAttribute("data-kind");
+          var c0 = caseById(state.caseId);
+          if(!c0) return;
+          pendingStatus[state.caseId] = kind;
+          state.progress[state.caseId] = kind;
+          lastSaveFailed = !saveProgress(state.progress);
+          render();
+        } else if(action==="next-case"){
+          var c = caseById(state.caseId);
+          if(!c) return;
+          var next = nextCaseAfter(c);
+          revealCache[next.id] = false;
+          delete pendingStatus[next.id];
+          go("case", next.id);
+        }
+      });
+    });
+
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      ta.addEventListener("input", function(){
+        collectDraft(state.caseId, false);
+      });
+    });
+  }
+
+  var draftSaveTimer = null;
+  function collectDraft(caseId, flushNow){
+    var d = {};
+    app.querySelectorAll("textarea[data-field]").forEach(function(ta){
+      d[ta.getAttribute("data-field")] = ta.value;
+    });
+    draftCache[caseId] = d;
+    if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
+    if(flushNow){
+      saveDrafts(draftCache);
+    } else {
+      draftSaveTimer = setTimeout(function(){ saveDrafts(draftCache); }, 400);
+    }
+  }
+  // Best-effort: flush any pending debounced draft save if the tab is closed/backgrounded
+  // before the timer fires (mobile browsers routinely discard backgrounded tabs).
+  window.addEventListener("pagehide", function(){ saveDrafts(draftCache); });
+  document.addEventListener("visibilitychange", function(){
+    if(document.visibilityState === "hidden") saveDrafts(draftCache);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
