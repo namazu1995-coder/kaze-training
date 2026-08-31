@@ -15,16 +15,16 @@
     --surface-2:#EAECF6;
     --ink:#171B34;
     --ink-soft:#565E82;
-    --ink-faint:#8891B0;
+    --ink-faint:#63698D;
     --line:#DCE0EF;
     --primary:#3C4B8C;
     --primary-strong:#262F5E;
     --primary-tint:#E6E9F7;
-    --accent:#BC7A2E;
+    --accent:#8F5D1C;
     --accent-tint:#FAEDDC;
-    --good:#2E7D53;
+    --good:#2A7049;
     --good-tint:#E3F3EA;
-    --warn:#BC7A2E;
+    --warn:#8F5D1C;
     --warn-tint:#FAEDDC;
     --bad:#B23A3A;
     --bad-tint:#FBE7E5;
@@ -152,7 +152,7 @@
   .progress-text .sub{font-size:12.5px; color:var(--ink-faint); margin-top:2px;}
   .review-pill-btn{
     appearance:none; border:1px solid var(--warn); background:var(--warn-tint); color:var(--warn);
-    font-weight:700; font-size:12.5px; padding:8px 12px; border-radius:999px; cursor:pointer;
+    font-weight:700; font-size:12.5px; padding:11px 14px; min-height:44px; border-radius:999px; cursor:pointer;
     white-space:nowrap; font-family:inherit;
   }
   .axis-cta{
@@ -326,7 +326,7 @@
   .assess-block .q{ font-size:14px; font-weight:700; margin-bottom:12px; text-align:center; }
   .assess-row{ display:flex; gap:8px; }
   .assess-btn{
-    flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 6px;
+    flex:1; appearance:none; cursor:pointer; border-radius:12px; padding:13px 8px; min-height:44px;
     font-family:inherit; font-size:12.5px; font-weight:700; line-height:1.4;
     border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft);
   }
@@ -427,10 +427,10 @@
         ],
         antibiotics:[
           "<mark>市中肺炎を疑う臨床像(発熱・頻呼吸・低酸素・局所の肺雑音)</mark>があり、これは「かぜ」ではなく抗菌薬治療の適応がある病態と判断する",
-          "重症度評価には、日本国内では<mark>A-DROP</mark>(Age:年齢、Dehydration:脱水、Respiratory failure:呼吸不全、Orientation:意識障害、blood Pressure:血圧の5項目)が広く用いられる(国際的にはCURB-65やPSIも同じ目的で使われる)。本症例は<mark>70歳以上の男性でA-DROPの年齢項目が1点</mark>に加え、SpO2 91%への低下と頻呼吸を認めるが、<mark>A-DROPは呼吸数を評価項目に含まないため、頻呼吸のようなバイタルサイン異常はスコアとは別に臨床的に重視する必要がある</mark>",
+          "重症度評価には、日本国内では<mark>A-DROP</mark>(Age:年齢、Dehydration:脱水、Respiratory failure:呼吸不全、Orientation:意識障害、blood Pressure:血圧の5項目)が広く用いられる(国際的にはCURB-65やPSIも同じ目的で使われる)。<mark>Rの基準はSpO2 90%以下(PaO2 60Torr以下)であり、本症例のSpO2 91%はこの基準にぎりぎり該当しない</mark>ため、機械的に採点するとA-DROPは<mark>70歳以上の男性という年齢項目の1点のみ(中等症)</mark>にとどまる。しかし<mark>A-DROPは呼吸数を評価項目に含まないため、RR 26回/分という頻呼吸はスコアとは別に臨床的に重視する必要がある</mark>——スコア上「軽く見える」症例ほど注意する",
           "脱水の評価(BUN等)も追加したうえで、<mark>A-DROPのスコアが軽症〜中等症相当であっても、低酸素血症の悪化傾向・喫煙による肺機能低下・独居等の社会的背景があれば入院治療を積極的に検討する</mark>——スコアだけで機械的に外来対応と決めない",
           "胸部X線(可能ならCT)で浸潤影の有無を確認し、<mark>可能な範囲で血液培養・喀痰培養を治療開始前に採取</mark>したうえで、経験的抗菌薬治療を<mark>診断確定を待たずに速やかに開始</mark>する(治療開始の遅れは予後を悪化させる)",
-          "<mark>非定型肺炎(マイコプラズマ等)を疑う6項目(年齢60歳未満・基礎疾患なし・頑固な咳嗽・聴診所見に乏しい・喀痰がない/迅速検査で原因菌不明・末梢血白血球10,000/μL未満)</mark>のうち本症例は多くを満たさない(高齢・喫煙歴・crackles聴取)ため、<mark>肺炎球菌などを想定した細菌性肺炎としてβラクタム系を主軸に治療する</mark>。<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを8時間ごとに点滴静注、またはセフトリアキソン1〜2gを24時間ごとに点滴静注</mark>が代表的な選択肢になる(非定型病原体を強く疑う所見があればマクロライド系やレスピラトリーキノロン系の併用・変更を検討する)",
+          "<mark>非定型肺炎(マイコプラズマ等)を疑う6項目(年齢60歳未満・基礎疾患なし・頑固な咳嗽・聴診所見に乏しい・喀痰がない/迅速検査で原因菌不明・末梢血白血球10,000/μL未満)</mark>のうち本症例は多くを満たさない(高齢・喫煙歴・crackles聴取)ため、<mark>肺炎球菌などを想定した細菌性肺炎としてβラクタム系を主軸に治療する</mark>。<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを8時間ごとに点滴静注(添付文書上の標準は1日6gを2回分割で、3g×3〜4回は重症例での増量域=1日上限12g)、またはセフトリアキソン1〜2gを24時間ごとに点滴静注</mark>が代表的な選択肢になる(非定型病原体を強く疑う所見があればマクロライド系やレスピラトリーキノロン系の併用・変更を検討する)",
           "「かぜだと思っていた」という経過であっても<mark>所見が揃えば速やかに治療対象と判断を切り替える</mark>ことが、この症例の核心"
         ],
         explain:[
@@ -443,7 +443,7 @@
       pearl:[
         "<mark>高齢者の肺炎は発熱や頻呼吸が目立たないことがあり、「なんとなく元気がない」「食欲がない」だけで発見されることもある</mark>——バイタルサインの実測を省略しない",
         "<mark>呼吸数は最も見落とされやすいが最も重要なバイタルサインの一つ</mark>。「かぜ」を疑う診察でも必ず数える",
-        "<mark>日本国内の肺炎重症度評価にはA-DROP(年齢・脱水・呼吸不全・意識障害・血圧)が広く用いられるが、呼吸数の項目を含まないため、頻呼吸などのバイタルサイン異常は別途臨床的に評価する必要がある</mark>",
+        "<mark>日本国内の肺炎重症度評価にはA-DROP(年齢・脱水・呼吸不全・意識障害・血圧、0点軽症/1〜2点中等症/3点重症/4〜5点超重症)が広く用いられるが、呼吸数の項目を含まないため、頻呼吸などのバイタルサイン異常は別途臨床的に評価する必要がある</mark>",
         "「経過が長い咳・微熱」を漫然と経過観察にせず、<mark>バイタルサインと聴診所見の再評価</mark>を都度行うことが、かぜ診療でのpneumonia見逃し予防になる"
       ],
       refs:[
@@ -471,7 +471,7 @@
           "本症例は<mark>単純な咽頭炎ではなく扁桃周囲膿瘍(peritonsillar abscess)</mark>を強く疑う所見であり、抗菌薬単独ではなく<mark>穿刺・切開排膿と抗菌薬治療の組み合わせ</mark>が必要になる病態であることを認識する",
           "<mark>外来での迅速抗原検査や画像検査に時間をかけて治療開始を遅らせるべきではない</mark>——臨床所見から緊急性を判断し、専門科(耳鼻咽喉科)へ速やかにつなぐことを優先する",
           "<mark>典型的な臨床所見がそろい気道症状が切迫していれば、画像検査を待たずに耳鼻咽喉科へつなぐ</mark>が、開口制限が強く十分な診察ができない場合や、<mark>深頸部間隙(咽後間隙・傍咽頭間隙)への進展が疑われる場合には造影CTが膿瘍と蜂窩織炎の鑑別・進展範囲の評価に有用</mark>である",
-          "抗菌薬は<mark>口腔内嫌気性菌もカバーする広域な選択</mark>が一般的で、<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを6〜8時間ごとに点滴静注</mark>が代表的な例になる(<mark>ペニシリンアレルギーがあればクリンダマイシン600mgを8時間ごとに点滴静注</mark>を代替として検討する)が、最終的な薬剤選択と排膿の要否は耳鼻咽喉科医と相談して決定する",
+          "抗菌薬は<mark>口腔内嫌気性菌もカバーする広域な選択</mark>が一般的で、<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを6〜8時間ごとに点滴静注</mark>が代表的な例になる(<mark>ペニシリンアレルギーがあればクリンダマイシン600〜900mgを8時間ごとに点滴静注</mark>(国内添付文書の上限は1日2,400mg)を代替として検討する)が、最終的な薬剤選択と排膿の要否は耳鼻咽喉科医と相談して決定する",
           "「かぜの延長」という思い込みで<mark>対症療法のみで帰宅させることが最大の危険</mark>であるとこの症例から学ぶ"
         ],
         explain:[
@@ -496,9 +496,9 @@
     {
       id:"typical_uri", num:3, cat:"antibiotic", tag:"典型例・基本形",
       title:"ウイルス性上気道炎(基本形)",
-      hint:"24歳女性・2日前からの鼻汁・咽頭痛・微熱37.2℃",
+      hint:"24歳女性・3日前からの鼻汁・咽頭痛・微熱37.2℃",
       call:"3日前から鼻水と喉の痛みが続いていて、今日は熱っぽい感じがします。会社を休むべきか迷って来ました。",
-      background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、経過は日ごとに軽快傾向。強い倦怠感や食欲低下はない。",
+      background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、症状は3日目の現在がピーク前後で、増悪も急速な悪化もない。強い倦怠感や食欲低下はない。",
       vitals:"体温 37.2℃　BP 118/72　HR 78　RR 14　SpO2 98%(room air)　全身状態良好、咽頭発赤軽度・扁桃腫大なし、頸部リンパ節腫脹なし、呼吸音清",
       verdict:"reassure", verdictLabel:"支持療法で帰宅",
       answer:{
@@ -536,7 +536,7 @@
     {
       id:"strep_throat", num:4, cat:"antibiotic", tag:"咽頭炎",
       title:"A群溶血性連鎖球菌咽頭炎の疑い",
-      hint:"20歳男性・発熱38.5℃・咳を伴わない強い咽頭痛",
+      hint:"20歳男性・発熱38.6℃・咳を伴わない強い咽頭痛",
       call:"2日前から喉がすごく痛くて、唾を飲み込むのもつらいです。熱も38度台まで上がりました。",
       background:"20歳男性。既往なし。2日前からの咽頭痛・嚥下痛・発熱で受診。咳や鼻汁は伴っていない。周囲に同様の症状の人はいない。",
       vitals:"体温 38.6℃　BP 122/76　HR 92　RR 16　SpO2 98%　両側扁桃に白苔状の滲出液あり、前頸部リンパ節の腫脹・圧痛あり、咳嗽・鼻汁なし",
@@ -549,15 +549,15 @@
           "<mark>伝染性単核球症(EBウイルス)</mark>の可能性(著明な倦怠感、頸部リンパ節腫脹の広がり、脾腫)も念頭に置き、疑えば脾腫の有無を診察で確認する(未診断の脾腫がある場合、運動制限の指導が必要になるため)"
         ],
         antibiotics:[
-          "McIsaac基準は<mark>①38℃以上の発熱、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④白苔を伴う扁桃腺炎</mark>の4項目(各1点)に、年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加えて評価する。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となり、GAS(A群溶血性連鎖球菌)咽頭炎の推定確率は<mark>4〜5点のカテゴリで38〜63%</mark>とされる(厚生労働省手引き掲載の表による)",
-          "同手引きの整理では<mark>0点:2〜3%、1点:4〜6%、2点:10〜12%、3点:27〜28%、4〜5点:38〜63%</mark>とスコアに応じてGASの確率が示されており、<mark>ACP/CDC・ESCMIDの指針は2点以下では迅速抗原検査は不要</mark>としている——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない",
+          "McIsaac基準は<mark>①38℃以上の発熱、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④白苔を伴う扁桃腺炎</mark>の4項目(各1点)に、年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加えて評価する。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となる",
+          "同手引きの整理では<mark>0点:2〜3%、1点:4〜6%、2点:10〜12%、3点:27〜28%、4〜5点:38〜63%</mark>とスコアに応じてGASの確率が示されており、<mark>ESCMIDの指針は2点以下では検査・抗菌薬を推奨せず、ACP/CDCもGASを示唆する所見が乏しい患者には検査を推奨していない</mark>——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない。<mark>このスコアは急性の咽頭痛で受診した患者への適用を前提とし、4点でも約4〜6割はGAS陰性である</mark>点は理解しておく(あくまで検査前確率の目安であり、確定診断ではない)",
           "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とする。厚生労働省の手引きや亀田感染症ガイドラインなど国内の専門家指針では、GASによる急性咽頭炎に対して<mark>アモキシシリン500mgを1日2回、10日間</mark>内服することが推奨されている。<mark>β-ラクタム系は時間依存性の抗菌薬であり、理論上は1日4回など、より頻回な分割投与の方が有利にも思えるが、GAS咽頭炎における至適な投与回数そのものを直接比較したエビデンスは乏しく</mark>、実地ではアドヒアランスの良さから1日2回法が広く推奨されている。<mark>添付文書の「1回250mgを1日3〜4回」の範囲内でも、1日3回(750mg/日)にとどめると専門家指針が推奨する1日量(1,000mg相当)に届かない</mark>点には注意する。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
           "検査の結果によって<mark>方針(投与する/しない)がはっきり変わる</mark>症例であり、「検査をする根拠」を持てるかどうかが判断の分かれ目になる",
           "<mark>もし本症例が実は伝染性単核球症(EBウイルス)だった場合、アモキシシリンなどのアミノペニシリン系を投与すると高頻度に非アレルギー性の薬疹(紅斑丘疹)を生じることが知られている</mark>(頻度は文献により幅があり、近年の小児コホートではおよそ30%程度と報告されている)。<mark>これは真のペニシリンアレルギーではないが、誤ってアレルギー歴として記録されてしまうことがあるため、倦怠感の強さやリンパ節腫脹の広がりから伝染性単核球症を疑う場合はこの点も念頭に置く</mark>"
         ],
         explain:[
           "強い痛みで来院した不安に共感しつつ、<mark>「検査をしてから抗菌薬が必要かを決める」という流れを先に説明</mark>し、結果を待つ間の対症療法(鎮痛薬、うがい)を提示する",
-          "検査が陽性だった場合を想定し、<mark>抗菌薬は症状を早く楽にするためというより、まれな合併症(リウマチ熱・腎炎など)予防と感染性の短縮が主目的であること</mark>を伝える",
+          "検査が陽性だった場合を想定し、<mark>抗菌薬は症状を早く楽にするためというより、化膿性合併症(扁桃周囲膿瘍など)の予防や感染性の短縮が主目的であること</mark>を伝える(<mark>リウマチ熱は日本では現在極めてまれで、また抗菌薬投与では急性糸球体腎炎は予防できないとされている</mark>ため、腎炎予防を主目的として説明しない)",
           "陰性だった場合は<mark>ウイルス性である可能性が高く、抗菌薬は効果がなく不要であること</mark>を明確に伝える",
           "予想される経過(適切な対症療法で数日以内にピークを越える)と、<mark>再受診の目安</mark>(開口障害・声がこもる・呼吸苦・症状の急激な悪化)を共有する"
         ]
@@ -572,9 +572,10 @@
       ],
       refs:[
         {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
-        {author:"三好和康・黒田浩一・鈴木大介(監修:細川直登)", title:"亀田感染症ガイドライン 咽頭炎(version 2)", source:"亀田総合病院", year:"2018"},
-        {author:"日本感染症学会・日本化学療法学会", title:"JAID/JSC感染症治療ガイドライン・ガイド 呼吸器感染症", source:"日本化学療法学会雑誌", year:"2014"},
+        {author:"三好和康・黒田浩一・鈴木大介(監修:細川直登)", title:"亀田感染症ガイドライン 咽頭炎(version 2)", source:"亀田総合病院", year:"2018", url:"https://medical.kameda.com/general/medical/assets/01.pdf"},
+        {author:"JAID/JSC感染症治療ガイド・ガイドライン作成委員会 呼吸器感染症ワーキンググループ", title:"JAID/JSC感染症治療ガイドライン 呼吸器感染症", source:"日本化学療法学会雑誌", year:"2014"},
         {author:"Shulman ST, et al.(IDSA)", title:"Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis629"},
+        {author:"Maness DL, Martin M, Mitchell G.", title:"Poststreptococcal Illness: Recognition and Management", source:"American Family Physician", year:"2018", url:"https://www.aafp.org/pubs/afp/issues/2018/0415/p517.html"},
         {author:"McIsaac WJ, et al.", title:"A clinical score to reduce unnecessary antibiotic use in patients with sore throat", source:"CMAJ", year:"1998", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1229033/"},
         {author:"Chovel-Sella A, et al.", title:"Incidence of Rash After Amoxicillin Treatment in Children With Infectious Mononucleosis", source:"Pediatrics", year:"2013", url:"https://doi.org/10.1542/peds.2012-1575"}
       ]
@@ -595,9 +596,9 @@
           "免疫不全・糖尿病など<mark>侵襲性真菌性副鼻腔炎のリスク因子</mark>がないかも念のため確認する"
         ],
         antibiotics:[
-          "急性細菌性副鼻腔炎を疑う臨床基準(IDSA)に照らすと、<mark>①症状が10日以上持続、②高熱と膿性鼻汁が3〜4日以上重症、③一度軽快した後に再増悪する「二峰性の経過」のいずれか</mark>を満たせば細菌性を疑う。本症例は<mark>症状の持続日数と二峰性の増悪の両方</mark>を満たしている",
+          "急性細菌性副鼻腔炎を疑う臨床基準(IDSA/ACP・CDC)に照らすと、<mark>①症状の改善がないまま10日以上持続、②高熱(39℃以上)と膿性鼻汁・顔面痛が3日以上重症、③一度軽快した後に再増悪する「二峰性の経過」</mark>のいずれかを満たせば細菌性を疑う。本症例は<mark>一度軽快した後に再増悪する③の「二峰性の経過」に該当する</mark>(①は「改善のないまま10日以上持続」を指すため、いったん軽快した本症例はここには該当しない)",
           "<mark>単なる鼻汁の色(黄色・緑色)だけでは細菌性の根拠にはならない</mark>——色調変化はウイルス性でも自然経過で起こりうるため、経過のパターンで判断する",
-          "上記基準を満たすため抗菌薬投与が推奨される場面と判断できる。厚生労働省の手引きやACP/CDCの指針では<mark>アモキシシリン水和物を5〜7日間</mark>内服することとされており、<mark>国内では腎機能正常を前提に、オーグメンチン配合錠(AMPC/CVA)250RS 1回1錠+アモキシシリン(サワシリン)250mg 1回1カプセルを1日3回、5〜7日間内服する、いわゆる「オグサワ」処方</mark>が広く行われる——<mark>オーグメンチン単剤ではクラブラン酸の比率が相対的に高く下痢などの消化器症状を来しやすいため、アモキシシリンを追加してAMPC/CVA比を調整する国内独自の工夫</mark>である",
+          "上記基準を満たすため抗菌薬投与が推奨される場面と判断できる。厚生労働省の手引きでは中等症以上に対し<mark>アモキシシリン水和物1回500mgを1日3回、5〜7日間</mark>、ACP/CDCの助言では<mark>アモキシシリン(±クラブラン酸)を5〜10日間</mark>内服することとされている。<mark>これとは別に、国内の実地では腎機能正常を前提に、オーグメンチン配合錠(AMPC/CVA)250RS 1回1錠+アモキシシリン(サワシリン)250mg 1回1カプセルを1日3回、5〜7日間内服する、いわゆる「オグサワ」処方</mark>も広く行われる(<mark>手引きが推奨する処方そのものではなく国内の実地慣行</mark>である点に注意)——<mark>オーグメンチン単剤ではクラブラン酸の比率が相対的に高く下痢などの消化器症状を来しやすいため、アモキシシリンを追加してAMPC/CVA比を調整する工夫</mark>である",
           "<mark>日本ではアモキシシリン水和物の急性副鼻腔炎に対する効能・効果は薬事承認されていないが、社会保険診療報酬支払基金は原則としてこの適応での処方を審査上認めている</mark>——添付文書の適応外であることを理由に処方をためらう必要はない",
           "画像検査(CTなど)は<mark>合併症を疑う場合以外はルーチンには不要</mark>で、臨床基準のみで治療方針を決定してよい"
         ],
@@ -615,7 +616,7 @@
       ],
       refs:[
         {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
-        {author:"日本鼻科学会", title:"急性鼻副鼻腔炎診療の手引き 2010年版", source:"日本鼻科学会", year:"2010"},
+        {author:"日本鼻科学会", title:"急性鼻副鼻腔炎診療ガイドライン", source:"日本鼻科学会会誌 49(2):143-198", year:"2010"},
         {author:"Chow AW, et al.(IDSA)", title:"IDSA Clinical Practice Guideline for Acute Bacterial Rhinosinusitis in Children and Adults", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis370"}
       ]
     },
@@ -654,7 +655,7 @@
       ],
       refs:[
         {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
-        {author:"Mangione-Smith R, et al.", title:"Communication Practices and Antibiotic Use for Acute Respiratory Tract Infections in Children", source:"Annals of Family Medicine", year:"2015"},
+        {author:"Mangione-Smith R, et al.", title:"Communication Practices and Antibiotic Use for Acute Respiratory Tract Infections in Children", source:"Annals of Family Medicine", year:"2015", url:"https://doi.org/10.1370/afm.1785"},
         {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"},
         {author:"Coxeter P, et al.", title:"Interventions to facilitate shared decision making to address antibiotic use for acute respiratory infections in primary care", source:"Cochrane Database of Systematic Reviews", year:"2015", url:"https://doi.org/10.1002/14651858.CD010907.pub2"}
       ]
@@ -686,15 +687,15 @@
     {
       icon:"熱", title:"発熱・痛み(頭痛・筋肉痛など)",
       complaint:"「熱がつらい」「痛みで日常生活に支障がある」",
-      choice:"<mark>アセトアミノフェン</mark>を第一選択とする。用量は<mark>体重換算で1回10〜15mg/kgが目安</mark>で、成人ではそこから1回300〜1,000mgの範囲に収まることが多く、4〜6時間以上あけて1日最大4,000mgとする。<mark>処方例:カロナール錠300mgを1回2錠(600mg)</mark>は多くの成人体重でこの目安に収まる、調整しやすい無難な選択になる(体格が小さい患者・高齢者は1回300mgにとどめ、鎮痛効果が不十分なら1回500〜1,000mgまで増量を検討する)。NSAIDs(ロキソプロフェン60mgなど)も解熱・鎮痛効果はあるが、脱水や腎機能低下、消化管潰瘍のリスクがある患者では慎重に検討する。",
-      harm:"アセトアミノフェンは過量投与や常用飲酒・肝機能障害がある患者で肝障害のリスクが高まる。<mark>市販の総合感冒薬にも含まれることが多く、重複投与に注意</mark>。NSAIDsは妊娠後期で禁忌、腎機能・胃粘膜への影響があるほか、<mark>ジクロフェナクナトリウムやメフェナム酸はインフルエンザ罹患(疑いを含む)時にインフルエンザ脳症の重症化との関連が指摘され、添付文書上も投与しないこととされている</mark>——かぜ様症状の患者への解熱薬としてアセトアミノフェンが広く優先される理由の一つである。",
+      choice:"<mark>アセトアミノフェン</mark>を第一選択とする。成人量は<mark>1回300〜1,000mg(1回1,000mgを超えない)、4〜6時間以上あけて1日最大4,000mg</mark>が添付文書上の目安で、体重換算では概ね1回10〜15mg/kgに相当する。<mark>処方例:カロナール錠300mgを1回2錠(600mg)</mark>は多くの成人体重でこの目安に収まる、調整しやすい無難な選択になる(体格が小さい患者・高齢者は1回300mgにとどめ、鎮痛効果が不十分なら1回500〜1,000mgまで増量を検討する)。NSAIDs(ロキソプロフェン60mgなど)も解熱・鎮痛効果はあるが、脱水や腎機能低下、消化管潰瘍のリスクがある患者では慎重に検討する。",
+      harm:"アセトアミノフェンは過量投与や常用飲酒・肝機能障害がある患者で肝障害のリスクが高まり、<mark>1日1,500mgを超える用量を長期に用いる場合は定期的な肝機能検査が望ましい</mark>とされる。<mark>市販の総合感冒薬にも含まれることが多く、重複投与に注意</mark>。NSAIDsは妊娠後期で禁忌、腎機能・胃粘膜への影響があるほか、<mark>ジクロフェナクナトリウムは「インフルエンザの臨床経過中の脳炎・脳症の患者」が添付文書上の禁忌、メフェナム酸は小児のインフルエンザに伴う発熱には原則投与しないことと添付文書に記載されている</mark>——インフルエンザが否定できない発熱にはこの2剤を避けるのが安全側の運用であり、かぜ様症状の解熱薬としてアセトアミノフェンが広く優先される理由の一つになっている。",
       duration:"発熱・痛みが続く間の頓用が基本。3日以上発熱が遷延する、または悪化する場合は再評価する。"
     },
     {
       icon:"喉", title:"咽頭痛",
       complaint:"「痛くて食事や水分がとれない」",
       choice:"<mark>咽頭痛では特にアセトアミノフェンを中心にすえる</mark>のが無難である(処方例は上記の発熱・痛みの項と同様、カロナール錠300mg 2錠など)。理由は、①経口摂取が減って脱水傾向になりやすくNSAIDsの腎への負担が乗りやすいこと、②<mark>NSAIDsの使用と侵襲性A群溶血性連鎖球菌感染症(壊死性軟部組織感染症など)との関連を示唆する観察研究がある</mark>ことの2点による——ただし②は<mark>因果関係が証明された知見ではなく、症状で受診が遅れた重症例で後付け的にNSAIDs使用歴が多く見つかった可能性(交絡)も否定できず、議論が続いている</mark>点は理解しておく。含嗽やトローチなど局所的な対症療法も併用する。国内では<mark>トラネキサム酸</mark>が咽頭炎症状に処方されることも多いが、対症療法としての効果のエビデンスは限定的である。",
-      harm:"局所処置自体の副作用は少ないが、鎮痛薬の効果に頼って経過観察を怠ると、扁桃周囲膿瘍などの見逃したくない病態を見落としうる。",
+      harm:"局所処置自体の副作用は少ないが、鎮痛薬の効果に頼って経過観察を怠ると、扁桃周囲膿瘍などの見逃したくない病態を見落としうる。<mark>トラネキサム酸はトロンビン等の血液凝固関連製剤との併用が禁忌であり、血栓性素因や血栓症の既往がある患者では慎重に判断する</mark>。",
       duration:"経口摂取が可能になる程度まで。症状が悪化する、嚥下困難が強くなる場合は再受診とする。"
     },
     {
@@ -707,8 +708,8 @@
     {
       icon:"咳", title:"咳(乾性・湿性)",
       complaint:"「咳で眠れない」「咳が続いてつらい」",
-      choice:"咳止めは<mark>成分ごとに強さと副作用プロファイルが異なる</mark>ことを踏まえて選ぶ。<mark>中枢性非麻薬性鎮咳薬</mark>(デキストロメトルファン、チペピジン(アスベリン)など)は作用が比較的マイルドで安全性が高く、まず検討する選択肢になるが、感冒の咳そのものへの効果を支持する質の高い根拠は乏しい。<mark>中枢性麻薬性鎮咳薬</mark>(コデインリン酸塩、ジヒドロコデインリン酸塩)はより強い鎮咳作用が期待されるが、副作用リスクも高く安易な第一選択にはしない。去痰薬(カルボシステイン、アンブロキソールなど)は喀痰の性状改善が主目的で鎮咳作用そのものは強くない。麦門冬湯などの漢方薬が乾性咳嗽に用いられることもある。<mark>はちみつ(1歳以上)</mark>は夜間の咳や睡眠の質を改善したとする複数のランダム化比較試験があり、副作用の少なさから選択肢になりうる。",
-      harm:"中枢性麻薬性鎮咳薬(コデイン類)は<mark>呼吸抑制・便秘・依存性のリスク</mark>があり、<mark>国内では2019年の添付文書改訂により12歳未満の小児への使用が原則禁忌</mark>となっている。成人でも眠気・便秘に注意し、乱用歴のある患者では依存性にも留意する。<mark>はちみつは1歳未満の乳児には乳児ボツリヌス症のリスクがあるため禁忌</mark>。",
+      choice:"咳止めは<mark>成分ごとに強さと副作用プロファイルが異なる</mark>ことを踏まえて選ぶ。<mark>中枢性非麻薬性鎮咳薬</mark>(デキストロメトルファン、チペピジン(アスベリン)など)は作用が比較的マイルドで安全性が高く、まず検討する選択肢になるが、感冒の咳そのものへの効果を支持する質の高い根拠は乏しい。<mark>中枢性麻薬性鎮咳薬</mark>(コデインリン酸塩、ジヒドロコデインリン酸塩)はより強い鎮咳作用が期待されるが、副作用リスクも高く安易な第一選択にはしない。去痰薬(カルボシステイン、アンブロキソールなど)は喀痰の性状改善が主目的で鎮咳作用そのものは強くない。麦門冬湯などの漢方薬が乾性咳嗽に用いられることもある。<mark>はちみつ(1歳以上)</mark>は、主に小児を対象としたランダム化比較試験で夜間の咳や睡眠の質を改善したと報告されており、成人への直接的な根拠は限定的だが副作用の少なさから選択肢になりうる。",
+      harm:"中枢性麻薬性鎮咳薬(コデイン類)は<mark>呼吸抑制・便秘・依存性のリスク</mark>があり、<mark>国内では2019年の添付文書改訂により12歳未満の小児への使用が禁忌</mark>となっている(トラマドールも同様)。成人でも眠気・便秘に注意し、乱用歴のある患者では依存性にも留意する。<mark>はちみつは1歳未満の乳児には乳児ボツリヌス症のリスクがあるため禁忌</mark>。",
       duration:"咳は感冒の自然経過でも2〜3週間続きうることを踏まえて調整する。4週間以上続く、血痰を伴う、体重減少があるといった場合は他の鑑別を考える。"
     },
     {
@@ -725,7 +726,7 @@
     {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
     {author:"Morishima T, et al.", title:"Encephalitis and Encephalopathy Associated with an Influenza Epidemic in Japan", source:"Clinical Infectious Diseases", year:"2002"},
     {author:"Aronoff DM, Bloch KC.", title:"Assessing the Relationship Between the Use of Nonsteroidal Antiinflammatory Drugs and Necrotizing Fasciitis Caused by Group A Streptococcus", source:"Medicine (Baltimore)", year:"2003"},
-    {author:"Smith SM, Schroeder K, Fahey T.", title:"Over-the-counter (OTC) medications for acute cough in children and adults in ambulatory settings", source:"Cochrane Database of Systematic Reviews", year:"2014"},
+    {author:"Smith SM, Schroeder K, Fahey T.", title:"Over-the-counter (OTC) medications for acute cough in children and adults in community settings", source:"Cochrane Database of Systematic Reviews", year:"2014"},
     {author:"De Sutter AI, van Driel ML, Kumar AA, Lesslar O, Skrt A.", title:"Oral antihistamine-decongestant-analgesic combinations for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2012"},
     {author:"Deckx L, De Sutter AI, Guo L, Mir NA, van Driel ML.", title:"Nasal decongestants in monotherapy for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2016"},
     {author:"Cohen HA, et al.", title:"Effect of Honey on Nocturnal Cough and Sleep Quality: A Double-Blind, Randomized, Placebo-Controlled Study", source:"Pediatrics", year:"2012", url:"https://doi.org/10.1542/peds.2011-3075"}
@@ -807,17 +808,17 @@
 
   function completedCount(){
     var n=0;
-    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]) n++; }
+    for(var i=0;i<CASES.length;i++){ if(safeStatus(state.progress[CASES[i].id])!=="none") n++; }
     return n;
   }
   function masteredCount(){
     var n=0;
-    for(var i=0;i<CASES.length;i++){ if(state.progress[CASES[i].id]==="good") n++; }
+    for(var i=0;i<CASES.length;i++){ if(safeStatus(state.progress[CASES[i].id])==="good") n++; }
     return n;
   }
   function reviewCases(){
     return CASES.filter(function(c){
-      var s = state.progress[c.id];
+      var s = safeStatus(state.progress[c.id]);
       return s === "partial" || s === "poor";
     });
   }
@@ -853,13 +854,13 @@
     html += '<div class="hero">';
     html += '  <div class="eyebrow">初期研修医のための</div>';
     html += '  <h1>かぜ診療<br>トレーニング</h1>';
-    html += '  <p>外来でよくある「かぜ」症状の患者さんを疑似体験します。答えを見る前に、①レッドフラッグの有無、②抗菌薬の要否、③患者への説明、を自分の言葉で書き出してみましょう。</p>';
+    html += '  <p>外来でよくある「かぜ」症状の患者さんを疑似体験します。答えを見る前に、①レッドフラッグの有無、②抗菌薬の要否、③患者への説明、を自分の言葉で書き出してみましょう。<mark>対象は基礎疾患のない成人の外来診療です。小児・妊婦・免疫抑制状態・重度の基礎疾患がある患者では閾値も薬剤選択も異なるため、そのまま適用しないでください。</mark></p>';
     html += '</div>';
 
     html += '<div class="progress-card">';
     html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
     html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
-    if(rev.length){
+    if(rev.length && !state.reviewOnly){
       html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
     }
     html += '</div>';
@@ -868,7 +869,7 @@
     html += '<button class="axis-cta" data-action="goto-symptomatic"><span><span class="t">対症療法について理解を深める</span><span class="s">「何を出すか」の前に「何を楽にしたいか」を決める</span></span><span class="arrow">›</span></button>';
 
     if(state.reviewOnly){
-      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
+      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'症例</span></div>';
       if(rev.length===0){
         html += '<div class="empty-review">復習対象の症例はありません。<br>「一覧」から症例を確認できます。</div>';
       } else {
@@ -900,6 +901,7 @@
   var revealCache = {}; // caseId -> bool (revealed) — intentionally session-only (resets each visit)
   var draftCache = loadDrafts(); // caseId -> {redflag,antibiotics,explain} — persisted to localStorage, debounced
   var pendingStatus = {}; // caseId -> chosen status this session (before/while confirming)
+  var draftSaveFailed = false;
 
   function renderCase(c){
     var html = "";
@@ -913,11 +915,14 @@
     html += '<div id="prompts">';
     PROMPTS.forEach(function(p, i){
       html += '<div class="prompt-block">';
-      html += '<label><span class="n">'+(i+1)+'.</span>'+p.label+'</label>';
-      html += '<textarea data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '<label for="field-'+p.key+'-'+c.id+'"><span class="n">'+(i+1)+'.</span>'+p.label+'</label>';
+      html += '<textarea id="field-'+p.key+'-'+c.id+'" data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
       html += '</div>';
     });
     html += '</div>';
+    if(draftSaveFailed){
+      html += '<div class="save-warning">⚠ この端末には下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると入力内容が失われます。</div>';
+    }
 
     if(!revealed){
       html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
@@ -932,7 +937,7 @@
     var catLabel = c.cat==="redflag" ? "レッドフラッグを見抜く症例" : "抗菌薬の要否を判断する症例";
     var verdictIcon = c.verdict==="escalate" ? "🚨 " : (c.verdict==="abx" ? "℞ " : "🟢 ");
     var html = '<div class="answer-wrap">';
-    html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">正解</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'・'+c.tag+'</div>';
+    html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">診断</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'・'+c.tag+'</div>';
     html += '<div class="verdict-badge '+c.verdict+'">'+verdictIcon+c.verdictLabel+'</div>';
     html += '</div>';
     html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
@@ -948,7 +953,8 @@
 
     html += '<div class="assess-block">';
     html += '<div class="q">自分の答えと照らし合わせて、自己評価しましょう</div>';
-    var cur = pendingStatus[c.id] || state.progress[c.id] || "";
+    var cur = pendingStatus[c.id] || safeStatus(state.progress[c.id]);
+    if(cur === "none") cur = "";
     html += '<div class="assess-row">';
     html += assessBtn("good","自力で言えた", cur);
     html += assessBtn("partial","一部抜けた", cur);
@@ -1032,7 +1038,7 @@
   /* ---------------- RENDER: SYMPTOMATIC CARE ---------------- */
   function renderSymptomatic(){
     var html = "";
-    html += '<div class="axis-hero"><div class="eyebrow">対症療法のもう一つの軸</div><h1>「何を出すか」の前に「何を楽にしたいか」を決める</h1><p>薬の一覧を覚えることも大切ですが、まずはこの4つの問いの順番で考えると整理しやすくなります。抗菌薬が不要な症例でも、対症療法は「なんとなく総合感冒薬」で済ませず、症状ごとに根拠と不利益を意識して選びましょう。</p></div>';
+    html += '<div class="axis-hero"><div class="eyebrow">対症療法のもう一つの軸</div><h1>「何を出すか」の前に「何を楽にしたいか」を決める</h1><p>薬の一覧を覚えることも大切ですが、まずはこの4つの問いの順番で考えると整理しやすくなります。抗菌薬が不要な症例でも、対症療法は「なんとなく総合感冒薬」で済ませず、症状ごとに根拠と不利益を意識して選びましょう。<mark>用量は基礎疾患のない成人を想定しています。小児・妊婦への適用や個々の薬剤の禁忌の最終確認は添付文書等でご自身で行ってください。</mark></p></div>';
     html += '<div class="escalation-note"><div class="en-label">💊 発想の順番</div><div class="en-body">症状に薬を割り当てるのではなく、<mark>いちばん困っている症状は何かを決めてから、その治療の効果と不利益を天秤にかける</mark>、という順番で考えます。「よく処方されている」ことと「効果の根拠がある」ことは別物である点を意識してください。</div></div>';
     html += '<div class="flow">';
     SYMPTOM_FLOW.forEach(function(f,i){
@@ -1056,6 +1062,7 @@
 
     html += renderRefs({refs: SYMPTOM_REFS});
     html += '<div class="axis-foot">薬を選ぶ前に、まず「何を楽にしたいか」を1つ決める。</div>';
+    html += '<div class="after-assess" style="margin-top:18px;"><button class="nav-btn ghost" data-action="goto-home">症例一覧に戻る</button></div>';
     return html;
   }
 
@@ -1084,7 +1091,7 @@
       topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">かぜ診療の3つの軸</div>';
       mainHtml = renderAxis();
     } else if(state.view==="symptomatic"){
-      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">対症療法の考え方</div>';
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">対症療法について理解を深める</div>';
       mainHtml = renderSymptomatic();
     }
 
@@ -1113,6 +1120,7 @@
           revealCache[el.getAttribute("data-id")] = false;
           delete pendingStatus[el.getAttribute("data-id")];
           lastSaveFailed = false;
+          draftSaveFailed = false;
           go("case", el.getAttribute("data-id"));
         } else if(action==="goto-home"){
           // Keep whatever reviewOnly state we already had — a user backing out of a case
@@ -1149,6 +1157,8 @@
           var next = nextCaseAfter(c);
           revealCache[next.id] = false;
           delete pendingStatus[next.id];
+          lastSaveFailed = false;
+          draftSaveFailed = false;
           go("case", next.id);
         }
       });
@@ -1170,9 +1180,9 @@
     draftCache[caseId] = d;
     if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
     if(flushNow){
-      saveDrafts(draftCache);
+      draftSaveFailed = !saveDrafts(draftCache);
     } else {
-      draftSaveTimer = setTimeout(function(){ saveDrafts(draftCache); }, 400);
+      draftSaveTimer = setTimeout(function(){ draftSaveFailed = !saveDrafts(draftCache); }, 400);
     }
   }
   // Best-effort: flush any pending debounced draft save if the tab is closed/backgrounded
