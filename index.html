@@ -164,6 +164,14 @@
   .axis-cta .t{display:block; font-size:14px; font-weight:700; color:var(--primary-strong);}
   .axis-cta .s{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;}
   .axis-cta .arrow{color:var(--primary-strong); font-size:18px; flex:none;}
+  .axis-cta + .axis-cta{ margin-top:-14px; }
+
+  .sx-field{ font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.65; }
+  .sx-field:last-child{ margin-bottom:0; }
+  .sx-field b{
+    display:block; font-size:11px; font-weight:700; color:var(--ink-faint);
+    letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px;
+  }
 
   .section-head{ display:flex; align-items:baseline; gap:8px; margin:26px 0 12px; }
   .section-head .dot{width:9px;height:9px;border-radius:50%;flex:none;}
@@ -543,7 +551,7 @@
         antibiotics:[
           "McIsaac基準は<mark>①38℃以上の発熱、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④白苔を伴う扁桃腺炎</mark>の4項目(各1点)に、年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加えて評価する。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となり、GAS(A群溶血性連鎖球菌)咽頭炎の推定確率は<mark>4〜5点のカテゴリで38〜63%</mark>とされる(厚生労働省手引き掲載の表による)",
           "同手引きの整理では<mark>0点:2〜3%、1点:4〜6%、2点:10〜12%、3点:27〜28%、4〜5点:38〜63%</mark>とスコアに応じてGASの確率が示されており、<mark>ACP/CDC・ESCMIDの指針は2点以下では迅速抗原検査は不要</mark>としている——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない",
-          "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とする。<mark>添付文書上はアモキシシリン(AMPC)1回250mgを1日3〜4回とされているが、厚生労働省の手引きや亀田感染症ガイドラインなど国内の専門家指針では、GASによる急性咽頭炎に対しては1回500mgを1日2回(または1回1,000mgを1日1回)、10日間内服することを推奨</mark>している——<mark>添付文書上の承認用量と、専門家指針が推奨する用量が乖離している代表例</mark>であり、後者に沿って処方する。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
+          "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とする。厚生労働省の手引きや亀田感染症ガイドラインなど国内の専門家指針では、GASによる急性咽頭炎に対して<mark>アモキシシリン1日量1,000mg(500mgを1日2回、または250mgを1日4回)を10日間</mark>内服することが推奨されている。<mark>添付文書の「1回250mgを1日3〜4回」という用法の範囲内でも、1日4回(250mg×4=1,000mg/日)とすれば専門家指針が推奨する1日量に一致</mark>し、1日2回(500mg×2)と総量は同じである——服薬アドヒアランスの観点からは1日2回法が選ばれることが多いが、<mark>1日3回(250mg×3=750mg/日)にとどめると1日量が不足しうる</mark>点に注意する。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
           "検査の結果によって<mark>方針(投与する/しない)がはっきり変わる</mark>症例であり、「検査をする根拠」を持てるかどうかが判断の分かれ目になる",
           "<mark>もし本症例が実は伝染性単核球症(EBウイルス)だった場合、アモキシシリンなどのアミノペニシリン系を投与すると高頻度に非アレルギー性の薬疹(紅斑丘疹)を生じることが知られている</mark>(頻度は文献により幅があり、近年の小児コホートではおよそ30%程度と報告されている)。<mark>これは真のペニシリンアレルギーではないが、誤ってアレルギー歴として記録されてしまうことがあるため、倦怠感の強さやリンパ節腫脹の広がりから伝染性単核球症を疑う場合はこの点も念頭に置く</mark>"
         ],
@@ -560,7 +568,7 @@
         "<mark>若年成人の強い倦怠感・リンパ節腫脹・咽頭炎では伝染性単核球症を鑑別に入れ、疑えば接触競技の制限を含めた説明をする</mark>",
         "<mark>アモキシシリン投与後に広範な発疹が出た場合、真のペニシリンアレルギーとは限らず、背景に伝染性単核球症が隠れている可能性を考える</mark>",
         "抗菌薬投与の主目的は「症状を早く治す」ことよりも<mark>合併症予防と感染性の短縮</mark>にあることを患者に伝えると、必要性の説明として納得を得やすい",
-        "<mark>添付文書の用量は必ずしも現在推奨される治療量と一致しない</mark>ことがある。GAS咽頭炎のアモキシシリンはその代表例で、実地では専門家指針(500mg×2/日、10日間など)に沿って処方する習慣をつける"
+        "<mark>「1回何mgか」より「1日量がいくつか」を意識する</mark>と添付文書と専門家指針の用量差に振り回されにくい。GAS咽頭炎のアモキシシリンは1日量1,000mg(500mg×2回でも250mg×4回でもよい)、10日間、が実地での目安になる"
       ],
       refs:[
         {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
@@ -665,6 +673,60 @@
     {t:"抗菌薬が必要な所見・状況かを考える", d:"「かぜだから不要」で終わらせず、細菌感染を疑う所見(症状の期間・パターン、局所所見)があるかを検討する。必要な症例では堂々と処方し、不要な症例では不要と言い切る根拠を持つ。"},
     {t:"検査で方針が変わるかを考える", d:"検査は「念のため」ではなく、結果によって治療方針が変わる場合に行う。方針が変わらない検査はしない、という判断にも根拠を持つ。"},
     {t:"患者の不安に応え、見通しと再受診の目安を共有する", d:"受診理由や心配ごとを確認したうえで、現在の見立て・抗菌薬の要否・症状への対処・予想される経過・具体的な再受診の目安を共有する。"}
+  ];
+
+  var SYMPTOM_FLOW = [
+    {t:"いちばん困っている症状は何か", d:"症状全部に薬を出すのではなく、「痛くて飲めない」「咳で眠れない」など、生活への影響から治療の目標を決める。"},
+    {t:"その治療に、どれくらい効果を期待できるか", d:"「よく処方されている」と「効果の根拠がある」を区別する。対症療法の効果の根拠には限界があるものが多く、利益と害を天秤にかけて選ぶ必要がある。"},
+    {t:"その患者さんにとって不利益はないか", d:"年齢・併存疾患・併用薬を踏まえ、副作用や市販薬との成分重複を確認する。"},
+    {t:"薬が必要か、いつまで使うか", d:"薬以外の対処も含めて考え、使う場合は目的と終了の目安を共有する。"}
+  ];
+
+  var SYMPTOM_CARDS = [
+    {
+      icon:"熱", title:"発熱・痛み(頭痛・筋肉痛・咽頭痛など)",
+      complaint:"「熱がつらい」「痛みで日常生活に支障がある」",
+      choice:"<mark>アセトアミノフェン</mark>1回300〜500mgを頓用(4〜6時間以上あけて1日最大4,000mg)が第一選択。解熱・鎮痛効果は比較的しっかりしたエビデンスがある。NSAIDs(ロキソプロフェン60mgなど)も有効だが、脱水・腎機能低下・消化管潰瘍のリスクがある患者では慎重に検討する。",
+      harm:"アセトアミノフェンは過量投与で肝障害を来しうる。<mark>市販の総合感冒薬にも含まれることが多く、重複投与に注意</mark>。NSAIDsは妊娠後期で禁忌、腎機能・胃粘膜への影響がある。",
+      duration:"発熱・痛みが続く間の頓用が基本。3日以上発熱が遷延する、または悪化する場合は再評価する。"
+    },
+    {
+      icon:"喉", title:"咽頭痛",
+      complaint:"「痛くて食事や水分がとれない」",
+      choice:"アセトアミノフェン・NSAIDsの全身投与に加え、含嗽やトローチなど局所的な対症療法を併用する。国内では<mark>トラネキサム酸</mark>が咽頭炎症状に処方されることも多いが、対症療法としての効果のエビデンスは限定的である点を理解した上で使う。",
+      harm:"局所処置自体の副作用は少ないが、鎮痛薬の効果に頼って経過観察を怠ると、扁桃周囲膿瘍などの見逃したくない病態を見落としうる。",
+      duration:"経口摂取が可能になる程度まで。症状が悪化する、嚥下困難が強くなる場合は再受診とする。"
+    },
+    {
+      icon:"鼻", title:"鼻汁・鼻閉",
+      complaint:"「鼻が詰まって眠れない」「鼻水が止まらず不快」",
+      choice:"生理食塩水による鼻洗浄など非薬物的対処から検討する。強い鼻閉には<mark>短期間(3〜5日以内)の点鼻血管収縮薬</mark>(トラマゾリンなど)を考慮できる。第一世代抗ヒスタミン薬を含む感冒薬をルーチンに使うことについては、感冒に対する効果を支持する根拠に乏しいとされる。",
+      harm:"点鼻血管収縮薬を3〜5日を超えて連用すると<mark>反跳性の鼻閉(rebound congestion)</mark>を来しうる。抗ヒスタミン薬は眠気・口渇などの抗コリン作用があり、<mark>高齢者ではせん妄・転倒のリスク</mark>にもつながりうる(緑内障・前立腺肥大がある患者では特に注意)。",
+      duration:"症状のピーク(発症後2〜3日ごろ)を越えるまでの短期間の使用にとどめる。"
+    },
+    {
+      icon:"咳", title:"咳(乾性・湿性)",
+      complaint:"「咳で眠れない」「咳が続いてつらい」",
+      choice:"市販・処方の鎮咳薬(デキストロメトルファンなど)は感冒の咳への効果を支持する質の高い根拠に乏しい。<mark>はちみつ(1歳以上)</mark>は夜間の咳や睡眠の質を改善したとする複数のランダム化比較試験があり、副作用の少なさから選択肢になりうる。去痰薬(カルボシステインなど)や麦門冬湯などの漢方薬が用いられることもある。",
+      harm:"<mark>はちみつは1歳未満の乳児には乳児ボツリヌス症のリスクがあるため禁忌</mark>。鎮咳薬には中枢抑制作用があり、眠気や便秘などに注意する。",
+      duration:"咳は感冒の自然経過でも2〜3週間続きうることを踏まえて調整する。4週間以上続く、血痰を伴う、体重減少があるといった場合は他の鑑別を考える。"
+    },
+    {
+      icon:"合", title:"総合感冒薬・複数の症状への対応",
+      complaint:"「症状がいくつもあってつらい」",
+      choice:"症状を1つずつ整理し、<mark>本当に困っている症状に絞って単剤で対応する</mark>ほうが、効果と副作用のバランスを調整しやすい。総合感冒薬(PL配合顆粒など)は複数成分を含み手軽だが、個々の症状に応じた微調整はしにくい。",
+      harm:"総合感冒薬と他の解熱鎮痛薬・鼻炎薬などを併用すると、<mark>同じ成分(アセトアミノフェンや抗ヒスタミン薬など)を重複して摂取</mark>してしまうことがあるため、併用薬・市販薬の使用状況を必ず確認する。",
+      duration:"あくまで自然軽快までの症状緩和が目的であることを共有し、漫然と長期使用しない。"
+    }
+  ];
+
+  var SYMPTOM_REFS = [
+    {author:"Centers for Disease Control and Prevention", title:"Adult Outpatient Treatment Recommendations", source:"CDC Antibiotic Use", year:"2024", url:"https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html"},
+    {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+    {author:"Smith SM, Schroeder K, Fahey T.", title:"Over-the-counter (OTC) medications for acute cough in children and adults in ambulatory settings", source:"Cochrane Database of Systematic Reviews", year:"2014"},
+    {author:"De Sutter AI, van Driel ML, Kumar AA, Lesslar O, Skrt A.", title:"Oral antihistamine-decongestant-analgesic combinations for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2012"},
+    {author:"Deckx L, De Sutter AI, Guo L, Mir NA, van Driel ML.", title:"Nasal decongestants in monotherapy for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2016"},
+    {author:"Cohen HA, et al.", title:"Effect of Honey on Nocturnal Cough and Sleep Quality: A Double-Blind, Randomized, Placebo-Controlled Study", source:"Pediatrics", year:"2012", url:"https://doi.org/10.1542/peds.2011-3075"}
   ];
 
   var STORE_KEY = "kaze_progress_v1";
@@ -801,6 +863,7 @@
     html += '</div>';
 
     html += '<button class="axis-cta" data-action="goto-axis"><span><span class="t">かぜ診療の「3つの軸」を見る</span><span class="s">レッドフラッグ→抗菌薬の要否→患者への説明</span></span><span class="arrow">›</span></button>';
+    html += '<button class="axis-cta" data-action="goto-symptomatic"><span><span class="t">対症療法について理解を深める</span><span class="s">「何を出すか」の前に「何を楽にしたいか」を決める</span></span><span class="arrow">›</span></button>';
 
     if(state.reviewOnly){
       html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
@@ -960,6 +1023,37 @@
     });
     html += '</div>';
     html += '<div class="axis-foot">迷ったら、この3つの軸に立ち返る。</div>';
+    html += '<div class="after-assess" style="margin-top:18px;"><button class="nav-btn primary" data-action="goto-symptomatic">次へ: 対症療法について理解を深める</button></div>';
+    return html;
+  }
+
+  /* ---------------- RENDER: SYMPTOMATIC CARE ---------------- */
+  function renderSymptomatic(){
+    var html = "";
+    html += '<div class="axis-hero"><div class="eyebrow">対症療法のもう一つの軸</div><h1>「何を出すか」の前に「何を楽にしたいか」を決める</h1><p>薬の一覧を覚えることも大切ですが、まずはこの4つの問いの順番で考えると整理しやすくなります。抗菌薬が不要な症例でも、対症療法は「なんとなく総合感冒薬」で済ませず、症状ごとに根拠と不利益を意識して選びましょう。</p></div>';
+    html += '<div class="escalation-note"><div class="en-label">💊 発想の順番</div><div class="en-body">症状に薬を割り当てるのではなく、<mark>いちばん困っている症状は何かを決めてから、その治療の効果と不利益を天秤にかける</mark>、という順番で考えます。「よく処方されている」ことと「効果の根拠がある」ことは別物である点を意識してください。</div></div>';
+    html += '<div class="flow">';
+    SYMPTOM_FLOW.forEach(function(f,i){
+      html += '<div class="flow-step">';
+      html += '<div class="rail"><div class="node">'+(i+1)+'</div>'+(i<SYMPTOM_FLOW.length-1?'<div class="stem"></div>':'')+'</div>';
+      html += '<div class="content"><h3>'+f.t+'</h3><p>'+f.d+'</p></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+
+    html += '<div class="section-head antibiotic"><span class="dot"></span><h2>症状別に考える処方例</h2><span class="count">'+SYMPTOM_CARDS.length+'症状</span></div>';
+    SYMPTOM_CARDS.forEach(function(s){
+      html += '<div class="answer-card">';
+      html += '<h3><span class="ico explain">'+s.icon+'</span>'+s.title+'</h3>';
+      html += '<div class="sx-field"><b>①困りごとの例</b>'+s.complaint+'</div>';
+      html += '<div class="sx-field"><b>②第一選択とエビデンスの目安</b>'+s.choice+'</div>';
+      html += '<div class="sx-field"><b>③不利益・注意点</b>'+s.harm+'</div>';
+      html += '<div class="sx-field"><b>④いつまで使うか</b>'+s.duration+'</div>';
+      html += '</div>';
+    });
+
+    html += renderRefs({refs: SYMPTOM_REFS});
+    html += '<div class="axis-foot">薬を選ぶ前に、まず「何を楽にしたいか」を1つ決める。</div>';
     return html;
   }
 
@@ -987,6 +1081,9 @@
     } else if(state.view==="axis"){
       topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">かぜ診療の3つの軸</div>';
       mainHtml = renderAxis();
+    } else if(state.view==="symptomatic"){
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">対症療法の考え方</div>';
+      mainHtml = renderSymptomatic();
     }
 
     app.innerHTML = '<div class="topbar">'+topbarHtml+'</div><main>'+mainHtml+'</main>';
@@ -1028,6 +1125,8 @@
           render();
         } else if(action==="goto-axis"){
           go("axis");
+        } else if(action==="goto-symptomatic"){
+          go("symptomatic");
         } else if(action==="reveal"){
           collectDraft(state.caseId, true);
           revealCache[state.caseId] = true;
