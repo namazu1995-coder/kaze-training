@@ -32,6 +32,7 @@
     --mono-ink:#D9DEF7;
     --mono-accent:#8FE3C7;
     --shadow: 0 1px 2px rgba(16,20,45,.06), 0 6px 20px rgba(16,20,45,.06);
+    --on-primary:#FFFFFF; --on-good:#FFFFFF; --on-warn:#FFFFFF; --on-bad:#FFFFFF; --on-accent:#FFFFFF;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -40,7 +41,7 @@
       --surface-2:#1E2340;
       --ink:#E9EBFA;
       --ink-soft:#A6ACD6;
-      --ink-faint:#767CA8;
+      --ink-faint:#8B91BC;
       --line:#2B3159;
       --primary:#8B98E8;
       --primary-strong:#B3BDF2;
@@ -57,6 +58,7 @@
       --mono-ink:#C9D0F5;
       --mono-accent:#7FF2D4;
       --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+      --on-primary:#0D0F1F; --on-good:#0D0F1F; --on-warn:#0D0F1F; --on-bad:#0D0F1F; --on-accent:#0D0F1F;
     }
   }
   :root[data-theme="dark"]{
@@ -65,7 +67,7 @@
     --surface-2:#1E2340;
     --ink:#E9EBFA;
     --ink-soft:#A6ACD6;
-    --ink-faint:#767CA8;
+    --ink-faint:#8B91BC;
     --line:#2B3159;
     --primary:#8B98E8;
     --primary-strong:#B3BDF2;
@@ -82,6 +84,7 @@
     --mono-ink:#C9D0F5;
     --mono-accent:#7FF2D4;
     --shadow: 0 1px 2px rgba(0,0,0,.35), 0 8px 24px rgba(0,0,0,.4);
+    --on-primary:#0D0F1F; --on-good:#0D0F1F; --on-warn:#0D0F1F; --on-bad:#0D0F1F; --on-accent:#0D0F1F;
   }
 
   *{box-sizing:border-box;}
@@ -251,13 +254,14 @@
 
   .reveal-btn{
     width:100%; margin-top:24px; appearance:none; border:none; cursor:pointer;
-    background:var(--primary); color:#fff; font-weight:700; font-size:15px;
+    background:var(--primary); color:var(--on-primary); font-weight:700; font-size:15px;
     padding:15px; border-radius:14px; font-family:inherit;
     box-shadow:0 4px 14px rgba(60,75,140,.32);
   }
   .reveal-btn:active{ transform:scale(.99); }
 
   .answer-wrap{ margin-top:28px; }
+  .answer-wrap:focus{ outline:none; }
   .diagnosis-reveal{
     background:var(--primary-tint); border:1.5px solid var(--primary); border-radius:16px;
     padding:18px 20px; margin-bottom:20px; text-align:center;
@@ -277,6 +281,7 @@
   .verdict-badge.reassure{ background:var(--good-tint); color:var(--good); }
   .verdict-badge.abx{ background:var(--warn-tint); color:var(--warn); }
   .verdict-badge.escalate{ background:var(--bad-tint); color:var(--bad); }
+  .verdict-badge.test{ background:var(--primary-tint); color:var(--primary-strong); }
 
   .answer-wrap .divider{ display:flex; align-items:center; gap:10px; margin-bottom:18px; }
   .answer-wrap .divider .line{ flex:1; height:1px; background:var(--line); }
@@ -289,11 +294,11 @@
   .answer-card h3{ font-size:13.5px; font-weight:700; display:flex; align-items:center; gap:8px; margin-bottom:10px; }
   .answer-card h3 .ico{
     width:22px;height:22px;border-radius:7px;flex:none; display:flex;align-items:center;justify-content:center;
-    font-size:12px; font-weight:900; color:#fff;
+    font-size:12px; font-weight:900;
   }
-  .ico.redflag{background:var(--bad);}
-  .ico.abx{background:var(--accent);}
-  .ico.explain{background:var(--primary);}
+  .ico.redflag{background:var(--bad); color:var(--on-bad);}
+  .ico.abx{background:var(--accent); color:var(--on-accent);}
+  .ico.explain{background:var(--primary); color:var(--on-primary);}
   .answer-card ul{ margin:0; padding-left:20px; font-size:14px; color:var(--ink); }
   .answer-card li{ margin-bottom:6px; }
   .answer-card li:last-child{ margin-bottom:0; }
@@ -333,9 +338,9 @@
   .assess-btn.good{ border-color:var(--good); }
   .assess-btn.partial{ border-color:var(--warn); }
   .assess-btn.poor{ border-color:var(--bad); }
-  .assess-btn.good.active{ background:var(--good); color:#fff; }
-  .assess-btn.partial.active{ background:var(--warn); color:#fff; }
-  .assess-btn.poor.active{ background:var(--bad); color:#fff; }
+  .assess-btn.good.active{ background:var(--good); color:var(--on-good); box-shadow:inset 0 0 0 2px var(--surface); }
+  .assess-btn.partial.active{ background:var(--warn); color:var(--on-warn); box-shadow:inset 0 0 0 2px var(--surface); }
+  .assess-btn.poor.active{ background:var(--bad); color:var(--on-bad); box-shadow:inset 0 0 0 2px var(--surface); }
   .save-warning{
     margin-top:12px; padding:10px 14px; border-radius:10px;
     background:var(--bad-tint); color:var(--bad); font-size:12.5px; font-weight:600; line-height:1.5;
@@ -347,7 +352,7 @@
     appearance:none; border:none; cursor:pointer; border-radius:12px; padding:14px;
     font-family:inherit; font-size:14.5px; font-weight:700; text-align:center;
   }
-  .nav-btn.primary{ background:var(--primary); color:#fff; }
+  .nav-btn.primary{ background:var(--primary); color:var(--on-primary); }
   .nav-btn.ghost{ background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); }
 
   /* ---------- AXIS (FRAMEWORK) VIEW ---------- */
@@ -370,7 +375,7 @@
   .flow-step:last-child{ padding-bottom:0; }
   .flow-step .rail{ display:flex; flex-direction:column; align-items:center; flex:none; }
   .flow-step .node{
-    width:32px; height:32px; border-radius:50%; background:var(--primary); color:#fff;
+    width:32px; height:32px; border-radius:50%; background:var(--primary); color:var(--on-primary);
     display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13px;
     font-family:"Zen Kaku Gothic New",sans-serif; flex:none; z-index:1;
   }
@@ -387,6 +392,13 @@
   a{color:var(--primary);}
   button:focus-visible, textarea:focus-visible, .case-card:focus-visible{
     outline:2px solid var(--primary); outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration:.01ms !important; animation-iteration-count:1 !important;
+      transition-duration:.01ms !important; scroll-behavior:auto !important;
+    }
   }
 
   @media (hover:hover){
@@ -423,14 +435,15 @@
           "<mark>呼吸数26回/分、SpO2 91%という明らかなバイタルサイン異常</mark>があり、「かぜ」の範囲を超えていることをまず認識する",
           "<mark>高齢・喫煙歴という背景因子</mark>は肺炎の重症化リスクを高めるため、若年者と同じ基準で「様子を見る」と判断してはならない",
           "聴診所見(片側性のcrackles)は<mark>肺の限局した病変を示唆</mark>し、上気道症状のみのウイルス性感染とは異なる所見であることを確認する",
-          "<mark>これらの所見がある時点で「帰宅して様子を見る」という選択肢は妥当ではなく、追加の評価(胸部画像・酸素化の評価)が必要と判断する</mark>——バイタルサイン異常を「疲れているだけ」で片付けない"
+          "<mark>これらの所見がある時点で「帰宅して様子を見る」という選択肢は妥当ではなく、追加の評価(胸部画像・酸素化の評価)が必要と判断する</mark>——バイタルサイン異常を「疲れているだけ」で片付けない",
+          "<mark>SpO2 91%は評価対象であると同時に是正対象でもある</mark>——検査の結果を待つ前に酸素投与を開始し目標SpO2を決めて再評価する(40pack-yearの喫煙歴がありCOPDの併存が疑われるため、いきなり高濃度にせず88〜92%程度を当面の目安に開始し反応をみて調整する)。あわせて静脈路確保・輸液の要否を判断し、<mark>発熱・頻呼吸・頻脈がそろう時点で敗血症の可能性を一度は口に出す</mark>——研修医が一人で方針を抱え込まず、この時点で上級医にその場で相談する"
         ],
         antibiotics:[
           "<mark>市中肺炎を疑う臨床像(発熱・頻呼吸・低酸素・局所の肺雑音)</mark>があり、これは「かぜ」ではなく抗菌薬治療の適応がある病態と判断する",
-          "重症度評価には、日本国内では<mark>A-DROP</mark>(Age:年齢、Dehydration:脱水、Respiratory failure:呼吸不全、Orientation:意識障害、blood Pressure:血圧の5項目)が広く用いられる(国際的にはCURB-65やPSIも同じ目的で使われる)。<mark>Rの基準はSpO2 90%以下(PaO2 60Torr以下)であり、本症例のSpO2 91%はこの基準にぎりぎり該当しない</mark>ため、機械的に採点するとA-DROPは<mark>70歳以上の男性という年齢項目の1点のみ(中等症)</mark>にとどまる。しかし<mark>A-DROPは呼吸数を評価項目に含まないため、RR 26回/分という頻呼吸はスコアとは別に臨床的に重視する必要がある</mark>——スコア上「軽く見える」症例ほど注意する",
-          "脱水の評価(BUN等)も追加したうえで、<mark>A-DROPのスコアが軽症〜中等症相当であっても、低酸素血症の悪化傾向・喫煙による肺機能低下・独居等の社会的背景があれば入院治療を積極的に検討する</mark>——スコアだけで機械的に外来対応と決めない",
+          "重症度評価には、日本国内では<mark>A-DROP</mark>(Age:年齢、Dehydration:脱水、Respiratory failure:呼吸不全、Orientation:意識障害、blood Pressure:血圧の5項目)が広く用いられる(国際的にはCURB-65やPSIも同じ目的で使われる)。<mark>Rの基準はSpO2 90%以下(PaO2 60Torr以下)であり、本症例のSpO2 91%はこの基準にぎりぎり該当しない</mark>ため、この時点で確定できるのは<mark>70歳以上の男性という年齢項目の1点のみ</mark>で、D(脱水)は未評価。しかし<mark>A-DROPは呼吸数を評価項目に含まないため、RR 26回/分という頻呼吸はスコアとは別に臨床的に重視する必要がある</mark>——スコア上「軽く見える」症例ほど注意する",
+          "<mark>脱水の評価(BUN等)を追加する</mark>——仮にBUN上昇があれば2点となり中等症の中でも入院寄りの判断になる。<mark>A-DROPのスコアが軽症〜中等症相当であっても、低酸素血症の悪化傾向・喫煙による肺機能低下・独居等の社会的背景があれば入院治療を積極的に検討する</mark>——スコアだけで機械的に外来対応と決めない",
           "胸部X線(可能ならCT)で浸潤影の有無を確認し、<mark>可能な範囲で血液培養・喀痰培養を治療開始前に採取</mark>したうえで、経験的抗菌薬治療を<mark>診断確定を待たずに速やかに開始</mark>する(治療開始の遅れは予後を悪化させる)",
-          "<mark>非定型肺炎(マイコプラズマ等)を疑う6項目(年齢60歳未満・基礎疾患なし・頑固な咳嗽・聴診所見に乏しい・喀痰がない/迅速検査で原因菌不明・末梢血白血球10,000/μL未満)</mark>のうち本症例は多くを満たさない(高齢・喫煙歴・crackles聴取)ため、<mark>肺炎球菌などを想定した細菌性肺炎としてβラクタム系を主軸に治療する</mark>。<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを8時間ごとに点滴静注(添付文書上の標準は1日6gを2回分割で、3g×3〜4回は重症例での増量域=1日上限12g)、またはセフトリアキソン1〜2gを24時間ごとに点滴静注</mark>が代表的な選択肢になる(非定型病原体を強く疑う所見があればマクロライド系やレスピラトリーキノロン系の併用・変更を検討する)",
+          "<mark>マイコプラズマ肺炎を疑う6項目(年齢60歳未満・基礎疾患なし・頑固な咳嗽・聴診所見に乏しい・喀痰がない/迅速検査で原因菌不明・末梢血白血球10,000/μL未満)</mark>のうち本症例は多くを満たさない(高齢・喫煙歴・crackles聴取)ため、<mark>肺炎球菌などを想定した細菌性肺炎としてβラクタム系を主軸に治療する</mark>。<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを8時間ごとに点滴静注(添付文書上の標準は1日6gを2回分割で、3g×3〜4回は重症例での増量域=1日上限12g)、またはセフトリアキソン1〜2gを24時間ごとに点滴静注</mark>が代表的な選択肢になる(非定型病原体を強く疑う所見があればマクロライド系やレスピラトリーキノロン系の併用・変更を検討する)",
           "「かぜだと思っていた」という経過であっても<mark>所見が揃えば速やかに治療対象と判断を切り替える</mark>ことが、この症例の核心"
         ],
         explain:[
@@ -442,12 +455,12 @@
       },
       pearl:[
         "<mark>高齢者の肺炎は発熱や頻呼吸が目立たないことがあり、「なんとなく元気がない」「食欲がない」だけで発見されることもある</mark>——バイタルサインの実測を省略しない",
-        "<mark>呼吸数は最も見落とされやすいが最も重要なバイタルサインの一つ</mark>。「かぜ」を疑う診察でも必ず数える",
-        "<mark>日本国内の肺炎重症度評価にはA-DROP(年齢・脱水・呼吸不全・意識障害・血圧、0点軽症/1〜2点中等症/3点重症/4〜5点超重症)が広く用いられるが、呼吸数の項目を含まないため、頻呼吸などのバイタルサイン異常は別途臨床的に評価する必要がある</mark>",
-        "「経過が長い咳・微熱」を漫然と経過観察にせず、<mark>バイタルサインと聴診所見の再評価</mark>を都度行うことが、かぜ診療でのpneumonia見逃し予防になる"
+        "<mark>呼吸数は見落とされやすい一方で、最も重要なバイタルサインの一つ</mark>。「かぜ」を疑う診察でも必ず数える",
+        "<mark>日本国内の肺炎重症度評価にはA-DROP(年齢・脱水・呼吸不全・意識障害・血圧、0点軽症/1〜2点中等症/3点重症/4〜5点超重症)が広く用いられるが、呼吸数の項目を含まないため、頻呼吸などのバイタルサイン異常は別途臨床的に評価する必要がある</mark>。<mark>ショック(血圧低下)があれば、他の項目が軽くても1項目だけで超重症に分類される</mark>",
+        "「経過が長い咳・微熱」を漫然と経過観察にせず、<mark>バイタルサインと聴診所見の再評価</mark>を都度行うことが、かぜ診療での肺炎見逃し予防になる"
       ],
       refs:[
-        {author:"日本呼吸器学会 成人肺炎診療ガイドライン作成委員会", title:"成人肺炎診療ガイドライン2017", source:"日本呼吸器学会", year:"2017"},
+        {author:"日本呼吸器学会 成人肺炎診療ガイドライン作成委員会", title:"成人肺炎診療ガイドライン2024", source:"日本呼吸器学会", year:"2024"},
         {author:"Metlay JP, et al.(ATS/IDSA)", title:"Diagnosis and Treatment of Adults with Community-Acquired Pneumonia. An Official Clinical Practice Guideline", source:"American Journal of Respiratory and Critical Care Medicine", year:"2019", url:"https://doi.org/10.1164/rccm.201908-1581ST"}
       ]
     },
@@ -461,23 +474,25 @@
       verdict:"escalate", verdictLabel:"耳鼻科への緊急紹介",
       answer:{
         redflag:[
-          "<mark>開口障害(トリズムス)の程度・含み声(muffled voice)の有無・口蓋垂の偏位・流涎</mark>を自分から意図的に確認する——「開口が浅く観察しづらい」という所見自体がトリズムスを示唆するサインであり、見た目の情報だけで済ませず、実際に開口させ発声させて評価する",
-          "実際に評価すると<mark>開口障害(トリズムス)・含み声・口蓋垂の左方偏位・流涎</mark>を認め、単なる咽頭炎(かぜ)の範囲を超える、扁桃周囲膿瘍に典型的な所見がそろう",
+          "<mark>開口障害(トリズムス)の程度・含み声(muffled voice)の有無・口蓋垂の偏位・流涎</mark>を自分から意図的に確認する——「開口が浅く十分な観察ができていない」という所見自体がトリズムスを示唆するサインであり、見た目の情報だけで済ませず、実際に開口させ発声させて評価する",
+          "意図的に評価すると<mark>開口2横指程度のトリズムスと含み声・流涎</mark>が確認でき、限られた視野の中でも<mark>口蓋垂が左に押されている様子</mark>がうかがえる——開口障害のために視診が不十分であること自体が所見であり、「よく見えないから判断保留」ではなく「よく見えないほど開かない」を陽性所見として扱う",
+          "開口障害・含み声・流涎がそろえば、単なる咽頭炎(かぜ)の範囲を超える、扁桃周囲膿瘍に典型的な所見と判断してよい",
           "気道の状態(呼吸音・呼吸様式)、水分摂取と唾液を飲み込めているかを確認し、<mark>気道閉塞のリスクを評価</mark>する",
+          "<mark>開口障害・含み声・流涎に加えて吸気性喘鳴や、咽頭所見に比べて痛みが不釣り合いに強い場合は急性喉頭蓋炎も鑑別に挙げる</mark>——いずれにせよ気道緊急として扱う",
           "頸部の腫脹の広がり(深頸部感染症への進展)がないかを確認する",
-          "これらの所見があるため<mark>「帰宅して様子を見る」対応は不適切であり、緊急性の高い専門科紹介が必要</mark>と判断する"
+          "これらの所見があるため<mark>「帰宅して様子を見る」対応は不適切であり、緊急性の高い専門科紹介が必要</mark>と判断する。<mark>この所見がそろった時点で、自分一人で方針を決めずに上級医へその場でコールする</mark>——研修医が判断を抱え込む時間そのものがリスクになる"
         ],
         antibiotics:[
           "本症例は<mark>単純な咽頭炎ではなく扁桃周囲膿瘍(peritonsillar abscess)</mark>を強く疑う所見であり、抗菌薬単独ではなく<mark>穿刺・切開排膿と抗菌薬治療の組み合わせ</mark>が必要になる病態であることを認識する",
           "<mark>外来での迅速抗原検査や画像検査に時間をかけて治療開始を遅らせるべきではない</mark>——臨床所見から緊急性を判断し、専門科(耳鼻咽喉科)へ速やかにつなぐことを優先する",
           "<mark>典型的な臨床所見がそろい気道症状が切迫していれば、画像検査を待たずに耳鼻咽喉科へつなぐ</mark>が、開口制限が強く十分な診察ができない場合や、<mark>深頸部間隙(咽後間隙・傍咽頭間隙)への進展が疑われる場合には造影CTが膿瘍と蜂窩織炎の鑑別・進展範囲の評価に有用</mark>である",
-          "抗菌薬は<mark>口腔内嫌気性菌もカバーする広域な選択</mark>が一般的で、<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを6〜8時間ごとに点滴静注</mark>が代表的な例になる(<mark>ペニシリンアレルギーがあればクリンダマイシン600〜900mgを8時間ごとに点滴静注</mark>(国内添付文書の上限は1日2,400mg)を代替として検討する)が、最終的な薬剤選択と排膿の要否は耳鼻咽喉科医と相談して決定する",
+          "抗菌薬は<mark>口腔内嫌気性菌もカバーする広域な選択</mark>が一般的で、<mark>腎機能正常を前提とすると、スルバクタム/アンピシリン(SBT/ABPC)3gを6〜8時間ごとに点滴静注</mark>が代表的な例になる(<mark>ペニシリンアレルギーがあればクリンダマイシン600mgを6〜8時間ごとに点滴静注(1日1,800〜2,400mg)</mark>を代替として検討する。海外文献では900mg×3回/日も用いられるが、<mark>国内添付文書の重症時上限は1日2,400mgであり、これを超える投与は避ける</mark>)が、最終的な薬剤選択と排膿の要否は耳鼻咽喉科医と相談して決定する",
           "「かぜの延長」という思い込みで<mark>対症療法のみで帰宅させることが最大の危険</mark>であるとこの症例から学ぶ"
         ],
         explain:[
           "<mark>今の状態が単なる喉の痛みではなく、膿がたまっている可能性が高いこと</mark>を分かりやすく伝え、専門科での処置が必要な理由を説明する",
           "<mark>これから耳鼻咽喉科へ緊急で紹介すること、場合によっては処置(排膿)や入院が必要になりうること</mark>を伝え、患者の不安に配慮しながら流れを共有する",
-          "<mark>症状が悪化した場合(呼吸が苦しい、唾液を飲み込めない、声が出しにくいなど)はすぐに救急要請するよう伝える</mark>",
+          "<mark>この患者は一人で帰さない・待たせない</mark>——耳鼻咽喉科へ連絡がつくまでの間も同一施設内で観察し、<mark>移動手段と付き添いを確保する</mark>。転院搬送が必要なら救急搬送とする",
           "自己判断で市販薬のみに頼らず、<mark>今回のように症状が急速に悪化する咽頭痛は早めの受診が重要であることも伝える</mark>"
         ]
       },
@@ -487,7 +502,7 @@
         "扁桃周囲膿瘍は<mark>抗菌薬だけでなく排膿処置が治療の中心</mark>であり、これを見逃して対症療法のみで帰すことが最大のリスクとなる"
       ],
       refs:[
-        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
         {author:"岸田直樹", title:"誰も教えてくれなかった「風邪」の診かた 重篤な疾患を見極める!", source:"医学書院", year:"2012"},
         {author:"山本舜悟", title:"かぜ診療マニュアル 第2版", source:"日本医事新報社", year:"2017"},
         {author:"Galioto NJ.", title:"Peritonsillar Abscess", source:"American Family Physician", year:"2017", url:"https://www.aafp.org/pubs/afp/issues/2017/0415/p501.html"}
@@ -498,7 +513,7 @@
       title:"ウイルス性上気道炎(基本形)",
       hint:"24歳女性・3日前からの鼻汁・咽頭痛・微熱37.2℃",
       call:"3日前から鼻水と喉の痛みが続いていて、今日は熱っぽい感じがします。会社を休むべきか迷って来ました。",
-      background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、症状は3日目の現在がピーク前後で、増悪も急速な悪化もない。強い倦怠感や食欲低下はない。",
+      background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、症状の程度は昨日と同程度。食事は普段どおり摂れており、仕事も出勤できていた。",
       vitals:"体温 37.2℃　BP 118/72　HR 78　RR 14　SpO2 98%(room air)　全身状態良好、咽頭発赤軽度・扁桃腫大なし、頸部リンパ節腫脹なし、呼吸音清",
       verdict:"reassure", verdictLabel:"支持療法で帰宅",
       answer:{
@@ -506,20 +521,21 @@
           "重症感の有無(会話可能、歩行可能、経口摂取可能)を確認する",
           "バイタルサイン全項目に異常がないか(発熱の程度・頻呼吸・低酸素の有無)を確認する",
           "基礎疾患(免疫不全・慢性呼吸器疾患・心疾患など)や年齢によるリスクの上乗せがないかを確認する",
-          "これらに異常がなければ、<mark>入院や精査を要する所見がないという陰性所見を積極的に確認したうえで帰宅可能と判断する</mark>——「なんとなく大丈夫そう」ではなく、確認した項目を言語化できるようにする"
+          "これらに異常がなければ、<mark>入院や精査を要する所見がないことを一つずつ確認したうえで帰宅可能と判断する</mark>——「なんとなく大丈夫そう」ではなく、確認した項目を言語化できるようにする"
         ],
         antibiotics:[
           "<mark>鼻症状(鼻汁・鼻閉)・のど症状(咽頭痛)・咳(下気道症状)という3系統の症状が、同時に、同程度そろって</mark>おり、感冒(いわゆる「かぜ」)に典型的なパターンといえる。<mark>どれか1系統の症状だけが際立って強い場合や、経過中に新たな系統の症状が加わる場合は、感冒以外の疾患(咽頭炎・副鼻腔炎・肺炎・気管支炎など)を積極的に鑑別に入れる</mark>",
           "咽頭発赤はあるが<mark>扁桃滲出液・膿性分泌物・圧痛のある前頸部リンパ節腫脹はなく、咳を伴う</mark>ため、細菌性咽頭炎を積極的に疑う所見に乏しい",
           "<mark>ウイルス性上気道炎に抗菌薬を投与しても症状日数の短縮や合併症予防の効果は乏しく、副作用や耐性菌のリスクが上回る</mark>",
           "「かぜだから出さない」で終わらせず、<mark>抗菌薬を検討すべき所見(高熱の遷延、膿性痰の増加、局所の腫脹・圧痛、症状の二峰性増悪)が今回はないことを確認した上で不要と判断する</mark>",
+          "抗菌薬とは別に、<mark>流行期であればインフルエンザ・COVID-19も鑑別に挙げ、発症からの時間・重症化リスク因子・就業制限の必要性から「検査結果で方針(抗ウイルス薬・就業配慮)が変わるか」を判断する</mark>——同居家族に同症状がいることも踏まえて検討する",
           "検査(迅速抗原検査や血液検査)をしても<mark>この時点では治療方針が変わらないため、ルーチンには行わない</mark>——検査をしない判断にも根拠を持つ"
         ],
         explain:[
           "受診理由(仕事を休むべきか迷っている)を確認し、<mark>心配していることに具体的に答える</mark>(例:今の症状は感染性の強い時期か、休むべき期間の目安)",
           "現在の見立て(ウイルス性の急性上気道炎、いわゆる「かぜ」であること)と、<mark>抗菌薬は必要ないこと・その理由</mark>を分かりやすく伝える",
           "対症療法(解熱鎮痛薬、去痰薬、うがい、水分・休養)を具体的に提案する",
-          "予想される経過(通常3〜7日でピークを越えて軽快、咳のみ2〜3週間残ることがある)を伝え、<mark>再受診の目安を具体的に示す</mark>(38.5℃以上の発熱が続く、息苦しさが出る、一旦良くなった後に再び悪化する、5日以上経っても改善しない場合など)"
+          "予想される経過(通常3〜7日でピークを越えて軽快、咳のみ2〜3週間残ることがある)を伝え、<mark>再受診の目安を具体的に示す</mark>(38.5℃以上の発熱が続く、息苦しさが出る、一旦良くなった後に再び悪化する、1週間以上経っても改善しない場合など)"
         ]
       },
       pearl:[
@@ -529,8 +545,10 @@
         "再受診の目安を具体的な数値・症状で伝えることが、不要な再受診の予防にも、見逃しの予防にもつながる"
       ],
       refs:[
-        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
-        {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"}
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
+        {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"},
+        {author:"岸田直樹", title:"誰も教えてくれなかった「風邪」の診かた 重篤な疾患を見極める!", source:"医学書院", year:"2012"},
+        {author:"山本舜悟", title:"かぜ診療マニュアル 第2版", source:"日本医事新報社", year:"2017"}
       ]
     },
     {
@@ -540,18 +558,18 @@
       call:"2日前から喉がすごく痛くて、唾を飲み込むのもつらいです。熱も38度台まで上がりました。",
       background:"20歳男性。既往なし。2日前からの咽頭痛・嚥下痛・発熱で受診。咳や鼻汁は伴っていない。周囲に同様の症状の人はいない。",
       vitals:"体温 38.6℃　BP 122/76　HR 92　RR 16　SpO2 98%　両側扁桃に白苔状の滲出液あり、前頸部リンパ節の腫脹・圧痛あり、咳嗽・鼻汁なし",
-      verdict:"abx", verdictLabel:"迅速検査の結果で方針決定",
+      verdict:"test", verdictLabel:"迅速検査の結果で方針決定",
       answer:{
         redflag:[
           "開口障害(トリズムス)・含み声・流涎・頸部の激しい腫脹など<mark>扁桃周囲膿瘍や気道緊急を示唆する所見がないか</mark>を確認する",
           "呼吸状態・水分摂取が保てているか(脱水・気道浮腫の評価)を確認する",
-          "皮疹・関節痛・著明な倦怠感がなく、<mark>単純な咽頭炎の範囲を超える所見がない</mark>ことを確認し、これらが陰性であれば外来対応可能と判断する",
-          "<mark>伝染性単核球症(EBウイルス)</mark>の可能性(著明な倦怠感、頸部リンパ節腫脹の広がり、脾腫)も念頭に置き、疑えば脾腫の有無を診察で確認する(未診断の脾腫がある場合、運動制限の指導が必要になるため)"
+          "皮疹・関節痛・著明な倦怠感の有無を確認し、<mark>単純な咽頭炎の範囲を超える所見がない</mark>ことを確認し、いずれもなければ外来対応可能と判断する",
+          "<mark>伝染性単核球症(EBウイルス)</mark>の可能性(著明な倦怠感、頸部リンパ節腫脹の広がり、脾腫)も念頭に置き、疑えば脾腫の有無を診察で確認する(脾腫があると外傷による脾破裂のリスクがあり、接触競技などの運動制限を指導する必要があるため)"
         ],
         antibiotics:[
-          "McIsaac基準は<mark>①38℃以上の発熱、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④白苔を伴う扁桃腺炎</mark>の4項目(各1点)に、年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加えて評価する。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となる",
-          "同手引きの整理では<mark>0点:2〜3%、1点:4〜6%、2点:10〜12%、3点:27〜28%、4〜5点:38〜63%</mark>とスコアに応じてGASの確率が示されており、<mark>ESCMIDの指針は2点以下では検査・抗菌薬を推奨せず、ACP/CDCもGASを示唆する所見が乏しい患者には検査を推奨していない</mark>——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない。<mark>このスコアは急性の咽頭痛で受診した患者への適用を前提とし、4点でも約4〜6割はGAS陰性である</mark>点は理解しておく(あくまで検査前確率の目安であり、確定診断ではない)",
-          "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とする。厚生労働省の手引きや亀田感染症ガイドラインなど国内の専門家指針では、GASによる急性咽頭炎に対して<mark>アモキシシリン500mgを1日2回、10日間</mark>内服することが推奨されている。<mark>β-ラクタム系は時間依存性の抗菌薬であり、理論上は1日4回など、より頻回な分割投与の方が有利にも思えるが、GAS咽頭炎における至適な投与回数そのものを直接比較したエビデンスは乏しく</mark>、実地ではアドヒアランスの良さから1日2回法が広く推奨されている。<mark>添付文書の「1回250mgを1日3〜4回」の範囲内でも、1日3回(750mg/日)にとどめると専門家指針が推奨する1日量(1,000mg相当)に届かない</mark>点には注意する。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
+          "McIsaac基準は<mark>①38℃以上の発熱、②咳嗽がないこと、③前頸部リンパ節の腫脹・圧痛、④扁桃の腫脹または滲出物(白苔)</mark>の4項目(各1点)に、年齢補正(<mark>3〜14歳:+1点、15〜44歳:0点、45歳以上:−1点</mark>)を加えて評価する。本症例(20歳男性)は<mark>4項目すべてを満たし年齢補正0点で合計4点</mark>となる",
+          "亀田感染症ガイドラインの整理では<mark>0点:2〜3%、1点:4〜6%、2点:10〜12%、3点:27〜28%、4〜5点:38〜63%</mark>とスコアに応じて<mark>迅速抗原検査が陽性となる確率</mark>が示されており、<mark>ESCMIDの指針は2点以下では検査・抗菌薬を推奨せず、ACP/CDCもGASを示唆する所見が乏しい患者には検査を推奨していない</mark>——<mark>スコアが高い場合でもルーチンでの経験的抗菌薬投与ではなく、検査で確定してから抗菌薬を判断する</mark>のが基本であり、「熱があるから念のため」で処方しない。<mark>このスコアは急性の咽頭痛で受診した患者への適用を前提とし、4点でも約4〜6割はGAS陰性である</mark>点は理解しておく(あくまで検査前確率の目安であり、確定診断ではない)",
+          "検査が陽性であれば<mark>ペニシリン系</mark>を第一選択とする。厚生労働省の手引きや亀田感染症ガイドラインなど国内の専門家指針では、GASによる急性咽頭炎に対して<mark>アモキシシリン500mgを1日2回、10日間</mark>内服することが推奨されている。<mark>ペニシリンアレルギーがある場合、アナフィラキシー等の即時型でなければセファレキシンなど第一世代セフェムを、即時型であればクリンダマイシンやマクロライド系を代替として検討する</mark>(国内のマクロライド耐性GASの割合は高く、可能なら感受性を確認する)。<mark>β-ラクタム系は時間依存性の抗菌薬であり、理論上は1日4回など、より頻回な分割投与の方が有利にも思えるが、GAS咽頭炎における至適な投与回数そのものを直接比較したエビデンスは乏しく</mark>、実地ではアドヒアランスの良さから1日2回法が広く推奨されている。<mark>添付文書の「1回250mgを1日3〜4回」の範囲内でも、1日3回(750mg/日)にとどめると専門家指針が推奨する1日量(1,000mg相当)に届かない</mark>点には注意する。リウマチ熱などの合併症予防と症状短縮を目的に投与し、陰性であればウイルス性として抗菌薬は不要と判断する",
           "検査の結果によって<mark>方針(投与する/しない)がはっきり変わる</mark>症例であり、「検査をする根拠」を持てるかどうかが判断の分かれ目になる",
           "<mark>もし本症例が実は伝染性単核球症(EBウイルス)だった場合、アモキシシリンなどのアミノペニシリン系を投与すると高頻度に非アレルギー性の薬疹(紅斑丘疹)を生じることが知られている</mark>(頻度は文献により幅があり、近年の小児コホートではおよそ30%程度と報告されている)。<mark>これは真のペニシリンアレルギーではないが、誤ってアレルギー歴として記録されてしまうことがあるため、倦怠感の強さやリンパ節腫脹の広がりから伝染性単核球症を疑う場合はこの点も念頭に置く</mark>"
         ],
@@ -571,13 +589,15 @@
         "添付文書の承認用量(250mgを1日3〜4回)と、専門家指針が推奨する用量(500mgを1日2回、10日間)には差があり、GAS咽頭炎では後者に沿って処方するのが実地での一般的な対応になる"
       ],
       refs:[
-        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
         {author:"三好和康・黒田浩一・鈴木大介(監修:細川直登)", title:"亀田感染症ガイドライン 咽頭炎(version 2)", source:"亀田総合病院", year:"2018", url:"https://medical.kameda.com/general/medical/assets/01.pdf"},
         {author:"JAID/JSC感染症治療ガイド・ガイドライン作成委員会 呼吸器感染症ワーキンググループ", title:"JAID/JSC感染症治療ガイドライン 呼吸器感染症", source:"日本化学療法学会雑誌", year:"2014"},
         {author:"Shulman ST, et al.(IDSA)", title:"Clinical Practice Guideline for the Diagnosis and Management of Group A Streptococcal Pharyngitis: 2012 Update", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis629"},
         {author:"Maness DL, Martin M, Mitchell G.", title:"Poststreptococcal Illness: Recognition and Management", source:"American Family Physician", year:"2018", url:"https://www.aafp.org/pubs/afp/issues/2018/0415/p517.html"},
-        {author:"McIsaac WJ, et al.", title:"A clinical score to reduce unnecessary antibiotic use in patients with sore throat", source:"CMAJ", year:"1998", url:"https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1229033/"},
-        {author:"Chovel-Sella A, et al.", title:"Incidence of Rash After Amoxicillin Treatment in Children With Infectious Mononucleosis", source:"Pediatrics", year:"2013", url:"https://doi.org/10.1542/peds.2012-1575"}
+        {author:"McIsaac WJ, et al.", title:"A clinical score to reduce unnecessary antibiotic use in patients with sore throat", source:"CMAJ", year:"1998", url:"https://www.cmaj.ca/content/158/1/75.full"},
+        {author:"Chovel-Sella A, et al.", title:"Incidence of Rash After Amoxicillin Treatment in Children With Infectious Mononucleosis", source:"Pediatrics", year:"2013", url:"https://doi.org/10.1542/peds.2012-1575"},
+        {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"},
+        {author:"Pelucchi C, et al.(ESCMID)", title:"Guideline for the management of acute sore throat", source:"Clinical Microbiology and Infection", year:"2012", url:"https://doi.org/10.1111/j.1469-0691.2012.03766.x"}
       ]
     },
     {
@@ -585,7 +605,7 @@
       title:"急性細菌性副鼻腔炎の疑い",
       hint:"45歳男性・10日以上続く鼻汁と片側性の頬部痛",
       call:"風邪だと思って様子を見ていたのですが、一度良くなりかけたのに、ここ2、3日でまた鼻水が増えて、右の頬が痛むようになりました。",
-      background:"45歳男性。既往なし。10日前に鼻閉・鼻汁・咽頭痛で発症し、いったん5日目頃に軽快傾向だったが、7日目から再び症状が悪化(いわゆる二峰性の経過)。現在は膿性鼻汁、右頬部の圧痛、前屈で増悪する頭痛を伴う。",
+      background:"45歳男性。既往なし。10日前に鼻閉・鼻汁・咽頭痛で発症。5日目頃には症状が軽くなったと本人は感じていたが、7日目から鼻汁が再び増加し右頬部痛が出現した。現在は膿性鼻汁、右頬部の圧痛、前屈で増悪する頭痛を伴う。",
       vitals:"体温 37.8℃　BP 128/80　HR 84　RR 16　SpO2 98%　右上顎洞部の圧痛あり、鼻腔内に膿性分泌物あり、眼窩周囲の腫脹・視力障害なし",
       verdict:"abx", verdictLabel:"抗菌薬の適応あり",
       answer:{
@@ -596,9 +616,10 @@
           "免疫不全・糖尿病など<mark>侵襲性真菌性副鼻腔炎のリスク因子</mark>がないかも念のため確認する"
         ],
         antibiotics:[
-          "急性細菌性副鼻腔炎を疑う臨床基準(IDSA/ACP・CDC)に照らすと、<mark>①症状の改善がないまま10日以上持続、②高熱(39℃以上)と膿性鼻汁・顔面痛が3日以上重症、③一度軽快した後に再増悪する「二峰性の経過」</mark>のいずれかを満たせば細菌性を疑う。本症例は<mark>一度軽快した後に再増悪する③の「二峰性の経過」に該当する</mark>(①は「改善のないまま10日以上持続」を指すため、いったん軽快した本症例はここには該当しない)",
+          "<mark>急性鼻副鼻腔炎の大半はウイルス性で、軽症例では抗菌薬を投与せず3〜5日の経過観察や待機処方(症状が改善しなければ使う前提で処方を渡す)が第一の選択肢になる</mark>——「基準を満たしたら即処方」ではなく、まず軽症かどうかを考える",
+          "急性細菌性副鼻腔炎を疑う臨床基準(IDSA/ACP・CDC)に照らすと、<mark>①症状の改善がないまま10日以上持続、②高熱(39℃以上)と膿性鼻汁・顔面痛が3〜4日以上重症、③一度軽快した後に再増悪する「二峰性の経過」</mark>のいずれかを満たせば細菌性を疑う。本症例は<mark>一度軽快した後に再増悪する③の「二峰性の経過」に該当し、37.8℃の発熱と右頬部痛・圧痛という局所所見も伴う</mark>ため投与側に判断が傾く(①は「改善のないまま10日以上持続」を指すため、いったん軽快した本症例はここには該当しない)",
           "<mark>単なる鼻汁の色(黄色・緑色)だけでは細菌性の根拠にはならない</mark>——色調変化はウイルス性でも自然経過で起こりうるため、経過のパターンで判断する",
-          "上記基準を満たすため抗菌薬投与が推奨される場面と判断できる。厚生労働省の手引きでは中等症以上に対し<mark>アモキシシリン水和物1回500mgを1日3回、5〜7日間</mark>、ACP/CDCの助言では<mark>アモキシシリン(±クラブラン酸)を5〜10日間</mark>内服することとされている。<mark>これとは別に、国内の実地では腎機能正常を前提に、オーグメンチン配合錠(AMPC/CVA)250RS 1回1錠+アモキシシリン(サワシリン)250mg 1回1カプセルを1日3回、5〜7日間内服する、いわゆる「オグサワ」処方</mark>も広く行われる(<mark>手引きが推奨する処方そのものではなく国内の実地慣行</mark>である点に注意)——<mark>オーグメンチン単剤ではクラブラン酸の比率が相対的に高く下痢などの消化器症状を来しやすいため、アモキシシリンを追加してAMPC/CVA比を調整する工夫</mark>である",
+          "上記基準を満たすため抗菌薬投与が推奨される場面と判断できる。厚生労働省の手引きは中等症以上に5〜7日間の内服を挙げ、<mark>用量は米国指針に沿って1回500mg 1日3回とされる</mark>。ACP/CDCの助言では<mark>アモキシシリン(±クラブラン酸)を5〜10日間</mark>内服することとされている。<mark>これとは別に、国内の実地では腎機能正常を前提に、オーグメンチン配合錠(AMPC/CVA)250RS 1回1錠+アモキシシリン(サワシリン)250mg 1回1カプセルを1日3回、5〜7日間内服する、いわゆる「オグサワ」処方</mark>も広く行われる(<mark>手引きが推奨する処方そのものではなく国内の実地慣行</mark>である点に注意)——<mark>オーグメンチン単剤ではクラブラン酸の比率が相対的に高く下痢などの消化器症状を来しやすいため、アモキシシリンを追加してAMPC/CVA比を調整する工夫</mark>である",
           "<mark>日本ではアモキシシリン水和物の急性副鼻腔炎に対する効能・効果は薬事承認されていないが、社会保険診療報酬支払基金は原則としてこの適応での処方を審査上認めている</mark>——添付文書の適応外であることを理由に処方をためらう必要はない",
           "画像検査(CTなど)は<mark>合併症を疑う場合以外はルーチンには不要</mark>で、臨床基準のみで治療方針を決定してよい"
         ],
@@ -615,8 +636,8 @@
         "眼窩・頭蓋内合併症のred flagを一度は確認する習慣が、副鼻腔炎診療での見逃し防止になる"
       ],
       refs:[
-        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
-        {author:"日本鼻科学会", title:"急性鼻副鼻腔炎診療ガイドライン", source:"日本鼻科学会会誌 49(2):143-198", year:"2010"},
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
+        {author:"日本鼻科学会", title:"急性鼻副鼻腔炎診療ガイドライン[追補版]", source:"日本鼻咽喉科学会会誌 53(2):103-160", year:"2014"},
         {author:"Chow AW, et al.(IDSA)", title:"IDSA Clinical Practice Guideline for Acute Bacterial Rhinosinusitis in Children and Adults", source:"Clinical Infectious Diseases", year:"2012", url:"https://doi.org/10.1093/cid/cis370"}
       ]
     },
@@ -644,6 +665,7 @@
           "まず<mark>「出張までに治したい」という患者の本当の心配・事情を言葉にして受け止める</mark>——単に抗菌薬を拒否するだけでは信頼関係を損ないやすい",
           "現在の見立て(ウイルス性の上気道炎であること)と、<mark>抗菌薬が効かない理由・むしろ不利益がありうること</mark>を、対立ではなく情報共有として伝える(shared decision making)",
           "出張に間に合わせたいという目的に沿って、<mark>症状を早く軽減するための具体的な対症療法</mark>(十分な休養、解熱鎮痛薬、去痰薬、水分摂取)を提案する",
+          "<mark>出張という目的に沿って、いつ頃から周囲にうつしにくくなるか、移動中・会食時の配慮(マスク、手指衛生、症状が強い日の予定調整)という具体策も併せて提示する</mark>——「抗菌薬を出さない代わりに何ができるか」を渡すことが、この症例の説明の要になる",
           "予想される経過(数日でピークを越えて軽快していく見込み)を伝え、<mark>もし発熱が悪化する・症状が長引く・新たな症状が出た場合の再受診の目安</mark>を具体的に共有し、「その時は必要な治療を一緒に考える」という姿勢を示す"
         ]
       },
@@ -651,10 +673,10 @@
         "抗菌薬を求める患者への説明で最も重要なのは<mark>「なぜ要らないか」の理屈より先に、患者が何を心配しているかを理解すること</mark>",
         "<mark>共同意思決定(shared decision making)のアプローチは、抗菌薬の不要な処方を減らしつつ患者満足度を保つことが報告されている</mark>",
         "「様子を見ましょう」で終わらせず、<mark>再受診の具体的な目安を渡すこと自体が、抗菌薬を出さない判断への患者の安心材料になる</mark>",
-        "<mark>「抗菌薬は不要です」という否定的な説明だけでなく、対症療法の提案などの肯定的な説明を組み合わせると、抗菌薬処方をより減らしながら患者満足度も高まる</mark>ことが報告されている"
+        "<mark>「抗菌薬は不要です」という否定的な説明だけでなく、対症療法の提案などの肯定的な説明を組み合わせると、抗菌薬処方をより減らしながら患者満足度も高まる</mark>ことが報告されている(小児外来を対象にした研究だが、成人診療にも応用できる考え方として紹介する)"
       ],
       refs:[
-        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+        {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
         {author:"Mangione-Smith R, et al.", title:"Communication Practices and Antibiotic Use for Acute Respiratory Tract Infections in Children", source:"Annals of Family Medicine", year:"2015", url:"https://doi.org/10.1370/afm.1785"},
         {author:"Harris AM, et al.(ACP/CDC)", title:"Appropriate Antibiotic Use for Acute Respiratory Tract Infection in Adults: Advice for High-Value Care", source:"Annals of Internal Medicine", year:"2016", url:"https://doi.org/10.7326/M15-1840"},
         {author:"Coxeter P, et al.", title:"Interventions to facilitate shared decision making to address antibiotic use for acute respiratory infections in primary care", source:"Cochrane Database of Systematic Reviews", year:"2015", url:"https://doi.org/10.1002/14651858.CD010907.pub2"}
@@ -670,7 +692,7 @@
 
   var FLOW = [
     {t:"病歴と診察でレッドフラッグを探す", d:"重症感、呼吸状態、バイタルサイン全項目、年齢や基礎疾患などの患者背景を確認する。「なんとなく元気がなさそう」ではなく、具体的な所見で判断する。"},
-    {t:"帰宅可能かを判断し、根拠を言葉にする", d:"見逃したくない疾患(肺炎、扁桃周囲膿瘍、髄膜炎など)を一度は鑑別に挙げ、それらを否定できる所見を確認したうえで「帰宅してよい」理由を説明できるようにする。"},
+    {t:"帰宅可能かを判断し、根拠を言葉にする", d:"見逃したくない疾患(肺炎、扁桃周囲膿瘍、急性喉頭蓋炎、髄膜炎など)を一度は鑑別に挙げ、それらを否定できる所見を確認したうえで「帰宅してよい」理由を説明できるようにする。"},
     {t:"抗菌薬が必要な所見・状況かを考える", d:"「かぜだから不要」で終わらせず、細菌感染を疑う所見(症状の期間・パターン、局所所見)があるかを検討する。必要な症例では堂々と処方し、不要な症例では不要と言い切る根拠を持つ。"},
     {t:"検査で方針が変わるかを考える", d:"検査は「念のため」ではなく、結果によって治療方針が変わる場合に行う。方針が変わらない検査はしない、という判断にも根拠を持つ。"},
     {t:"患者の不安に応え、見通しと再受診の目安を共有する", d:"受診理由や心配ごとを確認したうえで、現在の見立て・抗菌薬の要否・症状への対処・予想される経過・具体的な再受診の目安を共有する。"}
@@ -679,8 +701,8 @@
   var SYMPTOM_FLOW = [
     {t:"いちばん困っている症状は何か", d:"症状全部に薬を出すのではなく、「痛くて飲めない」「咳で眠れない」など、生活への影響から治療の目標を決める。"},
     {t:"その治療に、どれくらい効果を期待できるか", d:"「よく処方されている」と「効果の根拠がある」を区別する。対症療法の効果の根拠には限界があるものが多く、利益と害を天秤にかけて選ぶ必要がある。"},
-    {t:"その患者さんにとって不利益はないか", d:"年齢・併存疾患・併用薬を踏まえ、副作用や市販薬との成分重複を確認する。"},
-    {t:"薬が必要か、いつまで使うか", d:"薬以外の対処も含めて考え、使う場合は目的と終了の目安を共有する。"}
+    {t:"その患者にとって不利益はないか", d:"年齢・併存疾患・併用薬を踏まえ、副作用や市販薬との成分重複を確認する。"},
+    {t:"薬が必要か、いつまで使うか", d:"そもそも薬を使うかどうかも含めて考え、使う場合は目的と終了の目安を共有する。"}
   ];
 
   var SYMPTOM_CARDS = [
@@ -701,7 +723,7 @@
     {
       icon:"鼻", title:"鼻汁・鼻閉",
       complaint:"「鼻が詰まって眠れない」「鼻水が止まらず不快」",
-      choice:"生理食塩水による鼻洗浄など非薬物的対処から検討する。強い鼻閉には<mark>短期間(3〜5日以内)の点鼻血管収縮薬</mark>(トラマゾリンなど)を考慮できる。第一世代抗ヒスタミン薬を含む感冒薬をルーチンに使うことについては、感冒に対する効果を支持する根拠に乏しいとされる。",
+      choice:"生理食塩水による鼻洗浄など非薬物的対処から検討する。強い鼻閉には<mark>短期間(3〜5日以内)の点鼻血管収縮薬</mark>(トラマゾリンなど)を考慮できる。第一世代抗ヒスタミン薬と鎮痛薬・血管収縮薬を組み合わせた感冒薬は、<mark>成人・年長児では一定の症状緩和効果があるとされるが、効果量は小さく、眠気などの副作用と天秤にかけて使うかどうかを判断する</mark>(小児での効果ははっきりしない)。",
       harm:"点鼻血管収縮薬を3〜5日を超えて連用すると<mark>反跳性の鼻閉(rebound congestion)</mark>を来しうる。抗ヒスタミン薬は眠気・口渇などの抗コリン作用があり、<mark>高齢者ではせん妄・転倒のリスク</mark>にもつながりうる(緑内障・前立腺肥大がある患者では特に注意)。",
       duration:"症状のピーク(発症後2〜3日ごろ)を越えるまでの短期間の使用にとどめる。"
     },
@@ -723,11 +745,11 @@
 
   var SYMPTOM_REFS = [
     {author:"Centers for Disease Control and Prevention", title:"Adult Outpatient Treatment Recommendations", source:"CDC Antibiotic Use", year:"2024", url:"https://www.cdc.gov/antibiotic-use/hcp/clinical-care/adult-outpatient.html"},
-    {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第一版", source:"厚生労働省", year:"2017"},
+    {author:"厚生労働省健康局結核感染症課", title:"抗微生物薬適正使用の手引き 第三版", source:"厚生労働省", year:"2023"},
     {author:"Morishima T, et al.", title:"Encephalitis and Encephalopathy Associated with an Influenza Epidemic in Japan", source:"Clinical Infectious Diseases", year:"2002"},
     {author:"Aronoff DM, Bloch KC.", title:"Assessing the Relationship Between the Use of Nonsteroidal Antiinflammatory Drugs and Necrotizing Fasciitis Caused by Group A Streptococcus", source:"Medicine (Baltimore)", year:"2003"},
     {author:"Smith SM, Schroeder K, Fahey T.", title:"Over-the-counter (OTC) medications for acute cough in children and adults in community settings", source:"Cochrane Database of Systematic Reviews", year:"2014"},
-    {author:"De Sutter AI, van Driel ML, Kumar AA, Lesslar O, Skrt A.", title:"Oral antihistamine-decongestant-analgesic combinations for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2012"},
+    {author:"De Sutter AI, Eriksson L, van Driel ML.", title:"Oral antihistamine-decongestant-analgesic combinations for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2022"},
     {author:"Deckx L, De Sutter AI, Guo L, Mir NA, van Driel ML.", title:"Nasal decongestants in monotherapy for the common cold", source:"Cochrane Database of Systematic Reviews", year:"2016"},
     {author:"Cohen HA, et al.", title:"Effect of Honey on Nocturnal Cough and Sleep Quality: A Double-Blind, Randomized, Placebo-Controlled Study", source:"Pediatrics", year:"2012", url:"https://doi.org/10.1542/peds.2011-3075"}
   ];
@@ -742,16 +764,48 @@
     }catch(e){ return {}; }
   }
   function saveProgress(p){
-    try{ localStorage.setItem(STORE_KEY, JSON.stringify(p)); return true; }catch(e){ return false; }
+    try{
+      // Read-merge-write: another tab may have saved newer progress since this tab's
+      // in-memory state was last loaded. Overwriting wholesale would silently drop it.
+      var stored = loadProgress();
+      Object.keys(p).forEach(function(k){ stored[k] = p[k]; });
+      localStorage.setItem(STORE_KEY, JSON.stringify(stored));
+      state.progress = stored;
+      return true;
+    }catch(e){ return false; }
   }
   function loadDrafts(){
     try{
-      var d = JSON.parse(localStorage.getItem(DRAFT_KEY));
-      return (d && typeof d === "object" && !Array.isArray(d)) ? d : {};
+      var raw = JSON.parse(localStorage.getItem(DRAFT_KEY));
+      if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
+      var keys = PROMPTS.map(function(p){ return p.key; });
+      var known = {}; CASES.forEach(function(c){ known[c.id] = true; });
+      var out = {};
+      Object.keys(raw).forEach(function(caseId){
+        if(!known[caseId]) return; // drop entries for unknown/removed case ids
+        var entry = raw[caseId];
+        if(!entry || typeof entry !== "object" || Array.isArray(entry)) return;
+        var clean = {};
+        keys.forEach(function(k){
+          if(typeof entry[k] === "string") clean[k] = entry[k]; // only accept string values
+        });
+        out[caseId] = clean;
+      });
+      return out;
     }catch(e){ return {}; }
   }
-  function saveDrafts(d){
-    try{ localStorage.setItem(DRAFT_KEY, JSON.stringify(d)); return true; }catch(e){ return false; }
+  function saveDrafts(d, dirtyIds){
+    try{
+      // Same read-merge-write concern as saveProgress, but scoped to only the case(s) this
+      // tab actually edited (dirtyIds) — an untouched case in `d` is just this tab's stale
+      // load-time snapshot and must not clobber a newer draft another tab wrote for it.
+      var stored = loadDrafts();
+      (dirtyIds || Object.keys(d)).forEach(function(k){
+        if(d[k]) stored[k] = d[k];
+      });
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(stored));
+      return true;
+    }catch(e){ return false; }
   }
 
   // Soft data-integrity check: warns in the console (never blocks rendering) if a future
@@ -759,15 +813,22 @@
   // navigation both rely on.
   (function validateCasesData(){
     var seenIds = {}, seenNums = {}, ok = true;
+    var VALID_CATS = {redflag:1, antibiotic:1};
+    var VALID_VERDICTS = {reassure:1, abx:1, escalate:1, test:1};
     CASES.forEach(function(c, i){
       if(seenIds[c.id]) ok = false;
       seenIds[c.id] = true;
       if(seenNums[c.num]) ok = false;
       seenNums[c.num] = true;
       if(c.num !== i+1) ok = false;
+      if(!VALID_CATS[c.cat]) ok = false;
+      if(!VALID_VERDICTS[c.verdict]) ok = false;
+      PROMPTS.forEach(function(p){
+        if(!c.answer || !Array.isArray(c.answer[p.key]) || !c.answer[p.key].length) ok = false;
+      });
     });
     if(!ok && typeof console !== "undefined" && console.warn){
-      console.warn("[kaze] CASES data integrity check failed: ids/nums are not unique and sequential. Case navigation and status tracking may misbehave.");
+      console.warn("[kaze] CASES data integrity check failed: ids/nums/cat/verdict/answer content are not all valid. Case navigation and status tracking may misbehave.");
     }
   })();
 
@@ -783,7 +844,8 @@
   var app = document.getElementById("app");
 
   function escapeHtml(s){
-    return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
   }
 
   var VALID_STATUSES = ["good","partial","poor"];
@@ -858,7 +920,7 @@
     html += '</div>';
 
     html += '<div class="progress-card">';
-    html += '  <div class="progress-ring"><svg width="56" height="56"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
+    html += '  <div class="progress-ring"><svg width="56" height="56" aria-hidden="true" focusable="false"><circle cx="28" cy="28" r="24" stroke="var(--surface-2)" stroke-width="5" fill="none"/><circle cx="28" cy="28" r="24" stroke="var(--primary)" stroke-width="5" fill="none" stroke-linecap="round" stroke-dasharray="'+circumference+'" stroke-dashoffset="'+offset+'"/></svg><div class="pct">'+pct+'%</div></div>';
     html += '  <div class="progress-text"><div class="num">'+mastered+' / '+total+' 症例 自力で言えた</div><div class="sub">'+subLine+'</div></div>';
     if(rev.length && !state.reviewOnly){
       html += '  <button class="review-pill-btn" data-action="toggle-review">復習</button>';
@@ -916,7 +978,7 @@
     PROMPTS.forEach(function(p, i){
       html += '<div class="prompt-block">';
       html += '<label for="field-'+p.key+'-'+c.id+'"><span class="n">'+(i+1)+'.</span>'+p.label+'</label>';
-      html += '<textarea id="field-'+p.key+'-'+c.id+'" data-field="'+p.key+'" placeholder="'+p.ph+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
+      html += '<textarea id="field-'+p.key+'-'+c.id+'" data-field="'+p.key+'" placeholder="'+escapeHtml(p.ph)+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
       html += '</div>';
     });
     html += '</div>';
@@ -935,8 +997,8 @@
 
   function renderAnswer(c){
     var catLabel = c.cat==="redflag" ? "レッドフラッグを見抜く症例" : "抗菌薬の要否を判断する症例";
-    var verdictIcon = c.verdict==="escalate" ? "🚨 " : (c.verdict==="abx" ? "℞ " : "🟢 ");
-    var html = '<div class="answer-wrap">';
+    var verdictIcon = c.verdict==="escalate" ? "🚨 " : (c.verdict==="abx" ? "℞ " : (c.verdict==="test" ? "🔬 " : "🟢 "));
+    var html = '<div class="answer-wrap" tabindex="-1">';
     html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">診断</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'・'+c.tag+'</div>';
     html += '<div class="verdict-badge '+c.verdict+'">'+verdictIcon+c.verdictLabel+'</div>';
     html += '</div>';
@@ -1014,13 +1076,14 @@
   }
 
   function assessBtn(kind, label, cur){
-    return '<button class="assess-btn '+kind+(cur===kind?' active':'')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
+    var on = (cur===kind);
+    return '<button class="assess-btn '+kind+(on?' active':'')+'" aria-pressed="'+(on?'true':'false')+'" data-action="assess" data-kind="'+kind+'">'+label+'</button>';
   }
 
   /* ---------------- RENDER: AXIS (FRAMEWORK) ---------------- */
   function renderAxis(){
     var html = "";
-    html += '<div class="axis-hero"><div class="eyebrow">かぜ診療の3つの軸</div><h1>不確実さが残る中で、必要十分な診療をするために</h1><p>症例の内容が何であれ、かぜ診療の初動はこの5ステップが基本の型になります。3つの軸(レッドフラッグ・抗菌薬・説明)を毎回言語化する練習を積み重ねましょう。</p></div>';
+    html += '<div class="axis-hero"><div class="eyebrow">かぜ診療の3つの軸</div><h1>不確実さが残る中で、必要十分な診療をするために</h1><p>症例の内容が何であれ、かぜ診療の初動はこの5ステップが基本の型になります(①②が軸1「レッドフラッグ」、③④が軸2「抗菌薬の要否」、⑤が軸3「説明」に対応します)。3つの軸を毎回言語化する練習を積み重ねましょう。</p></div>';
     html += '<div class="escalation-note"><div class="en-label">⚡ 大切なのは「言語化」</div><div class="en-body">かぜ診療のゴールは診断名を当てることではありません。<mark>不確実さが残る中でも、レッドフラッグの有無・抗菌薬の要否・患者への説明という3つを、自分の言葉で説明できる状態</mark>を目指してください。「なんとなく大丈夫そう」「かぜだから念のため」を卒業することが、このトレーニングの目的です。</div></div>';
     html += '<div class="flow">';
     FLOW.forEach(function(f,i){
@@ -1054,9 +1117,9 @@
       html += '<div class="answer-card">';
       html += '<h3><span class="ico explain">'+s.icon+'</span>'+s.title+'</h3>';
       html += '<div class="sx-field"><b>①困りごとの例</b>'+s.complaint+'</div>';
-      html += '<div class="sx-field"><b>②第一選択とエビデンスの目安</b>'+s.choice+'</div>';
+      html += '<div class="sx-field"><b>②どれくらい効果を期待できるか(第一選択と根拠)</b>'+s.choice+'</div>';
       html += '<div class="sx-field"><b>③不利益・注意点</b>'+s.harm+'</div>';
-      html += '<div class="sx-field"><b>④いつまで使うか</b>'+s.duration+'</div>';
+      html += '<div class="sx-field"><b>④薬が必要か・いつまで使うか</b>'+s.duration+'</div>';
       html += '</div>';
     });
 
@@ -1142,7 +1205,11 @@
           revealCache[state.caseId] = true;
           render();
           var wrap = app.querySelector(".answer-wrap");
-          if(wrap) wrap.scrollIntoView({behavior:"smooth", block:"start"});
+          if(wrap){
+            var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            wrap.scrollIntoView({behavior: reduceMotion ? "auto" : "smooth", block:"start"});
+            wrap.focus({preventScroll:true});
+          }
         } else if(action==="assess"){
           var kind = el.getAttribute("data-kind");
           var c0 = caseById(state.caseId);
@@ -1172,24 +1239,29 @@
   }
 
   var draftSaveTimer = null;
+  var dirtyDrafts = {}; // caseId -> true for cases this tab has actually edited
   function collectDraft(caseId, flushNow){
     var d = {};
     app.querySelectorAll("textarea[data-field]").forEach(function(ta){
       d[ta.getAttribute("data-field")] = ta.value;
     });
     draftCache[caseId] = d;
+    dirtyDrafts[caseId] = true;
     if(draftSaveTimer){ clearTimeout(draftSaveTimer); draftSaveTimer = null; }
     if(flushNow){
-      draftSaveFailed = !saveDrafts(draftCache);
+      draftSaveFailed = !saveDrafts(draftCache, Object.keys(dirtyDrafts));
     } else {
-      draftSaveTimer = setTimeout(function(){ draftSaveFailed = !saveDrafts(draftCache); }, 400);
+      draftSaveTimer = setTimeout(function(){
+        var failed = !saveDrafts(draftCache, Object.keys(dirtyDrafts));
+        if(failed !== draftSaveFailed){ draftSaveFailed = failed; render(); }
+      }, 400);
     }
   }
   // Best-effort: flush any pending debounced draft save if the tab is closed/backgrounded
   // before the timer fires (mobile browsers routinely discard backgrounded tabs).
-  window.addEventListener("pagehide", function(){ saveDrafts(draftCache); });
+  window.addEventListener("pagehide", function(){ saveDrafts(draftCache, Object.keys(dirtyDrafts)); });
   document.addEventListener("visibilitychange", function(){
-    if(document.visibilityState === "hidden") saveDrafts(draftCache);
+    if(document.visibilityState === "hidden") saveDrafts(draftCache, Object.keys(dirtyDrafts));
   });
 
   render();
