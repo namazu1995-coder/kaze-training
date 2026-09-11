@@ -763,12 +763,14 @@
       return (p && typeof p === "object" && !Array.isArray(p)) ? p : {};
     }catch(e){ return {}; }
   }
-  function saveProgress(p){
+  // Read-merge-write, scoped to the single case that changed: replaying the whole
+  // in-memory state.progress here (as the old signature did) would re-overwrite every
+  // other case with this tab's possibly-stale snapshot, clobbering a concurrent tab's
+  // newer write to an unrelated case.
+  function saveProgress(caseId, status){
     try{
-      // Read-merge-write: another tab may have saved newer progress since this tab's
-      // in-memory state was last loaded. Overwriting wholesale would silently drop it.
       var stored = loadProgress();
-      Object.keys(p).forEach(function(k){ stored[k] = p[k]; });
+      stored[caseId] = status;
       localStorage.setItem(STORE_KEY, JSON.stringify(stored));
       state.progress = stored;
       return true;
@@ -1215,8 +1217,7 @@
           var c0 = caseById(state.caseId);
           if(!c0) return;
           pendingStatus[state.caseId] = kind;
-          state.progress[state.caseId] = kind;
-          lastSaveFailed = !saveProgress(state.progress);
+          lastSaveFailed = !saveProgress(state.caseId, kind);
           render();
         } else if(action==="next-case"){
           var c = caseById(state.caseId);
