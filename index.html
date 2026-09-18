@@ -307,6 +307,26 @@
     font-weight:700; box-decoration-break:clone; -webkit-box-decoration-break:clone;
   }
 
+  .pitfall-block{
+    background:var(--warn-tint); border:2px solid var(--warn); border-radius:16px;
+    padding:18px 20px; margin-bottom:20px; box-shadow:0 4px 16px -6px rgba(150,80,28,.35);
+  }
+  .pitfall-block .pf-label{
+    display:flex; align-items:center; gap:8px;
+    font-size:12.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--warn);
+    margin-bottom:10px;
+  }
+  .pitfall-block .pf-mark{
+    width:26px;height:26px;border-radius:50%;background:var(--warn);color:var(--on-warn);
+    display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;flex:none;
+  }
+  .pitfall-block p{ margin:0; font-size:15px; color:var(--ink); line-height:1.75; }
+  /* --warn と --accent が同値なので、warn地のブロック内では mark の背景が地と同化して
+     強調が消える。これらのブロック内だけ地を差し替えて、明暗どちらでも見えるようにする。 */
+  .pitfall-block mark, .escalation-note mark{ background:var(--surface); }
+
+  .disclaimer{ margin-top:30px; padding:14px 16px; font-size:11.5px; color:var(--ink-faint); line-height:1.7; border-top:1px solid var(--line); }
+
   .pearl-block{
     background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
     padding:16px 18px; margin-bottom:20px;
@@ -430,6 +450,12 @@
       background:"78歳男性。高血圧の既往のみ、腎機能は正常。5日前からの咳嗽・微熱があり、市販薬で経過を見ていたが、本日から労作時の息切れが出現し受診。喫煙歴あり(20本/日×40年、現在も継続)。",
       vitals:"体温 38.1℃　BP 132/78　HR 104　RR 26　SpO2 91%(room air)　右下肺野でcoarse cracklesを聴取、意識清明だがやや倦怠感あり",
       verdict:"escalate", verdictLabel:"精査・入院を要検討",
+      prompts:{
+        redflag:{ label:"このバイタルサインのどこが「かぜではない」と言っているか、帰宅させてよいか", ph:"呼吸数・SpO2・脈拍、聴診所見、高齢者での非典型的な出方…" },
+        antibiotics:{ label:"肺炎と考えた場合、重症度をどう評価し、どの起因菌を想定して抗菌薬を選ぶか", ph:"A-DROPの各項目、定型・非定型の鑑別、投与経路…" },
+        explain:{ label:"「ただの風邪だと思っていた」患者・家族にどう説明するか", ph:"かぜとの違い、入院/外来の判断根拠、予想される経過…" }
+      },
+      pitfall:"<mark>SpO2の数字だけを見て呼吸数を数えない</mark>のが最大の落とし穴。かぜと肺炎を分けるのは呼吸数と全身状態であり、<mark>A-DROPには呼吸数の項目が含まれないため、スコアが低くても頻呼吸があれば重症側に寄せて判断する</mark>必要がある。また<mark>高齢者では発熱や頻呼吸が目立たないことがあり、「熱がないから軽い」と考えるのも誤り</mark>。逆に、重症度評価をせずに「高齢だからとりあえず入院」とするのも根拠を欠く。",
       answer:{
         redflag:[
           "<mark>呼吸数26回/分、SpO2 91%という明らかなバイタルサイン異常</mark>があり、「かぜ」の範囲を超えていることをまず認識する",
@@ -472,6 +498,12 @@
       background:"26歳男性。既往なし。3日前からの咽頭痛が徐々に増悪し、本日は開口障害と嚥下困難が出現。水分もうまく飲み込めていない。",
       vitals:"体温 38.7℃　BP 128/82　HR 108　RR 18　SpO2 97%　咽頭の視診では右扁桃周囲にわずかな腫脹を指摘できるが、開口が浅く十分な観察ができていない",
       verdict:"escalate", verdictLabel:"耳鼻科への緊急紹介",
+      prompts:{
+        redflag:{ label:"咽頭痛の患者で、気道緊急を示唆する所見を自分から何を取りに行くか", ph:"開口障害・含み声・口蓋垂偏位・流涎、経過の速さ、鑑別に挙げる疾患…" },
+        antibiotics:{ label:"この病態で抗菌薬だけでは不十分な理由は何か、何と組み合わせるか", ph:"排膿処置の位置づけ、想定する起因菌、投与経路…" },
+        explain:{ label:"「喉が痛いだけ」と思って受診した患者に、紹介の必要性をどう説明するか", ph:"帰宅させられない理由、これから起きること、受診が遅れた場合のリスク…" }
+      },
+      pitfall:"<mark>「咽頭が見えにくい」で診察を終えてしまう</mark>のが典型的な誤り。開口が浅いこと自体がトリズムスという所見であり、<mark>見えないことを「異常なし」と記録してはならない</mark>。また<mark>抗菌薬を処方して帰宅させ、排膿処置の必要性を見落とす</mark>のがこの病態の最大のリスクになる。急速に増悪する咽頭痛では、咽頭所見が乏しくても痛みや嚥下障害が不釣り合いに強ければ、急性喉頭蓋炎を含む気道緊急を鑑別から外さない。",
       answer:{
         redflag:[
           "<mark>開口障害(トリズムス)の程度・含み声(muffled voice)の有無・口蓋垂の偏位・流涎</mark>を自分から意図的に確認する——「開口が浅く十分な観察ができていない」という所見自体がトリズムスを示唆するサインであり、見た目の情報だけで済ませず、実際に開口させ発声させて評価する",
@@ -516,6 +548,12 @@
       background:"24歳女性。基礎疾患なし、内服薬なし。同居家族に同様の症状の人あり。3日前から水様性鼻汁・咽頭痛・軽い乾性咳嗽が出現し、症状の程度は昨日と同程度。食事は普段どおり摂れており、仕事も出勤できていた。",
       vitals:"体温 37.2℃　BP 118/72　HR 78　RR 14　SpO2 98%(room air)　全身状態良好、咽頭発赤軽度・扁桃腫大なし、頸部リンパ節腫脹なし、呼吸音清",
       verdict:"reassure", verdictLabel:"支持療法で帰宅",
+      prompts:{
+        redflag:{ label:"この症例を「感冒」と判断してよい根拠を、症状のパターンから説明できるか", ph:"症状の系統と時間経過、否定したい疾患とそれを除外できる所見…" },
+        antibiotics:{ label:"抗菌薬が不要と言い切れる根拠は何か、検査は必要か", ph:"細菌感染を疑う所見の有無、検査で方針が変わるか…" },
+        explain:{ label:"具体的にどの対症療法を、どの症状に対して提案するか", ph:"いちばん困っている症状、薬の選択と期間、予想される経過、再受診の目安…" }
+      },
+      pitfall:"<mark>「かぜだから」と流して、どの所見をもって感冒と判断したのかを言語化しないまま帰宅させる</mark>のが最大の落とし穴。鼻・のど・咳の3系統が同時に同程度そろっているという<mark>パターンの確認を省くと、1系統だけが強い咽頭炎や肺炎を同じ「かぜ」に丸め込んでしまう</mark>。また対症療法を「総合感冒薬」で一括りにし、<mark>いちばん困っている症状を聞かずに処方する</mark>のも、効果と副作用の釣り合いを見失う原因になる。",
       answer:{
         redflag:[
           "重症感の有無(会話可能、歩行可能、経口摂取可能)を確認する",
@@ -559,6 +597,12 @@
       background:"20歳男性。既往なし。2日前からの咽頭痛・嚥下痛・発熱で受診。咳や鼻汁は伴っていない。周囲に同様の症状の人はいない。",
       vitals:"体温 38.6℃　BP 122/76　HR 92　RR 16　SpO2 98%　両側扁桃に白苔状の滲出液あり、前頸部リンパ節の腫脹・圧痛あり、咳嗽・鼻汁なし",
       verdict:"test", verdictLabel:"迅速検査の結果で方針決定",
+      prompts:{
+        redflag:{ label:"強い咽頭痛で、緊急性のある病態を除外できたと言える根拠は何か", ph:"開口障害・含み声・呼吸苦の有無、経過の速さ、若年成人で考える鑑別…" },
+        antibiotics:{ label:"スコアを何点と評価し、それを検査と抗菌薬の判断にどう使うか", ph:"McIsaacの各項目、スコアが意味する確率、検査してから決める理由…" },
+        explain:{ label:"「抗菌薬がほしい」と考えて来た患者に、検査を待つ流れをどう説明するか", ph:"検査の位置づけ、抗菌薬を出す目的、結果待ちの間の対処、再受診の目安…" }
+      },
+      pitfall:"<mark>スコアが高いことを「抗菌薬の適応」と読み替えて、検査を省いて処方してしまう</mark>のが最も多い誤り。スコアは<mark>「検査をすべきか」を決めるツールであり、4点でも相当数はGAS陰性</mark>である。逆に「かぜに抗菌薬は不要」を機械的に当てはめ、<mark>必要な症例で検査も処方もしない</mark>のも誤り。若年成人では伝染性単核球症を鑑別に残さないまま<mark>アモキシシリンを投与し、出た発疹を真のペニシリンアレルギーと記録してしまう</mark>ことも実害の大きい落とし穴になる。",
       answer:{
         redflag:[
           "開口障害(トリズムス)・含み声・流涎・頸部の激しい腫脹など<mark>扁桃周囲膿瘍や気道緊急を示唆する所見がないか</mark>を確認する",
@@ -608,6 +652,12 @@
       background:"45歳男性。既往なし。10日前に鼻閉・鼻汁・咽頭痛で発症。5日目頃には症状が軽くなったと本人は感じていたが、7日目から鼻汁が再び増加し右頬部痛が出現した。現在は膿性鼻汁、右頬部の圧痛、前屈で増悪する頭痛を伴う。",
       vitals:"体温 37.8℃　BP 128/80　HR 84　RR 16　SpO2 98%　右上顎洞部の圧痛あり、鼻腔内に膿性分泌物あり、眼窩周囲の腫脹・視力障害なし",
       verdict:"abx", verdictLabel:"抗菌薬の適応あり",
+      prompts:{
+        redflag:{ label:"副鼻腔炎で見逃したくない合併症は何か、それを否定できる所見を確認したか", ph:"眼窩・頭蓋内合併症のサイン、眼球運動・視力・神経所見…" },
+        antibiotics:{ label:"症状の経過のどこが細菌性を示唆するか、どの薬剤をどれだけ出すか", ph:"10日以上の遷延・重症の初期経過・二峰性、薬剤選択と期間…" },
+        explain:{ label:"抗菌薬を出す理由と、鼻症状への対処をどう伝えるか", ph:"なぜ今回は必要か、飲みきる理由、鼻洗浄など併用、再受診の目安…" }
+      },
+      pitfall:"<mark>膿性鼻汁の色だけで細菌性と判断して抗菌薬を出す</mark>のが典型的な誤り。色調の変化はウイルス性でも自然経過で起こる。判断の核心は<mark>症状の「期間とパターン」</mark>であり、10日以上の遷延・重症の初期経過・二峰性の増悪のいずれかを確認する。逆に「副鼻腔炎の多くはウイルス性」を機械的に当てはめ、<mark>二峰性の経過という明らかな所見を拾わずに抗菌薬を出し渋る</mark>のも誤り。眼窩周囲の腫脹や視力・眼球運動の異常を一度も確認しないまま帰宅させるのも危険である。",
       answer:{
         redflag:[
           "<mark>眼窩周囲の腫脹・複視・視力障害、前頭部の激しい腫脹、意識障害や項部硬直</mark>など、眼窩内・頭蓋内合併症を示唆する所見がないかを確認する",
@@ -649,6 +699,12 @@
       background:"32歳女性。既往なし。3日前からの水様性鼻汁・軽い咽頭痛・微熱。市販の総合感冒薬を内服し経過観察していたが改善が乏しく受診。全身状態は良好。",
       vitals:"体温 37.4℃　BP 116/70　HR 76　RR 14　SpO2 99%　咽頭軽度発赤、扁桃腫大・滲出液なし、リンパ節腫脹なし、呼吸音清",
       verdict:"reassure", verdictLabel:"抗菌薬不要・説明が鍵",
+      prompts:{
+        redflag:{ label:"抗菌薬を希望されている状況でも、確認を省いてはいけないことは何か", ph:"バイタルと全身状態、細菌感染を示唆する所見、帰宅の根拠…" },
+        antibiotics:{ label:"抗菌薬が不要である根拠と、出すことの不利益をどう整理するか", ph:"ウイルス性と判断する所見、副作用・耐性菌、検査で方針が変わるか…" },
+        explain:{ label:"「出張までに治したい」という事情に、どう応えながら抗菌薬を出さずに済ませるか", ph:"心配の受け止め方、代わりに渡せるもの、周囲への配慮、再受診の目安…" }
+      },
+      pitfall:"<mark>「抗菌薬は効きません」と正しさだけで押し返す</mark>のが、この場面で最も多い失敗。患者が本当に心配しているのは出張に間に合うかであり、<mark>そこを聞かずに否定から入ると信頼関係を損ない、かえって処方圧力が強まる</mark>。逆に、押し切られて<mark>「念のため」と処方してしまう</mark>のも、次回以降の受診行動を形づくってしまう点で害が大きい。<mark>否定的な説明だけで終わらせず、対症療法や具体的な配慮という「代わりに渡せるもの」を用意する</mark>のがこの症例の要になる。",
       answer:{
         redflag:[
           "全身状態・バイタルサインに異常がないことを確認する(重症感なし、頻呼吸・低酸素なし)",
@@ -684,11 +740,25 @@
     }
   ];
 
-  var PROMPTS = [
-    {key:"redflag", label:"レッドフラッグの確認と、帰宅可否の根拠", ph:"重症感・呼吸状態・バイタル・患者背景、見逃したくない疾患、帰宅してよいと判断する根拠…"},
-    {key:"antibiotics", label:"抗菌薬は必要か、その根拠", ph:"疑うべき細菌感染の所見、検査で方針が変わるか、処方する/しない根拠…"},
-    {key:"explain", label:"患者にどう説明するか", ph:"受診理由・不安の確認、見立て、抗菌薬の要否、対症療法、予想される経過、再受診の目安…"}
+  var PROMPT_META = [
+    {key:"redflag", num:"①"},
+    {key:"antibiotics", num:"②"},
+    {key:"explain", num:"③"}
   ];
+  var DEFAULT_PROMPTS = {
+    redflag:{ label:"レッドフラッグの確認と、帰宅可否の根拠", ph:"重症感・呼吸状態・バイタル・患者背景、見逃したくない疾患、帰宅してよいと判断する根拠…" },
+    antibiotics:{ label:"抗菌薬は必要か、その根拠", ph:"疑うべき細菌感染の所見、検査で方針が変わるか、処方する/しない根拠…" },
+    explain:{ label:"患者にどう説明するか", ph:"受診理由・不安の確認、見立て、抗菌薬の要否、対症療法、予想される経過、再受診の目安…" }
+  };
+  // 症例ごとに c.prompts で設問を上書きできる(家族内の他アプリと同じ方式)。
+  // 上書きがなければ DEFAULT_PROMPTS の汎用設問にフォールバックする。
+  function getPrompts(c){
+    return PROMPT_META.map(function(m){
+      var override = (c && c.prompts && c.prompts[m.key]) || {};
+      var base = DEFAULT_PROMPTS[m.key];
+      return { key:m.key, num:m.num, label: override.label || base.label, ph: override.ph || base.ph };
+    });
+  }
 
   var FLOW = [
     {t:"病歴と診察でレッドフラッグを探す", d:"重症感、呼吸状態、バイタルサイン全項目、年齢や基礎疾患などの患者背景を確認する。「なんとなく元気がなさそう」ではなく、具体的な所見で判断する。"},
@@ -781,7 +851,7 @@
     try{
       var raw = JSON.parse(localStorage.getItem(DRAFT_KEY));
       if(!raw || typeof raw !== "object" || Array.isArray(raw)) return {};
-      var keys = PROMPTS.map(function(p){ return p.key; });
+      var keys = PROMPT_META.map(function(p){ return p.key; });
       var known = {}; CASES.forEach(function(c){ known[c.id] = true; });
       var out = {};
       Object.keys(raw).forEach(function(caseId){
@@ -826,9 +896,10 @@
       if(c.num !== i+1) ok = false;
       if(!VALID_CATS[c.cat]) ok = false;
       if(!VALID_VERDICTS[c.verdict]) ok = false;
-      PROMPTS.forEach(function(p){
+      PROMPT_META.forEach(function(p){
         if(!c.answer || !Array.isArray(c.answer[p.key]) || !c.answer[p.key].length) ok = false;
       });
+      if(typeof c.pitfall !== "string" || !c.pitfall) ok = false;
     });
     if(!ok && typeof console !== "undefined" && console.warn){
       console.warn("[kaze] CASES data integrity check failed: ids/nums/cat/verdict/answer content are not all valid. Case navigation and status tracking may misbehave.");
@@ -945,10 +1016,10 @@
     html += '</div>';
 
     html += '<button class="axis-cta" data-action="goto-axis"><span><span class="t">かぜ診療の「3つの軸」を見る</span><span class="s">レッドフラッグ→抗菌薬の要否→患者への説明</span></span><span class="arrow">›</span></button>';
-    html += '<button class="axis-cta" data-action="goto-symptomatic"><span><span class="t">対症療法について理解を深める</span><span class="s">「何を出すか」の前に「何を楽にしたいか」を決める</span></span><span class="arrow">›</span></button>';
+    html += '<button class="axis-cta" data-action="goto-symptomatic"><span><span class="t">対症療法の考え方を見る</span><span class="s">「何を出すか」の前に「何を楽にしたいか」を決める</span></span><span class="arrow">›</span></button>';
 
     if(state.reviewOnly){
-      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'症例</span></div>';
+      html += '<div class="section-head"><span class="dot" style="background:var(--warn)"></span><h2>復習対象の症例</h2><span class="count">'+rev.length+'件</span></div>';
       if(rev.length===0){
         html += '<div class="empty-review">復習対象の症例はありません。<br>「一覧」から症例を確認できます。</div>';
       } else {
@@ -992,16 +1063,16 @@
     var drafts = draftCache[c.id] || {};
 
     html += '<div id="prompts">';
-    PROMPTS.forEach(function(p, i){
+    getPrompts(c).forEach(function(p){
       html += '<div class="prompt-block">';
-      html += '<label for="field-'+p.key+'-'+c.id+'"><span class="n">'+(i+1)+'.</span>'+p.label+'</label>';
+      html += '<label for="field-'+p.key+'-'+c.id+'"><span class="n">'+p.num+'</span>'+p.label+'</label>';
       html += '<textarea id="field-'+p.key+'-'+c.id+'" data-field="'+p.key+'" placeholder="'+escapeHtml(p.ph)+'">'+ (drafts[p.key] ? escapeHtml(drafts[p.key]) : "") +'</textarea>';
       html += '</div>';
     });
     html += '</div>';
-    if(draftSaveFailed){
-      html += '<div class="save-warning">⚠ この端末には下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると入力内容が失われます。</div>';
-    }
+    // 保存失敗の警告は常に描画しておき hidden で出し分ける。入力のたびに render() を
+    // 呼ぶと textarea ごと作り直され、フォーカスとIMEの未確定文字が失われるため。
+    html += '<div class="save-warning" id="draftSaveWarning"'+(draftSaveFailed?"":" hidden")+'>⚠ この端末には下書きを保存できませんでした。プライベートブラウズ中か、ストレージが無効になっている可能性があります。この画面を離れると入力内容が失われます。</div>';
 
     if(!revealed){
       html += '<button class="reveal-btn" data-action="reveal">模範解答を見る</button>';
@@ -1019,11 +1090,14 @@
     html += '<div class="diagnosis-reveal"><div class="dr-eyebrow">診断</div><div class="dr-title">'+c.title+'</div><div class="dr-sub">'+catLabel+'・'+c.tag+'</div>';
     html += '<div class="verdict-badge '+c.verdict+'">'+verdictIcon+c.verdictLabel+'</div>';
     html += '</div>';
+    html += '<div class="pitfall-block"><div class="pf-label"><span class="pf-mark" aria-hidden="true">!</span>ありがちな誤対応</div><p>'+c.pitfall+'</p></div>';
+
     html += '<div class="divider"><div class="line"></div><span>模範解答</span><div class="line"></div></div>';
 
-    html += answerCard("redflag","レッドフラッグの確認と、帰宅可否の根拠", c.answer.redflag);
-    html += answerCard("abx","抗菌薬は必要か、その根拠", c.answer.antibiotics);
-    html += answerCard("explain","患者にどう説明するか", c.answer.explain);
+    var CARD_KIND = { redflag:"redflag", antibiotics:"abx", explain:"explain" };
+    getPrompts(c).forEach(function(p){
+      html += answerCard(CARD_KIND[p.key], p.label, c.answer[p.key]);
+    });
 
     html += renderPearl(c);
     html += renderRefs(c);
@@ -1155,6 +1229,9 @@
         ? '<button class="back" data-action="goto-home-full">‹ 一覧</button><div class="title">復習リスト</div>'
         : '<div class="title">かぜ診療トレーニング</div>';
       mainHtml = renderHome();
+      if(!state.reviewOnly){
+        mainHtml += '<div class="disclaimer">内容は教育目的の一般的な整理です。対象は基礎疾患のない成人の外来診療を想定しており、用量・禁忌の最終確認は添付文書等でご自身で行ってください。実際の診療方針は必ず各施設のプロトコルや指導医の判断、厚生労働省「抗微生物薬適正使用の手引き」などの最新の指針に従ってください。</div>';
+      }
     } else if(state.view==="case"){
       var c = caseById(state.caseId);
       if(!c){
@@ -1171,7 +1248,7 @@
       topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">かぜ診療の3つの軸</div>';
       mainHtml = renderAxis();
     } else if(state.view==="symptomatic"){
-      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">対症療法について理解を深める</div>';
+      topbarHtml = '<button class="back" data-action="goto-home">‹ 一覧</button><div class="title">対症療法の考え方</div>';
       mainHtml = renderSymptomatic();
     }
 
@@ -1268,8 +1345,9 @@
       draftSaveFailed = !saveDrafts(draftCache, Object.keys(dirtyDrafts));
     } else {
       draftSaveTimer = setTimeout(function(){
-        var failed = !saveDrafts(draftCache, Object.keys(dirtyDrafts));
-        if(failed !== draftSaveFailed){ draftSaveFailed = failed; render(); }
+        draftSaveFailed = !saveDrafts(draftCache, Object.keys(dirtyDrafts));
+        var warnEl = document.getElementById("draftSaveWarning");
+        if(warnEl){ warnEl.hidden = !draftSaveFailed; }
       }, 400);
     }
   }
